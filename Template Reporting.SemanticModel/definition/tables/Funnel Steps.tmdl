@@ -1,0 +1,38 @@
+table 'Funnel Steps'
+	lineageTag: 9aca6eaf-aae0-4e17-827c-d719b303e481
+
+	column 'Step Order'
+		formatString: 0
+		lineageTag: 4b20082c-0ceb-4a2c-ad8f-211d2191588c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Step Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Step Label'
+		lineageTag: 63c58d34-b7d6-4905-85bf-9bce0d7fe244
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Step Label]
+		sortByColumn: 'Step Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Funnel Steps' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Step Order", INTEGER,
+				    "Step Label", STRING,
+				    {
+				        { 1, "Have op-tables in tenant" },
+				        { 2, "Tied to a file ID" },
+				        { 3, "Did a read/write/sync action" },
+				        { 4, "Made a file change" }
+				    }
+				)
+
+	annotation PBI_Id = 7d64897c71c14408b40149b387de08a6
+

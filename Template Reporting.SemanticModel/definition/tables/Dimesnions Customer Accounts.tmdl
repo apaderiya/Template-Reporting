@@ -1,0 +1,206 @@
+table 'Dimesnions Customer Accounts'
+	lineageTag: 442c6db1-1102-43f1-83b0-034c7093ae26
+
+	column ACCOUNT_ID_LONG
+		dataType: string
+		lineageTag: 47820023-c703-4756-b045-37501cc1cd3f
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID_LONG
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID_SHORT
+		dataType: string
+		lineageTag: 31f52c0d-f22b-4deb-bf19-c7086c8cec0f
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID_SHORT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_NM
+		dataType: string
+		isKey
+		lineageTag: 059c62cb-3d5a-47f1-a1d6-331e6f51a5bf
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ARR_USD
+		dataType: decimal
+		lineageTag: c0c7280e-4d0a-4920-b825-ae0f8018cafa
+		summarizeBy: sum
+		sourceColumn: ARR_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMIN_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 40989101-ab9e-45ef-8308-5244d1e4df75
+		summarizeBy: sum
+		sourceColumn: ADMIN_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUSINESS_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 57793f6e-3b9b-4e29-af99-c13a437f4e1d
+		summarizeBy: sum
+		sourceColumn: BUSINESS_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ANY_COMBINATION_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 3e945b63-b9a8-4c02-b422-e2ba63b9f063
+		summarizeBy: sum
+		sourceColumn: ANY_COMBINATION_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VIEW_ONLY_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 7b6eae70-5500-4035-b291-291c93e6df4f
+		summarizeBy: sum
+		sourceColumn: VIEW_ONLY_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 9ab8e6e4-19a6-4bb9-ba9e-a1b3f3ecf7ad
+		summarizeBy: sum
+		sourceColumn: TOTAL_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BECAME_CUSTOMER_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a2b7e7eb-89c1-47f8-be39-8a6e86f408b0
+		summarizeBy: none
+		sourceColumn: BECAME_CUSTOMER_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column INDSTRY_NM
+		dataType: string
+		lineageTag: 8476bfc5-22bc-413c-85de-62d3e9f1068b
+		summarizeBy: none
+		sourceColumn: INDSTRY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TERRITORY_SGMNT_NM
+		dataType: string
+		lineageTag: e73b9788-7ffe-48f1-8622-74978f1fedac
+		summarizeBy: none
+		sourceColumn: TERRITORY_SGMNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RENEWAL_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 84838aac-e0c3-4549-bf94-334d5b28749e
+		summarizeBy: none
+		sourceColumn: RENEWAL_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ZOOM_INDSTRY_NM
+		dataType: string
+		lineageTag: 74a36175-1aba-4917-8d90-c5dbe8d1e2f0
+		summarizeBy: none
+		sourceColumn: ZOOM_INDSTRY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZOOM_PRMRY_INDSTRY_NM
+		dataType: string
+		lineageTag: 3ac20e82-26db-4705-b695-0e521d2535cc
+		summarizeBy: none
+		sourceColumn: ZOOM_PRMRY_INDSTRY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZOOM_PRMRY_SUB_INDSTRY_NM
+		dataType: string
+		lineageTag: 99357dca-cfc8-415f-83ba-037c08c460c5
+		summarizeBy: none
+		sourceColumn: ZOOM_PRMRY_SUB_INDSTRY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZOOM_EMPLOYEE_COUNT
+		dataType: decimal
+		lineageTag: b8c9f42c-6093-42cb-9390-ccd6e8b6f82a
+		summarizeBy: sum
+		sourceColumn: ZOOM_EMPLOYEE_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ZOOM_REVENUE
+		dataType: decimal
+		lineageTag: 02c3b746-e918-43b0-92b0-d29102efd3dd
+		summarizeBy: sum
+		sourceColumn: ZOOM_REVENUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POWERBI_EMBEDDED_IND
+		dataType: string
+		lineageTag: e199cddf-18ad-434b-b76b-8b93e98a21a2
+		summarizeBy: none
+		sourceColumn: POWERBI_EMBEDDED_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHURN_RSK_IND
+		dataType: string
+		lineageTag: 592a7bef-b591-488d-b990-ec1303fac3be
+		summarizeBy: none
+		sourceColumn: CHURN_RSK_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column WEBSITE_URL
+		dataType: string
+		lineageTag: 69377afa-e215-4c01-af4a-a124855442bf
+		summarizeBy: none
+		sourceColumn: WEBSITE_URL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dimesnions Customer Accounts' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with acc as #(lf)(#(lf)select #(lf)account_id,#(lf)became_customer_dt,#(lf)indstry_nm,#(lf)territory_sgmnt_nm,#(lf)renewal_dt,#(lf)zoom_indstry_nm,#(lf)zoom_prmry_indstry_nm,#(lf)zoom_prmry_sub_indstry_nm,#(lf)zoom_employee_count,#(lf)zoom_revenue,#(lf)powerbi_embedded_ind,#(lf)churn_rsk_ind,#(lf)website_url#(lf)from PROD_HARMONIZED.SALES.VW_ACCOUNT_PROF#(lf)where crnt_rcrd_ind = 'Y'#(lf))#(lf)#(lf)select distinct#(lf)tenants.account_id as account_id_long,#(lf)left(tenants.account_id,15) as account_id_short,#(lf)account_nm,#(lf)arr_usd,#(lf)admin_license_sold,#(lf)business_license_sold,#(lf)any_combination_license_sold,#(lf)view_only_license_sold,#(lf)total_license_sold,#(lf)became_customer_dt,#(lf)indstry_nm,#(lf)territory_sgmnt_nm,#(lf)renewal_dt,#(lf)zoom_indstry_nm,#(lf)zoom_prmry_indstry_nm,#(lf)zoom_prmry_sub_indstry_nm,#(lf)zoom_employee_count,#(lf)zoom_revenue,#(lf)powerbi_embedded_ind,#(lf)churn_rsk_ind,#(lf)website_url#(lf)from PROD_HARMONIZED.PRODUCT.VW_ENBLD_PRODUCTION_TENANTS tenants #(lf)left join acc on tenants.account_id = acc.account_id#(lf)where tenants.account_typ_nm = 'Customer'#(lf)and tenant_typ_nm = 'PRODUCTION'#(lf)and tenant_enbld_status_nm = 'ENABLED'", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

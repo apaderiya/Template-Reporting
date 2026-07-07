@@ -1,0 +1,248 @@
+table 'DIM Ops File'
+	lineageTag: 1cb10648-c3a4-4b03-a011-68a4f3cfe4ae
+
+	column DATA_CENTER
+		dataType: string
+		lineageTag: 024495b4-6b37-4b0a-b374-e3f7d45b6117
+		summarizeBy: none
+		sourceColumn: DATA_CENTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: ab3a374b-b9ca-4969-86e5-ed9ff0044366
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: 15e5e2ec-3012-42dd-9455-ba07d6baf2de
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOLUTION_PACKAGE_NAME
+		dataType: string
+		lineageTag: 5ab68b10-fb9a-4655-af26-928fa7ce67a8
+		summarizeBy: none
+		sourceColumn: SOLUTION_PACKAGE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOLUTION_PACKAGE_TEMPLATE_NAME
+		dataType: string
+		lineageTag: 522ef39e-ead3-4378-af85-a90c448b4dc6
+		summarizeBy: none
+		sourceColumn: SOLUTION_PACKAGE_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOLUTION_PACKAGE_TEMPLATE_VERSION
+		dataType: string
+		lineageTag: ea034222-ea29-415c-9576-53573b2e8a2d
+		summarizeBy: none
+		sourceColumn: SOLUTION_PACKAGE_TEMPLATE_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATEST_ETL_LOAD_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: bbe6e340-1804-48a6-b1fc-1c7335747e66
+		summarizeBy: none
+		sourceColumn: LATEST_ETL_LOAD_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FIRST_OPS_USE_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: b54140ee-92d2-42b6-b8b1-164902558e04
+		summarizeBy: none
+		sourceColumn: FIRST_OPS_USE_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MOST_RECENT_CHANGE_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 4509a5c4-648f-4934-bcc5-c70fd87e4d1d
+		summarizeBy: none
+		sourceColumn: MOST_RECENT_CHANGE_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FIRST_CHOOSE_MAPPINGS
+		dataType: decimal
+		lineageTag: 9890a432-b3fb-47e6-9563-f58ecb95340a
+		summarizeBy: sum
+		sourceColumn: FIRST_CHOOSE_MAPPINGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FIRST_WRITEBACK_QUERIES
+		dataType: decimal
+		lineageTag: d3695d02-101e-4467-94d9-4d191be27fd4
+		summarizeBy: sum
+		sourceColumn: FIRST_WRITEBACK_QUERIES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CURRENT_CHOOSE_MAPPINGS
+		dataType: decimal
+		lineageTag: f2b4de4b-82ef-4f4c-b6f6-85d1302ae5fa
+		summarizeBy: sum
+		sourceColumn: CURRENT_CHOOSE_MAPPINGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CURRENT_WRITEBACK_QUERIES
+		dataType: decimal
+		lineageTag: 801d0737-946f-4b04-9606-e7186563e381
+		summarizeBy: sum
+		sourceColumn: CURRENT_WRITEBACK_QUERIES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHOOSE_MAPPINGS_NET_CHANGE
+		dataType: decimal
+		lineageTag: 5a71370f-ca16-415a-a247-79774c6997a5
+		summarizeBy: sum
+		sourceColumn: CHOOSE_MAPPINGS_NET_CHANGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WRITEBACK_QUERIES_NET_CHANGE
+		dataType: decimal
+		lineageTag: 281edf9e-32d3-4098-8ac1-b81d1da6fd2e
+		summarizeBy: sum
+		sourceColumn: WRITEBACK_QUERIES_NET_CHANGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column V365_REFRESH_COUNT_LTM
+		dataType: decimal
+		lineageTag: 726a840a-106b-4cc7-b90a-fc76623e5a1d
+		summarizeBy: sum
+		sourceColumn: V365_REFRESH_COUNT_LTM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column V365_MOST_RECENT_REFRESH_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: b711b9b9-30b8-44aa-9b0b-82fae6fbab05
+		summarizeBy: none
+		sourceColumn: V365_MOST_RECENT_REFRESH_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CHANGE_IND
+		dataType: string
+		lineageTag: 17d5a24b-62c4-43ae-9453-5f71c6d21040
+		summarizeBy: none
+		sourceColumn: CHANGE_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column VH_TENANT_ID
+		dataType: string
+		lineageTag: 15faf373-5138-4cbe-91c0-4d492d628b96
+		summarizeBy: none
+		sourceColumn: VH_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VH_FILE_ID
+		dataType: string
+		isKey
+		lineageTag: f930ecf9-6aeb-434b-b816-e62c78bfdd3a
+		summarizeBy: none
+		sourceColumn: VH_FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCS_IND
+		dataType: string
+		lineageTag: 5b920f34-7c8c-47f0-ac13-3dd502cd3b59
+		summarizeBy: none
+		sourceColumn: PCS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Template Sizes - 365 Addin.SIZE_MB'
+		dataType: decimal
+		lineageTag: 124e0ea1-b7c4-4134-bfba-3db699a51661
+		summarizeBy: sum
+		sourceColumn: Template Sizes - 365 Addin.SIZE_MB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Template Sizes - 365 Addin.Size Range'
+		dataType: string
+		lineageTag: d18cb083-53ee-4ecf-b7b3-4d2e1bba9a8d
+		summarizeBy: none
+		sourceColumn: Template Sizes - 365 Addin.Size Range
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCESS_ID
+		dataType: string
+		lineageTag: 0598bf5e-488d-4953-bb8a-5c3b0a4182ea
+		summarizeBy: none
+		sourceColumn: PROCESS_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCESS_NAME
+		dataType: string
+		lineageTag: 1586b90e-af30-4820-b3a3-9e8265fcd13b
+		summarizeBy: none
+		sourceColumn: PROCESS_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DIM Ops File' = m
+		mode: import
+		queryGroup: 'Operations Table'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_HARMONIZED"]}[Data], "WITH prod_tenants AS (#(lf)    SELECT DISTINCT#(lf)        DATA_CNTR_CD,#(lf)        TENANT_ID#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    WHERE CRNT_RCRD_IND = 'Y'#(lf)      AND TENANT_TYP_NM = 'PRODUCTION'#(lf)      AND TENANT_ENBLD_STATUS_NM = 'ENABLED'#(lf)      AND ORGANIZATION_TYP_NM = 'CUSTOMER'#(lf)),#(lf)#(lf)raw_template_metrics AS (#(lf)    SELECT#(lf)        p.DATA_CNTR_CD  AS DATA_CENTER,#(lf)        t.TENANT_ID,#(lf)        t.FILE_ID,#(lf)        t.ETL_LOAD_DATE,#(lf)        t.CONTENT_ID,#(lf)        IFF(t.SOLUTION_PACKAGE_NAME = '', NULL, SOLUTION_PACKAGE_NAME)  AS SOLUTION_PACKAGE_NAME,#(lf)        IFF(t.SOLUTION_PACKAGE_TEMPLATE_NAME = '', NULL, SOLUTION_PACKAGE_TEMPLATE_NAME)    AS SOLUTION_PACKAGE_TEMPLATE_NAME,#(lf)        IFF(t.SOLUTION_PACKAGE_TEMPLATE_VERSION = '', NULL, SOLUTION_PACKAGE_TEMPLATE_VERSION)  AS SOLUTION_PACKAGE_TEMPLATE_VERSION,#(lf)        COALESCE(TRY_TO_NUMBER(t.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS), 0) AS NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        COALESCE(TRY_TO_NUMBER(t.NUMBER_OF_WRITEBACK_QUERIES), 0)           AS NUMBER_OF_WRITEBACK_QUERIES#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING t#(lf)    INNER JOIN prod_tenants p#(lf)        ON RIGHT(t.DATA_CENTER, 3) = p.DATA_CNTR_CD#(lf)       AND t.TENANT_ID = p.TENANT_ID#(lf)),#(lf)#(lf)latest_record_per_etl_date AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        CONTENT_ID,#(lf)        ETL_LOAD_DATE,#(lf)        SOLUTION_PACKAGE_NAME,#(lf)        SOLUTION_PACKAGE_TEMPLATE_NAME,#(lf)        SOLUTION_PACKAGE_TEMPLATE_VERSION,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES,#(lf)        CASE#(lf)            WHEN NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS > 0#(lf)              OR NUMBER_OF_WRITEBACK_QUERIES > 0#(lf)            THEN 1 ELSE 0#(lf)        END AS HAS_OP_TABLE_LOGIC#(lf)    FROM raw_template_metrics#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID, ETL_LOAD_DATE#(lf)        ORDER BY CONTENT_ID DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)first_op_record AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        MIN(ETL_LOAD_DATE) AS FIRST_OPS_USE_DATE#(lf)    FROM latest_record_per_etl_date#(lf)    WHERE HAS_OP_TABLE_LOGIC = 1#(lf)    GROUP BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)),#(lf)#(lf)relevant_history AS (#(lf)    SELECT#(lf)        l.DATA_CENTER,#(lf)        l.TENANT_ID,#(lf)        l.FILE_ID,#(lf)        l.CONTENT_ID,#(lf)        l.ETL_LOAD_DATE,#(lf)        l.SOLUTION_PACKAGE_NAME,#(lf)        l.SOLUTION_PACKAGE_TEMPLATE_NAME,#(lf)        l.SOLUTION_PACKAGE_TEMPLATE_VERSION,#(lf)        l.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        l.NUMBER_OF_WRITEBACK_QUERIES,#(lf)        f.FIRST_OPS_USE_DATE#(lf)    FROM latest_record_per_etl_date l#(lf)    INNER JOIN first_op_record f#(lf)        ON l.DATA_CENTER   = f.DATA_CENTER#(lf)       AND l.TENANT_ID     = f.TENANT_ID#(lf)       AND l.FILE_ID       = f.FILE_ID#(lf)       AND l.ETL_LOAD_DATE >= f.FIRST_OPS_USE_DATE#(lf)),#(lf)#(lf)change_detection AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        ETL_LOAD_DATE,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES,#(lf)        LAG(NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID ORDER BY ETL_LOAD_DATE) AS PREV_CHOOSE_MAPPINGS,#(lf)        LAG(NUMBER_OF_WRITEBACK_QUERIES) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID ORDER BY ETL_LOAD_DATE) AS PREV_WRITEBACK_QUERIES,#(lf)        ROW_NUMBER() OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID ORDER BY ETL_LOAD_DATE) AS RECORD_SEQUENCE#(lf)    FROM relevant_history#(lf)),#(lf)#(lf)most_recent_change AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        MAX(ETL_LOAD_DATE) AS MOST_RECENT_CHANGE_DATE#(lf)    FROM change_detection#(lf)    WHERE RECORD_SEQUENCE = 1#(lf)       OR NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS <> PREV_CHOOSE_MAPPINGS#(lf)       OR NUMBER_OF_WRITEBACK_QUERIES        <> PREV_WRITEBACK_QUERIES#(lf)    GROUP BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)),#(lf)#(lf)first_values AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS AS FIRST_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES           AS FIRST_WRITEBACK_QUERIES#(lf)    FROM relevant_history#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)        ORDER BY ETL_LOAD_DATE ASC, CONTENT_ID DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)current_values AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        SOLUTION_PACKAGE_NAME,#(lf)        SOLUTION_PACKAGE_TEMPLATE_NAME,#(lf)        SOLUTION_PACKAGE_TEMPLATE_VERSION,#(lf)        ETL_LOAD_DATE                         AS LATEST_ETL_LOAD_DATE,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS AS CURRENT_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES           AS CURRENT_WRITEBACK_QUERIES#(lf)    FROM relevant_history#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)        ORDER BY ETL_LOAD_DATE DESC, CONTENT_ID DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)v365_refresh_metrics AS (#(lf)    SELECT#(lf)        r.DATA_CNTR_CD                        AS DATA_CENTER,#(lf)        r.TENANT_ID,#(lf)        r.FILE_ID,#(lf)        COUNT(*)                              AS V365_REFRESH_COUNT_LTM,#(lf)        MAX(TO_DATE(r.EVENT_DT))              AS V365_MOST_RECENT_REFRESH_DATE#(lf)    FROM PROD_HARMONIZED.PRODUCT.RUM_DATA_LOG r#(lf)    INNER JOIN first_op_record f#(lf)        ON r.DATA_CNTR_CD = f.DATA_CENTER#(lf)       AND r.TENANT_ID    = f.TENANT_ID#(lf)       AND r.FILE_ID      = f.FILE_ID#(lf)    WHERE r.FILE_ID IS NOT NULL#(lf)      AND TO_DATE(r.EVENT_DT) >= DATEADD(year, -1, CURRENT_DATE())#(lf)    GROUP BY r.DATA_CNTR_CD, r.TENANT_ID, r.FILE_ID#(lf)),#(lf)#(lf)-- =========================================================#(lf)-- Model & Process enrichment via ETL_ROW_SOURCES bridge#(lf)-- =========================================================#(lf)#(lf)file_id_context AS (#(lf)    SELECT#(lf)        DATA_CNTR_CD AS DATA_CENTER,#(lf)        TENANT_ID,#(lf)        #(lf)        REGEXP_SUBSTR(#(lf)            request_url,#(lf)            '/files/([^/?#]+)',#(lf)            1,#(lf)            1,#(lf)            'e',#(lf)            1#(lf)        ) AS file_id,#(lf)    #(lf)        REGEXP_SUBSTR(#(lf)            request_url,#(lf)            '/models/([^/?#]+)',#(lf)            1,#(lf)            1,#(lf)            'e',#(lf)            1#(lf)        ) AS model_id,#(lf)    #(lf)        REGEXP_SUBSTR(#(lf)            request_url,#(lf)            '/processes/([^/?#]+)',#(lf)            1,#(lf)            1,#(lf)            'e',#(lf)            1#(lf)        ) AS process_id#(lf)    #(lf)    FROM PROD_HARMONIZED.PRODUCT.USER_API_ACTIVITY#(lf)    WHERE request_end_dts >= '2026-01-01'#(lf)      AND request_endpoint_nm IN (#(lf)            '/api/manager/processes/{p}/files/{p}/',#(lf)            '/api/addin/processes/{p}/files/{p}/',#(lf)            '/admin/testing/{p}/models/{p}/files/{p}/invalidRanges/',#(lf)            '/api/manager/processes/{p}/files/{p}/pageOptions/',#(lf)            '/api/models/{p}/calcs/profiles/{p}/poll/{p}/',#(lf)            '/api/manager/processes/{p}/files/{p}/saves/{p}/data/',#(lf)            '/api/models/{p}/intersections/{p}/comments/{p}/files/{p}/',#(lf)            '/api/manager/processes/{p}/files/{p}/tasks/',#(lf)            '/api/manager/processes/{p}/files/{p}/models/',#(lf)            '/api/manager/processes/{p}/files/{p}/restore/',#(lf)            '/api/manager/processes/{p}/files/{p}/migrate/',#(lf)            '/api/manager/processes/{p}/files/{p}/data/',#(lf)            '/api/users/current/processes/{p}/assigned/reviews/{p}/comments/{p}/files/{p}/data/',#(lf)            '/api/users/current/processes/{p}/assigned/tasks/{p}/comments/{p}/files/{p}/data/',#(lf)            '/api/models/{p}/etl/files/{p}/',#(lf)            '/api/models/{p}/files/{p}/download/',#(lf)            '/api/models/{p}/files/{p}/',#(lf)            '/api/manager/processes/{p}/files/{p}/content/',#(lf)            '/api/manager/processes/{p}/files/{p}/content/{p}/',#(lf)            '/api/manager/processes/{p}/files/{p}/download/'#(lf)      )#(lf)),#(lf)#(lf)file_context AS (#(lf)    SELECT #(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        MODEL_ID,#(lf)        PROCESS_ID#(lf)    FROM (#(lf)        SELECT#(lf)            DATA_CENTER,#(lf)            TENANT_ID,#(lf)            FILE_ID,#(lf)            MODEL_ID,#(lf)            PROCESS_ID,#(lf)            COUNT(*) AS api_call_count#(lf)        FROM file_id_context#(lf)        WHERE FILE_ID IS NOT NULL#(lf)        GROUP BY ALL#(lf)    )#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)        ORDER BY api_call_count DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)#(lf)model_names AS (#(lf)    SELECT#(lf)        DATACENTER AS DATA_CENTER,#(lf)        TENANT_ID,#(lf)        ID         AS MODEL_ID,#(lf)        MODEL_NAME#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_MODELS_STAGING#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATACENTER, TENANT_ID, ID#(lf)        ORDER BY ETL_LOAD_DATE DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)process_names AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        PROCESS_ID,#(lf)        NAME   AS PROCESS_NAME,#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_PROCESSES_STAGING#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, PROCESS_ID#(lf)        ORDER BY ETL_LOAD_DATE DESC, NAME DESC#(lf)    ) = 1#(lf)    #(lf))#(lf)#(lf)SELECT#(lf)    CONCAT(c.DATA_CENTER, '.', c.TENANT_ID) AS VH_TENANT_ID,#(lf)    c.DATA_CENTER,#(lf)    c.TENANT_ID,#(lf)    c.FILE_ID,#(lf)    c.SOLUTION_PACKAGE_NAME,#(lf)    c.SOLUTION_PACKAGE_TEMPLATE_NAME,#(lf)    c.SOLUTION_PACKAGE_TEMPLATE_VERSION,#(lf)    IFF(c.SOLUTION_PACKAGE_NAME is not null, 'Y', 'N') AS PCS_IND,#(lf)#(lf)#(lf)    -- fc.MODEL_ID,#(lf)    -- mn.MODEL_NAME,#(lf)    fc.PROCESS_ID,#(lf)    pn.PROCESS_NAME,#(lf)#(lf)    c.LATEST_ETL_LOAD_DATE,#(lf)#(lf)#(lf)    f.FIRST_OPS_USE_DATE,#(lf)    mrc.MOST_RECENT_CHANGE_DATE,#(lf)#(lf)    #(lf)    fv.FIRST_CHOOSE_MAPPINGS,#(lf)    fv.FIRST_WRITEBACK_QUERIES,#(lf)#(lf)    #(lf)    c.CURRENT_CHOOSE_MAPPINGS,#(lf)    c.CURRENT_WRITEBACK_QUERIES,#(lf)#(lf)  #(lf)    (c.CURRENT_CHOOSE_MAPPINGS    - fv.FIRST_CHOOSE_MAPPINGS)    AS CHOOSE_MAPPINGS_NET_CHANGE,#(lf)    (c.CURRENT_WRITEBACK_QUERIES  - fv.FIRST_WRITEBACK_QUERIES)  AS WRITEBACK_QUERIES_NET_CHANGE,#(lf)#(lf)    #(lf)    COALESCE(v.V365_REFRESH_COUNT_LTM, 0) AS V365_REFRESH_COUNT_LTM,#(lf)    v.V365_MOST_RECENT_REFRESH_DATE,#(lf)#(lf)    #(lf)    IFF(f.FIRST_OPS_USE_DATE = mrc.MOST_RECENT_CHANGE_DATE, 'N', 'Y') AS CHANGE_IND#(lf)#(lf)FROM current_values c#(lf)INNER JOIN first_op_record    f   USING (DATA_CENTER, TENANT_ID, FILE_ID)#(lf)INNER JOIN first_values       fv  USING (DATA_CENTER, TENANT_ID, FILE_ID)#(lf)INNER JOIN most_recent_change mrc USING (DATA_CENTER, TENANT_ID, FILE_ID)#(lf)LEFT  JOIN v365_refresh_metrics v USING (DATA_CENTER, TENANT_ID, FILE_ID)#(lf)LEFT JOIN file_context fc#(lf)    ON RIGHT(fc.DATA_CENTER, 3) = c.DATA_CENTER#(lf)   AND fc.TENANT_ID             = c.TENANT_ID#(lf)   AND fc.FILE_ID               = c.FILE_ID#(lf)#(lf)LEFT JOIN model_names mn#(lf)    ON RIGHT(mn.DATA_CENTER, 3) = RIGHT(fc.DATA_CENTER, 3)#(lf)   AND mn.TENANT_ID             = fc.TENANT_ID#(lf)   AND mn.MODEL_ID              = fc.MODEL_ID#(lf)#(lf)LEFT JOIN process_names pn#(lf)    ON RIGHT(pn.DATA_CENTER, 3) = RIGHT(fc.DATA_CENTER, 3)#(lf)   AND pn.TENANT_ID             = fc.TENANT_ID#(lf)   AND pn.PROCESS_ID            = fc.PROCESS_ID#(lf)ORDER BY#(lf)    c.DATA_CENTER,#(lf)    c.TENANT_ID,#(lf)    c.FILE_ID", null, [EnableFolding=true]),
+				    #"Added Custom" = Table.AddColumn(Source, "VH_FILE_ID", each [VH_TENANT_ID] & "." & [FILE_ID]),
+				    #"Merged Queries" = Table.NestedJoin(#"Added Custom", {"TENANT_ID", "FILE_ID", "DATA_CENTER"}, #"Template Sizes - 365 Addin", {"TENANT_ID", "FILE_ID", "DATA_CNTR_CD"}, "Template Sizes - 365 Addin", JoinKind.LeftOuter),
+				    #"Expanded Template Sizes - 365 Addin" = Table.ExpandTableColumn(#"Merged Queries", "Template Sizes - 365 Addin", {"SIZE_MB", "Size Range"}, {"Template Sizes - 365 Addin.SIZE_MB", "Template Sizes - 365 Addin.Size Range"})
+				in
+				    #"Expanded Template Sizes - 365 Addin"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

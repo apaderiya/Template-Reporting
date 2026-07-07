@@ -1,0 +1,39 @@
+table 'Period Selector'
+	lineageTag: 6d3d1fdd-cf2c-42b6-bf99-3aa5a9babba7
+
+	column Period
+		lineageTag: 7dee1a22-987e-4072-b77a-6fab90cd809b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Period]
+		sortByColumn: 'Months Back'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months Back'
+		isKey
+		formatString: 0
+		lineageTag: d87b6418-1980-492b-96a3-38bdbe70f784
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Months Back]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Period Selector' = calculated
+		mode: import
+		source = ```
+				
+				    DATATABLE(
+				        "Period", STRING, "Months Back", INTEGER,
+				        {
+				            {"30 Days", 1},
+				            {"3 Months", 3},
+				            {"6 Months", 6},
+				            {"12 Months", 12}
+				        }
+				    )
+				```
+
+	annotation PBI_Id = 6ab7fca0a7914c0489c56f7f6bfb2c5f
+

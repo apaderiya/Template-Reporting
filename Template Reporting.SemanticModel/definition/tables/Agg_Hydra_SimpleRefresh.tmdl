@@ -1,0 +1,194 @@
+table Agg_Hydra_SimpleRefresh
+	lineageTag: 60782e3b-30ee-4e5e-a291-e70a7d3f8c84
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 8c1a506c-4aee-4ead-a4ad-484caa41ec01
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 9ca65514-82c9-4cc3-ac92-60dc673f9ed3
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: 9d9f61db-0a1a-4808-8c1f-3d773f18fdec
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: cce56f0e-b294-433c-a2b8-4b06da2049a5
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIMING_VRBL_NM
+		dataType: string
+		lineageTag: 7e15118a-d75a-402e-a0d1-b3baca48cd52
+		summarizeBy: none
+		sourceColumn: TIMING_VRBL_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR_MONTH
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 5b007ad0-4c45-4e1e-b008-a912baacc1a6
+		summarizeBy: none
+		sourceColumn: YEAR_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column REFRESH_COUNT
+		dataType: decimal
+		lineageTag: cd1d169c-f269-4dac-8dd5-47f292ed311f
+		summarizeBy: sum
+		sourceColumn: REFRESH_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AVG_TIMING
+		dataType: decimal
+		lineageTag: 2bc02a68-df26-4790-bd6a-491db787b686
+		summarizeBy: sum
+		sourceColumn: AVG_TIMING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P25_TIMING
+		dataType: decimal
+		lineageTag: 9bea3629-9dc8-4a4e-ae70-4204987a1dfa
+		summarizeBy: none
+		sourceColumn: P25_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P50_TIMING
+		dataType: decimal
+		lineageTag: 4b2e74ea-bd74-4bbb-b22d-6480159e2944
+		summarizeBy: none
+		sourceColumn: P50_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P70_TIMING
+		dataType: decimal
+		lineageTag: a4546f8b-a1a7-46dc-aa8f-bc5df85f57d1
+		summarizeBy: none
+		sourceColumn: P70_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P80_TIMING
+		dataType: decimal
+		lineageTag: e97fc514-bdfe-43b5-9822-5ee3f3513dd8
+		summarizeBy: none
+		sourceColumn: P80_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P90_TIMING
+		dataType: decimal
+		lineageTag: 87f0bd45-4cd2-4fa0-8f05-73790ca8116c
+		summarizeBy: none
+		sourceColumn: P90_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P95_TIMING
+		dataType: decimal
+		lineageTag: 1748b3fd-70e2-44da-9e62-eb473f70101d
+		summarizeBy: none
+		sourceColumn: P95_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P99_TIMING
+		dataType: decimal
+		lineageTag: 7211b14a-4a03-4774-a8d6-ad164032ce6b
+		summarizeBy: none
+		sourceColumn: P99_TIMING
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISTINCT_USERS
+		dataType: decimal
+		lineageTag: bcf8c343-ec71-4c59-bd9b-7df50ffe9e64
+		summarizeBy: sum
+		sourceColumn: DISTINCT_USERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IS_TSTUDIO
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d43c14e9-968f-4976-974b-250491af1dc3
+		summarizeBy: none
+		sourceColumn: IS_TSTUDIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_PCS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6f2ea8e-e881-4262-9b94-025037c3d7b7
+		summarizeBy: none
+		sourceColumn: IS_PCS
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCS_PACKAGE_VERSION
+		dataType: string
+		lineageTag: 62d0e7dd-58f5-4a63-8209-28adf85aa469
+		summarizeBy: none
+		sourceColumn: PCS_PACKAGE_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Agg_Hydra_SimpleRefresh = m
+		mode: import
+		queryGroup: 'Hydra UI Refreshz'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_HARMONIZED"]}[Data], "WITH prod_tenant_list AS (#(lf)    SELECT DISTINCT#(lf)        tenant_id,#(lf)        tenant_nm,#(lf)        data_cntr_cd#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    WHERE crnt_rcrd_ind = 'Y'#(lf)      AND tenant_typ_nm IN ('PRODUCTION', 'SANDBOX')#(lf)      AND organization_typ_nm = 'CUSTOMER'#(lf)      AND tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)hydra_single_pass AS (#(lf)    SELECT#(lf)        tenant_id,#(lf)        user_id,#(lf)        session_id,#(lf)        event_nm,#(lf)        timing_ctgry_nm,#(lf)        timing_vrbl_nm,#(lf)        timing_val,#(lf)        session_start_dts,#(lf)        MAX(CASE#(lf)            WHEN lower(event_nm) ILIKE '%fileid%'#(lf)             AND timing_ctgry_nm = 'DesktopAddin'#(lf)            THEN timing_val#(lf)        END) OVER (#(lf)            PARTITION BY tenant_id, user_id, session_id, timing_vrbl_nm#(lf)        ) AS file_id#(lf)    FROM PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS#(lf)    WHERE TO_DATE(session_start_dts) >= CURRENT_DATE - 365#(lf)      AND timing_ctgry_nm = 'DesktopAddin'#(lf)      AND (   lower(event_nm) ILIKE '%simplerefresh%'#(lf)           OR lower(event_nm) ILIKE '%fileid%')#(lf)),#(lf)#(lf)simple_refreshes AS (#(lf)    SELECT#(lf)        h.tenant_id,#(lf)        t.tenant_nm,#(lf)        t.data_cntr_cd,#(lf)        h.user_id,#(lf)        h.file_id,#(lf)        h.timing_vrbl_nm,                            -- template/file name#(lf)        CAST(h.timing_val AS FLOAT)               AS timing_val,#(lf)        h.session_start_dts,#(lf)        DATE_TRUNC('MONTH', h.session_start_dts)  AS year_month#(lf)    FROM hydra_single_pass h#(lf)    INNER JOIN prod_tenant_list t#(lf)        ON h.tenant_id = t.tenant_id#(lf)    WHERE lower(h.event_nm) ILIKE '%simplerefresh%'#(lf)),#(lf)#(lf)tstudio_flags AS (#(lf)    SELECT DISTINCT tenant_id, file_id#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING#(lf)    WHERE lower(solution_package_template_name) ILIKE '%template studio%'#(lf)      AND lower(solution_package_template_name) <> 'template studio report'#(lf)      AND TO_DATE(etl_load_date) >= '2025-02-01'#(lf)),#(lf)#(lf)pcs_flags AS (#(lf)    SELECT#(lf)        tenant_id,#(lf)        file_id,#(lf)        MAX(solution_package_template_version) AS pcs_package_version#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING#(lf)    WHERE solution_package_name <> ''#(lf)      AND solution_package_template_name <> ''#(lf)      AND solution_package_template_version ILIKE '%.%'#(lf)      AND REPLACE(solution_package_template_version, '.', '') >= 100#(lf)    GROUP BY tenant_id, file_id#(lf))#(lf)#(lf)SELECT#(lf)    sr.tenant_id,#(lf)    sr.tenant_nm,#(lf)    sr.data_cntr_cd,#(lf)    sr.file_id,#(lf)    sr.timing_vrbl_nm,#(lf)    sr.year_month,#(lf)    COUNT(*)                                                            AS refresh_count,#(lf)    ROUND(AVG(sr.timing_val), 4)                                        AS avg_timing,#(lf)    ROUND(PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p25_timing,#(lf)    ROUND(PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p50_timing,#(lf)    ROUND(PERCENTILE_CONT(0.70) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p70_timing,#(lf)    ROUND(PERCENTILE_CONT(0.80) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p80_timing,#(lf)    ROUND(PERCENTILE_CONT(0.90) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p90_timing,#(lf)    ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p95_timing,#(lf)    ROUND(PERCENTILE_CONT(0.99) WITHIN GROUP (ORDER BY sr.timing_val), 4) AS p99_timing,#(lf)    COUNT(DISTINCT sr.user_id)                                          AS distinct_users,#(lf)    CASE WHEN MAX(ts.file_id) IS NOT NULL#(lf)         THEN TRUE ELSE FALSE END                                       AS is_tstudio,#(lf)    CASE WHEN MAX(pf.file_id) IS NOT NULL#(lf)         THEN TRUE ELSE FALSE END                                       AS is_pcs,#(lf)    MAX(pf.pcs_package_version)                                         AS pcs_package_version#(lf)FROM simple_refreshes sr#(lf)LEFT JOIN tstudio_flags ts#(lf)    ON sr.tenant_id = ts.tenant_id AND sr.file_id = ts.file_id#(lf)LEFT JOIN pcs_flags pf#(lf)    ON sr.tenant_id = pf.tenant_id AND sr.file_id = pf.file_id#(lf)GROUP BY#(lf)    sr.tenant_id, sr.tenant_nm, sr.data_cntr_cd,#(lf)    sr.file_id, sr.timing_vrbl_nm, sr.year_month#(lf)ORDER BY#(lf)    sr.tenant_id, sr.year_month", null, [EnableFolding=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"YEAR_MONTH", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

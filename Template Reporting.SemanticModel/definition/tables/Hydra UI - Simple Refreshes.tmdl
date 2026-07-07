@@ -1,0 +1,207 @@
+table 'Hydra UI - Simple Refreshes'
+	lineageTag: 8c7d87fa-1041-4c1c-9440-ff8b47771085
+
+	measure '80th Percentile' = PERCENTILE.INC('Hydra UI - Simple Refreshes'[TIMING_VAL],0.8)
+		formatString: #,0
+		lineageTag: eff9d8b0-a5fb-48d4-be35-7defed325edc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '90th Percentile' = percentile.INc('Hydra UI - Simple Refreshes'[TIMING_VAL],0.9)
+		formatString: #,0
+		lineageTag: c38695eb-71fa-4d08-8500-1877f5b838f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '50th Percentile' = PERCENTILE.INC('Hydra UI - Simple Refreshes'[TIMING_VAL],0.5)
+		formatString: #,0
+		lineageTag: ae037e0c-77b7-4e16-a3eb-0a43d33e1923
+
+	measure '99th Percentile' = ```
+			PERCENTILE.INC('Hydra UI - Simple Refreshes'[TIMING_VAL], 0.99) 
+			```
+		formatString: #,0
+		lineageTag: b490f2fc-fc4c-45a2-b584-16d862f98fd3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '70th Percentile' = ```
+			PERCENTILE.INC('Hydra UI - Simple Refreshes'[TIMING_VAL],0.7) 
+			```
+		formatString: #,0
+		lineageTag: 275b852c-ad08-4a21-af83-731a368d97d4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'below 8s' = calculate( count('Hydra UI - Simple Refreshes'[TIMING_VAL]),'Hydra UI - Simple Refreshes'[TIMING_VAL] <= 8)
+		formatString: #,0
+		lineageTag: 667645a5-2b78-4da6-a35b-d22dca427373
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 52b82164-510b-4193-afd6-eb2d8888c27f
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIMING_VRBL_NM
+		dataType: string
+		lineageTag: 5421d8d8-e6b0-4bbe-a2f0-fc31ef6a6b82
+		summarizeBy: none
+		sourceColumn: TIMING_VRBL_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_OF_REFRESH
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 806049f0-f41e-453d-9c36-1197af35bf75
+		summarizeBy: none
+		sourceColumn: DATE_OF_REFRESH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Year And Month'
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 7a422b47-09e8-4b50-85b6-6abdf32d408e
+		summarizeBy: none
+		sourceColumn: Year And Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PERCENTILE_FIGURE
+		dataType: decimal
+		lineageTag: 5b384739-faa2-483f-a71f-d9c14ca6571c
+		summarizeBy: sum
+		sourceColumn: PERCENTILE_FIGURE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TIMING_VAL
+		dataType: decimal
+		lineageTag: 15e5d202-1812-4927-912c-1535e9c5930e
+		summarizeBy: sum
+		sourceColumn: TIMING_VAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column USER_ID
+		dataType: string
+		lineageTag: 8800d6f9-dcbe-4770-b0e6-95f931da7909
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 06a2815a-6039-40bf-91b6-156981d6784b
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column BIT_EXCEL
+		dataType: string
+		lineageTag: e8040198-95af-4e6c-8fa9-0796f0c4fefa
+		summarizeBy: none
+		sourceColumn: BIT_EXCEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Week'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1dd6aebd-c800-47aa-bbd4-53a949dd008d
+		summarizeBy: none
+		sourceColumn: Start of Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FILE_ID
+		dataType: string
+		lineageTag: 1e675965-1e2d-4f3c-a127-7192dc5a302d
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# of Named Ranges'
+		dataType: int64
+		formatString: 0
+		lineageTag: 67c90e92-20d7-45e2-9995-2e5cc4171873
+		summarizeBy: sum
+		sourceColumn: # of Named Ranges
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDIN_VERSION
+		dataType: string
+		lineageTag: b7a8f260-d475-48bf-beab-4923985343c6
+		summarizeBy: none
+		sourceColumn: ADDIN_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	column TSTUDIO_TEMPLATE
+		dataType: string
+		lineageTag: aca4ca46-2479-4591-a1ee-38b58af7fcd0
+		summarizeBy: none
+		sourceColumn: TSTUDIO_TEMPLATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCS_TEMPLATE
+		dataType: string
+		lineageTag: 9940a61e-0a85-4a18-85c5-57ee68333cb7
+		summarizeBy: none
+		sourceColumn: PCS_TEMPLATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCS_PACKAGE_VERSION
+		dataType: string
+		lineageTag: dabf9489-48db-4307-a798-a03a18362dee
+		summarizeBy: none
+		sourceColumn: PCS_PACKAGE_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Hydra UI - Simple Refreshes' = m
+		mode: import
+		queryGroup: 'Core Dataset'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with prod_tenant_list as #(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)TENANT_NM, #(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION', 'SANDBOX')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)bit_version as #(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)user_id,#(lf)session_id,#(lf)event_nm,#(lf)timing_vrbl_nm,#(lf)right(timing_val, 2) as bit_excel#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)where event_nm ilike '%ExcelVersion%'#(lf)),#(lf)#(lf)addin_version as#(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)user_id,#(lf)session_id,#(lf)event_nm,#(lf)timing_vrbl_nm,#(lf)timing_val as addin_version#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)where event_nm ilike '%addinversion%'#(lf)),#(lf)#(lf)files as #(lf)(#(lf)select distinct#(lf)    tenant_id,#(lf)    user_id,#(lf)    rcrd_id,#(lf)    session_id,#(lf)    event_nm,#(lf)    timing_ctgry_nm,#(lf)    timing_vrbl_nm,#(lf)    timing_val as file_id,#(lf)    session_start_dts as hydra_timestamp,#(lf)    src_system_cd#(lf)#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)#(lf)where event_nm ilike '%fileid%'#(lf)and timing_ctgry_nm = 'DesktopAddin'#(lf)),#(lf)#(lf)tstudio as #(lf)(#(lf)select distinct#(lf)data_center,#(lf)A.tenant_id,#(lf)file_id,#(lf)solution_package_name,#(lf)solution_package_template_name,#(lf)solution_package_template_version,#(lf)etl_load_date#(lf)from PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING A#(lf)--where solution_package_name ilike '%studio%'#(lf)where solution_package_template_name ilike 'template studio%'#(lf)and to_date(etl_load_date) >= '2025-02-01'#(lf)and solution_package_template_name <> 'Template Studio Report'#(lf)),#(lf)#(lf)pcs as #(lf)(#(lf)select distinct#(lf)data_center,#(lf)metrics.tenant_id,#(lf)file_id,#(lf)solution_package_name,#(lf)solution_package_template_name,#(lf)solution_package_template_version#(lf)from PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING metrics #(lf)where solution_package_name <> ''#(lf)and solution_package_template_name <> ''#(lf)and solution_package_template_version ilike '%.%'#(lf)and replace(solution_package_template_version, '.', '') >= 100#(lf))#(lf)#(lf)#(lf)select distinct#(lf)    hydra.tenant_id,#(lf)    tenant_nm,#(lf)    --concat(tenant_nm,' - ',hydra.timing_vrbl_nm) as tenant_template_name,#(lf)    hydra.user_id,#(lf)    files.file_id,#(lf)    hydra.timing_vrbl_nm,#(lf)    hydra.session_start_dts,#(lf)    bit_excel,#(lf)    addin_version,#(lf)    tstudio.solution_package_template_name as tstudio_template,#(lf)    pcs.solution_package_template_name as pcs_template,#(lf)    pcs.solution_package_template_version as pcs_package_version,#(lf)    cast(hydra.timing_val as float) as timing_val,#(lf)    to_date(hydra.session_start_dts) as date_of_refresh,#(lf)    month(hydra.session_start_dts) as month_of_refresh,#(lf)    year(hydra.session_start_dts) as year_of_refresh,#(lf)    round(cume_dist() OVER (partition by year_of_refresh, month_of_refresh order by cast(hydra.timing_val as float)),2) as percentile_figure#(lf)#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS hydra#(lf)inner join prod_tenant_list on hydra.tenant_id = prod_tenant_list.tenant_id #(lf)left join bit_version on bit_version.tenant_id = hydra.tenant_id and bit_version.user_id = hydra.user_id and bit_version.session_id = hydra.session_id #(lf)left join addin_version on addin_version.tenant_id = hydra.tenant_id and addin_version.user_id = hydra.user_id and addin_version.session_id = hydra.session_id #(lf)left join files on files.tenant_id = hydra.tenant_id and files.user_id = hydra.user_id and files.session_id = hydra.session_id and files.timing_vrbl_nm = hydra.timing_vrbl_nm #(lf)left join tstudio on tstudio.file_id = files.file_id and tstudio.tenant_id = hydra.tenant_id#(lf)left join pcs on pcs.tenant_id = hydra.tenant_id and pcs.file_id = files.file_id #(lf)where hydra.event_nm ilike '%simplerefresh%'   #(lf)and hydra.timing_ctgry_nm = 'DesktopAddin'#(lf)and to_date(session_start_dts) >= (current_date()-365)", null, [EnableFolding=true]),
+				    #"Merged Columns" = Table.CombineColumns(Table.TransformColumnTypes(Source, {{"YEAR_OF_REFRESH", type text}, {"MONTH_OF_REFRESH", type text}}, "en-CA"),{"YEAR_OF_REFRESH", "MONTH_OF_REFRESH"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Year And Month.1"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Merged Columns",{{"Year And Month.1", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Year And Month.1", "Year And Month"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "Year And Month", "Year And Month - Copy"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"Year And Month - Copy", "End of Week"}}),
+				    #"Calculated End of Week" = Table.TransformColumns(#"Renamed Columns1",{{"End of Week", Date.EndOfWeek, type date}}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Calculated End of Week",{{"End of Week", "Start of Week"}}),
+				    #"Calculated Start of Week" = Table.TransformColumns(#"Renamed Columns2",{{"Start of Week", Date.StartOfWeek, type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Calculated Start of Week", {"TENANT_ID", "FILE_ID"}, #"Named ranges by template", {"TENANT_ID", "FILE_ID"}, "Named ranges by template", JoinKind.LeftOuter),
+				    #"Expanded Named ranges by template" = Table.ExpandTableColumn(#"Merged Queries", "Named ranges by template", {"NUMBE_OF_NAMED_RANGES"}, {"Named ranges by template.NUMBE_OF_NAMED_RANGES"}),
+				    #"Rounded Up" = Table.TransformColumns(#"Expanded Named ranges by template",{{"Named ranges by template.NUMBE_OF_NAMED_RANGES", Number.RoundUp, Int64.Type}}),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Rounded Up",{{"Named ranges by template.NUMBE_OF_NAMED_RANGES", "# of Named Ranges"}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns3",{"SESSION_START_DTS"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

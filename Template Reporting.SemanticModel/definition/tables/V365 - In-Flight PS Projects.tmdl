@@ -1,0 +1,56 @@
+table 'V365 - In-Flight PS Projects'
+	lineageTag: 8fc53416-ce94-4e6a-9472-1dde5230153c
+
+	column EOM
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 53527dde-01db-453b-822d-d89ef7cf84b7
+		summarizeBy: none
+		sourceColumn: EOM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ALL_PROJECTS_INFLIGHT
+		dataType: decimal
+		lineageTag: e5c78bc5-4979-40af-904a-9f82581fa215
+		summarizeBy: sum
+		sourceColumn: ALL_PROJECTS_INFLIGHT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column V365_INFLIGHT
+		dataType: decimal
+		lineageTag: 57249534-dc40-490e-9b33-09febedd21ed
+		summarizeBy: sum
+		sourceColumn: V365_INFLIGHT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PERCENT_OF_V365
+		dataType: decimal
+		lineageTag: 8aba8258-d460-4ae7-b543-90b406233ce0
+		summarizeBy: sum
+		sourceColumn: PERCENT_OF_V365
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'V365 - In-Flight PS Projects' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "With Projects_All#(lf)AS #(lf)(#(lf)select DISTINCT #(lf)tp.TENANT_NM, #(lf)mvn.TASK_NAME, #(lf)mvn.project_code,#(lf)PROJECT_KICKOFF_DATE, #(lf)GO_LIVE_DATE, #(lf)mvn.CUSTOMER_STATUS, #(lf)mvn.PROJECT_PHASE,  #(lf)mvn.V365_IMPLEMENTATION_IND, #(lf)PROJECT_MANAGER_NAME, #(lf)mvn.PROJECT_STATUS#(lf)from ""PROD_HARMONIZED"".""PRODUCT"".""TENANT_PROF"" as tp#(lf)join ""PROD_RAW"".""MT_SERVER"".""MTSERVER_TENANT_SETTINGS_STAGING"" as settings on settings.TENANT_ID = tp.TENANT_ID and settings.DATA_CENTER = tp.DATA_CNTR_CD#(lf)join ""PROD_PRESENTATION"".""PROFESSIONAL_SERVICES"".""VW_SF_ID_TO_VENA_ID_LOOKUP"" as l on left(l.ACCOUNT_ID,15) = left(tp.ACCOUNT_ID,15)#(lf)join ""PROD_PRESENTATION"".""PROFESSIONAL_SERVICES"".""VW_MAVENLINK_PROJECT_DETAILS"" as mvn on mvn.VENA_ID = l.VENA_ID#(lf)AND tp.CRNT_RCRD_IND = 'Y' AND TENANT_TYP_NM = 'PRODUCTION'#(lf)where CUSTOMER_STATUS = 'New Implementation' #(lf)and datediff(days, '2022-02-01', mvn.GO_LIVE_DATE) >= 0#(lf)and GO_LIVE_DATE > '2022-05-30' and GO_LIVE_DATE < '2025-01-01'#(lf)ORDER BY GO_LIVE_DATE ASC#(lf)),#(lf)#(lf)V365_projects as #(lf)(#(lf)select DISTINCT #(lf)tp.TENANT_NM, #(lf)mvn.TASK_NAME, #(lf)PROJECT_KICKOFF_DATE, #(lf)GO_LIVE_DATE, #(lf)mvn.CUSTOMER_STATUS, #(lf)mvn.PROJECT_PHASE, #(lf)settings.ENABLE_VENA_365_CONNECT_BY_DEFAULT,  #(lf)PROJECT_MANAGER_NAME, #(lf)mvn.PROJECT_STATUS#(lf)from ""PROD_HARMONIZED"".""PRODUCT"".""TENANT_PROF"" as tp#(lf)join ""PROD_RAW"".""MT_SERVER"".""MTSERVER_TENANT_SETTINGS_STAGING"" as settings on settings.TENANT_ID = tp.TENANT_ID and settings.DATA_CENTER = tp.DATA_CNTR_CD#(lf)join ""PROD_PRESENTATION"".""PROFESSIONAL_SERVICES"".""VW_SF_ID_TO_VENA_ID_LOOKUP"" as l on left(l.ACCOUNT_ID,15) = left(tp.ACCOUNT_ID,15)#(lf)join ""PROD_PRESENTATION"".""PROFESSIONAL_SERVICES"".""VW_MAVENLINK_PROJECT_DETAILS"" as mvn on mvn.VENA_ID = l.VENA_ID#(lf)AND tp.CRNT_RCRD_IND = 'Y' AND TENANT_TYP_NM = 'PRODUCTION'#(lf)where CUSTOMER_STATUS = 'New Implementation' #(lf)and mvn.V365_IMPLEMENTATION_IND = 'Y'#(lf)and datediff(days, '2022-02-01', mvn.GO_LIVE_DATE) >= 0#(lf)and settings.ENABLE_VENA_365_CONNECT_BY_DEFAULT = 'TRUE'#(lf))#(lf)#(lf)#(lf)#(lf)SELECT#(lf)to_date(end_of_month) as EOM,#(lf)count(distinct projects_all.task_name) as all_projects_inflight,#(lf)count(distinct (case when V365_implementation_ind = 'Y' then projects_all.task_name end)) as v365_inflight,#(lf)v365_inflight/all_projects_inflight as percent_of_v365#(lf)FROM#(lf)(#(lf)    SELECT '2022-08-01' AS end_of_month UNION ALL#(lf)    SELECT '2022-09-01'  UNION ALL#(lf)    SELECT '2022-10-01'  UNION ALL#(lf)    SELECT '2022-11-01'  UNION ALL#(lf)    SELECT '2022-12-01'  UNION ALL#(lf)    SELECT '2023-01-01'  UNION ALL#(lf)    SELECT '2023-02-01'  UNION ALL#(lf)    SELECT '2023-03-01'  UNION ALL#(lf)    SELECT '2023-04-01'  UNION ALL#(lf)    SELECT '2023-05-01'  UNION ALL#(lf)    SELECT '2023-06-01'  UNION ALL#(lf)    SELECT '2023-07-01'  UNION ALL#(lf)    SELECT '2023-08-01'  UNION ALL#(lf)    SELECT '2023-09-01'  UNION ALL#(lf)    SELECT '2023-10-01'  UNION ALL #(lf)    SELECT '2023-11-01'  UNION ALL#(lf)    SELECT '2023-12-01'  UNION ALL#(lf)    SELECT '2024-01-01'  UNION ALL#(lf)    SELECT '2024-02-01'  UNION ALL#(lf)    SELECT '2024-03-01'  UNION ALL#(lf)    SELECT '2024-04-01'  UNION ALL#(lf)    SELECT '2024-05-01'  UNION ALL#(lf)    SELECT '2024-06-01'  #(lf)) month_date #(lf)Inner Join projects_all on #(lf)(to_date(end_of_month) > projects_all.project_kickoff_date)#(lf)and #(lf)(to_date(end_of_month) <= projects_all.go_live_date)#(lf)group by end_of_month#(lf)order by end_of_month", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

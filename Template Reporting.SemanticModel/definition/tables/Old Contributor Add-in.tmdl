@@ -1,0 +1,69 @@
+table 'Old Contributor Add-in'
+	lineageTag: 3ad540c6-c87d-4a08-a928-f218c5a5b3d2
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: fccd3dee-573f-452d-8f94-17e84989ba20
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		isKey
+		lineageTag: 94878165-dae9-4fe1-ba11-96b6bddf36b1
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_EVENTS
+		dataType: decimal
+		lineageTag: b0266913-3560-4338-8b69-a971be45f80b
+		summarizeBy: sum
+		sourceColumn: TOTAL_EVENTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_MINUTES
+		dataType: decimal
+		lineageTag: b9f9f24a-ab53-44bf-b0a1-2920139b9389
+		summarizeBy: sum
+		sourceColumn: TOTAL_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LATEST_USAGE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4723a369-5cb0-4e5a-93f5-887add20cd30
+		summarizeBy: none
+		sourceColumn: LATEST_USAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SSO_ENBLD_IND
+		dataType: string
+		lineageTag: 29c112ee-083a-424a-bd45-14310fcf0dbf
+		summarizeBy: none
+		sourceColumn: SSO_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Old Contributor Add-in' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_RAW"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)tenant_nm,#(lf)account_id,#(lf)data_cntr_cd,#(lf)SSO_ENBLD_IND#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf))#(lf)#(lf)select #(lf)track.account_id,#(lf)tenant_nm,#(lf)SSO_ENBLD_IND,#(lf)sum(num_events) as total_events,#(lf)sum(num_minutes) as total_minutes,#(lf)max(_fivetran_synced) as latest_usage#(lf)from PROD_RAW.PENDO.TRACK_TYPE_EVENT track #(lf)inner join prod_tenant_info on concat(prod_tenant_info.data_cntr_cd, '.', tenant_id) = track.account_id #(lf)where track_type_id = 'm6dr7UFzH5cEzVPeyHcm-dKK3_4'#(lf)group by #(lf)track.account_id,#(lf)tenant_nm,#(lf)SSO_ENBLD_IND", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

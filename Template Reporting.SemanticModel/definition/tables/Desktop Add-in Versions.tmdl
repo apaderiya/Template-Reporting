@@ -1,0 +1,56 @@
+table 'Desktop Add-in Versions'
+	lineageTag: 981be18a-42f6-4ea8-84c0-8001183640bc
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: ba80abe1-1216-446f-87ef-7b0a6cd7c626
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: f687f382-2832-4c07-b65b-588d65ac5ed0
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: f289291a-e7b1-4e15-862e-01297b0730ce
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATEST_VERSION
+		dataType: string
+		lineageTag: 3277738e-ddce-4711-8ab6-042092cd32c5
+		summarizeBy: none
+		sourceColumn: LATEST_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	column INCREMENTAL_RELEASE_DATE_VERSIONS
+		dataType: string
+		lineageTag: e3c28fa2-d419-4712-8abd-14b5c038b1c5
+		summarizeBy: none
+		sourceColumn: INCREMENTAL_RELEASE_DATE_VERSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Desktop Add-in Versions' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)tenant_nm,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm = 'PRODUCTION'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)user_info as #(lf)(#(lf)SELECT distinct#(lf)substr(tenant_dc,charindex('.', tenant_dc)+1,len(tenant_dc)) as tenant_id,#(lf)user_id,#(lf)left(tenant_dc,3) as data_center#(lf)FROM PROD_HARMONIZED.PRODUCT.VW_USER_PROF#(lf)where crnt_rcrd_ind = 'Y'#(lf)and actvtn_status_nm = 'ACTIVE'#(lf)and (last_impersonation_login_dt is null and ntfctn_email is null)#(lf))#(lf)#(lf)#(lf)select#(lf)tenant_nm,#(lf)api.tenant_id,#(lf)api.user_id,#(lf)to_date(request_end_dts) as request_end_date,#(lf)substring(query_string,len(query_string)-13,9) as latest_version,#(lf)case #(lf)when substring(query_string,len(query_string)-13,9) >= 2024.1008 then '2024-10-08'#(lf)when substring(query_string,len(query_string)-13,9) >= 2024.0917 and substring(query_string,len(query_string)-13,9) < 2024.1008 then '2024-09-17'#(lf)when substring(query_string,len(query_string)-13,9) >= 2024.0909 and substring(query_string,len(query_string)-13,9) < 2024.0917 then '2024-09-09'#(lf)when substring(query_string,len(query_string)-13,9) >= 2024.0610 and substring(query_string,len(query_string)-13,9) < 2024.0909 then '2024-06-10' #(lf)when substring(query_string,len(query_string)-13,9) >= 2024.0501 and substring(query_string,len(query_string)-13,9) < 2024.0610 then '2024-05-01' #(lf)when substring(query_string,len(query_string)-13,9) >= 2024.0321 and substring(query_string,len(query_string)-13,9) < 2024.0501 then '2024-03-21'#(lf)when substring(query_string,len(query_string)-13,9) >= 2024.0226 and substring(query_string,len(query_string)-13,9) < 2024.0321 then '2024-02-26' #(lf)when substring(query_string,len(query_string)-13,9) >= 2023.1024 and substring(query_string,len(query_string)-13,9) < 2024.0226 then '2023-10-24'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.1010 and substring(query_string,len(query_string)-13,9) < 2023.1024 then '2023-10-10'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.1004 and substring(query_string,len(query_string)-13,9) < 2023.1010 then '2023-10-04'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.0815 and substring(query_string,len(query_string)-13,9) < 2023.1004 then '2023-08-15'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.0712 and substring(query_string,len(query_string)-13,9) < 2023.0815 then '2023-07-12'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.0613 and substring(query_string,len(query_string)-13,9) < 2023.0712 then '2023-06-13'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.0531 and substring(query_string,len(query_string)-13,9) < 2023.0613 then '2023-05-31'#(lf)when substring(query_string,len(query_string)-13,9) >= 2023.0215 and substring(query_string,len(query_string)-13,9) < 2023.0531 then '2023-02-15'#(lf)when substring(query_string,len(query_string)-13,9) >= 2022.0201 and substring(query_string,len(query_string)-13,9) < 2023.0215 then '2022-02-01'#(lf)when substring(query_string,len(query_string)-13,9) >= 2021.0201 and substring(query_string,len(query_string)-13,9) < 2022.0201 then '2021-02-01'#(lf)when substring(query_string,len(query_string)-13,9) >= 2020.0201 and substring(query_string,len(query_string)-13,9) < 2021.0201 then '2020-02-01'#(lf)when substring(query_string,len(query_string)-13,9) >= 2019.0201 and substring(query_string,len(query_string)-13,9) < 2020.0201 then '2019-02-01'#(lf)end as incremental_release_date_versions#(lf)#(lf)FROM PROD_HARMONIZED.PRODUCT.USER_API_ACTIVITY api#(lf)inner join prod_tenant_info on prod_tenant_info.tenant_id = api.tenant_id and prod_tenant_info.data_cntr_cd = api.data_cntr_cd#(lf)inner join user_info on user_info.tenant_id = api.tenant_id and user_info.user_id = api.user_id and user_info.data_center = api.data_cntr_cd#(lf)WHERE to_date(request_end_dts) > '2023-02-01'#(lf)and request_status_cd = '200'#(lf)and REQUEST_ENDPOINT_NM ilike '%/fsm/v2/%'#(lf)AND QUERY_STRING LIKE '%&addinVersion=1.20%'", null, [EnableFolding=true]),
+				    #"Sorted Rows" = Table.Sort(Source,{{"INCREMENTAL_RELEASE_DATE_VERSIONS", Order.Descending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

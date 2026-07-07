@@ -1,0 +1,104 @@
+table '365 Performance Report Detail'
+	lineageTag: 186fbbe2-2b78-4f04-9647-d50744d3c22a
+
+	column DC_TENANT_ID
+		dataType: string
+		lineageTag: b57faaf7-d4f1-482f-aec0-4f8c534654da
+		summarizeBy: none
+		sourceColumn: DC_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VENA_HUB
+		dataType: string
+		lineageTag: 9306e24c-5d73-45dc-abea-34a2229c16b9
+		summarizeBy: none
+		sourceColumn: VENA_HUB
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: d3adc7cb-04b2-4ea8-bdbb-bc3f06e207f2
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: 653ed92f-da21-4d04-998a-e2208e14c8eb
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PENDO_VISITOR_ID
+		dataType: string
+		lineageTag: d46c5403-fa69-463c-9063-5726c18b0617
+		summarizeBy: none
+		sourceColumn: PENDO_VISITOR_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: 71e367b3-5778-4274-a82a-616e0584f23b
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIMESTAMP
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a59210c9-9bcd-4e90-b913-2e015cce0be9
+		summarizeBy: none
+		sourceColumn: TIMESTAMP
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 47f5b4b2-d3f9-44af-9cfd-b0c0c92cfd3f
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 8a65c61d-f5ba-4148-b53d-76f7adead83d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NUM_EVENTS
+		dataType: decimal
+		lineageTag: 495be5a3-b0dc-42f5-b262-f4d34d0d94c7
+		summarizeBy: sum
+		sourceColumn: NUM_EVENTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition '365 Performance Report Detail' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_RAW"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)data_cntr_cd,#(lf)account_id,#(lf)tenant_nm#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf))#(lf)#(lf)select #(lf)event.account_id as dc_tenant_id,#(lf)left(event.account_id, 3) as vena_hub,#(lf)right(event.account_id,19) as tenant_id,#(lf)tenant_nm,#(lf)prod_tenant_info.account_id,#(lf)visitor_id as pendo_visitor_id,#(lf)RIGHT(visitor_id,CHARINDEX('.',REVERSE(visitor_id)) - 1) as user_id,#(lf)num_events,#(lf)_fivetran_synced as timestamp #(lf)from PROD_RAW.PENDO.FEATURE_EVENT event #(lf)inner join prod_tenant_info on event.account_id = concat(data_cntr_cd,'.',tenant_id)#(lf)where feature_id = '3xSSDefFu94Q3S257ofYZ_KiLD8'#(lf)--and visitor_id not ilike '%support%'", null, [EnableFolding=true]),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "TIMESTAMP", "TIMESTAMP - Copy"),
+				    #"Extracted Date" = Table.TransformColumns(#"Duplicated Column",{{"TIMESTAMP - Copy", DateTime.Date, type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Date",{{"TIMESTAMP - Copy", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

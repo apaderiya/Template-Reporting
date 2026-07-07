@@ -1,0 +1,78 @@
+table 'Desktop Add-in Modified and Saved'
+	lineageTag: fc2e06d9-8c0b-489e-a172-292b8d8a3c87
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: e9ade4f0-cab7-49b2-9aa0-043a69a1a869
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 4a44d0d8-c7a0-4308-982e-751e332d3e0b
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: c95f8d8a-0224-443a-bc06-45c5f0bd7ed7
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: f0ef0e5e-78f5-41df-a050-bd4f1399b98c
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAVED_MODIFIED_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 5ad25e1c-111f-4896-820e-60e365181960
+		summarizeBy: none
+		sourceColumn: SAVED_MODIFIED_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CONTRIBUTOR_MODIFY_SAVE
+		dataType: decimal
+		lineageTag: 8c8193c7-ec3d-4117-bd0c-b68f72338bd8
+		summarizeBy: sum
+		sourceColumn: CONTRIBUTOR_MODIFY_SAVE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MANAGER_DATA_SAVE
+		dataType: decimal
+		lineageTag: 0247004d-3978-4eac-8f69-e0b3a5e4f746
+		summarizeBy: sum
+		sourceColumn: MANAGER_DATA_SAVE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Desktop Add-in Modified and Saved' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)tenant_nm,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)and tenant_typ_nm in ('PRODUCTION','SANDBOX')#(lf))#(lf)#(lf)#(lf)Select #(lf)api.data_cntr_cd,#(lf)tenant_nm,#(lf)api.tenant_id,#(lf)user_id,#(lf)to_date(request_end_dts) as saved_modified_date,#(lf)#(lf)    sum(case when request_endpoint_nm ilike '%/api/models/{p}/values%' then 1 else 0 end) as contributor_modify_save,#(lf)    sum(case when request_endpoint_nm = '/api/files/{p}/data/' then 1 else 0 end) as manager_data_save#(lf)    #(lf)from PROD_HARMONIZED.PRODUCT.USER_API_ACTIVITY api #(lf)inner join prod_tenant_info on prod_tenant_info.tenant_id = api.tenant_id and prod_tenant_info.data_cntr_cd = api.data_cntr_cd#(lf)where to_date(request_end_dts) > '2023-02-01'#(lf)and (request_endpoint_nm ilike '%/api/models/{p}/values%' and request_method_cd = 'PATCH') or (request_endpoint_nm = '/api/files/{p}/data/' and REQUEST_METHOD_CD = 'POST')#(lf)and user_imprsntd_ind = 'N'#(lf)and vena_spprt_user_nm is null #(lf)and request_status_cd = '200'#(lf)#(lf)group by #(lf)api.data_cntr_cd,#(lf)tenant_nm,#(lf)api.tenant_id,#(lf)user_id,#(lf)to_date(request_end_dts)", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,271 @@
+table 'Datadog - V365 Addin'
+	lineageTag: 6af7f416-3673-4a15-a24a-33f7c9a94ed7
+
+	measure '50th Percentile v365' = PERCENTILE.INC('Datadog - V365 Addin'[TOTAL_DURATION_SEC],0.5)
+		formatString: #,0
+		lineageTag: 5e7ddccf-5462-4319-8d9e-39aa325d6a1c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '80th Percentile v365' = PERCENTILE.INC('Datadog - V365 Addin'[TOTAL_DURATION_SEC],0.8)
+		formatString: #,0
+		lineageTag: 9b8942f5-79c5-4c15-b6bd-d2303956a90d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '90th Percentile v365' = PERCENTILE.INC('Datadog - V365 Addin'[TOTAL_DURATION_SEC],0.9)
+		formatString: #,0
+		lineageTag: 03b14b2b-253d-4759-9505-c2df5f598061
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: a2972c6a-efdb-4ea3-a676-26f23104582a
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DC_TENANT_ID
+		dataType: string
+		lineageTag: 81459735-b832-4275-9fa5-436da31b187d
+		summarizeBy: none
+		sourceColumn: DC_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: 56df33f7-6301-4136-aaf0-6232571ea40b
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCESS_ID
+		dataType: string
+		lineageTag: 5e56bc85-504e-4fa0-8b3d-6a71ff5ff996
+		summarizeBy: none
+		sourceColumn: PROCESS_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: 4325cd91-ad43-44b0-8823-657696b42509
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDIN_TYPE
+		dataType: string
+		lineageTag: 5290d13b-83e9-4cc9-a55d-e0a34911123e
+		summarizeBy: none
+		sourceColumn: ADDIN_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUMBER_OF_EMPTY_SLICES
+		dataType: decimal
+		lineageTag: 6b3b1a91-3c5a-4dd0-868e-58cac8e30fa8
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_EMPTY_SLICES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUMBER_OF_SLICES
+		dataType: decimal
+		lineageTag: 4d129223-6852-493a-abdf-80148a476890
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_SLICES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ETL_LOAD_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: ec367d0b-93d3-4192-bfce-fe77491e4748
+		summarizeBy: none
+		sourceColumn: ETL_LOAD_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Month'
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 3db7b3a7-acdf-4ec8-8536-35e5863d3384
+		summarizeBy: none
+		sourceColumn: Start of Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End of Month'
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 65700962-1050-4085-af2b-c855e663cbaf
+		summarizeBy: none
+		sourceColumn: End of Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TOTAL_DURATION_SEC
+		dataType: decimal
+		lineageTag: 8e5b81c3-1248-4b21-aa9e-672368b03c15
+		summarizeBy: sum
+		sourceColumn: TOTAL_DURATION_SEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'End of Week'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c8e6145b-1568-4751-9acb-ef89d2d71347
+		summarizeBy: none
+		sourceColumn: End of Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PROCESS_NM
+		dataType: string
+		lineageTag: 51b5f470-7192-4045-9fc5-6fe8d383d2ad
+		summarizeBy: none
+		sourceColumn: PROCESS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCESS_STATUS_NM
+		dataType: string
+		lineageTag: 97f98e6d-d240-47de-8fa1-864362c71f12
+		summarizeBy: none
+		sourceColumn: PROCESS_STATUS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: 8fd7f089-af39-4919-8f6d-ee06b29ae68f
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_TYPE
+		dataType: string
+		lineageTag: 394b2c4c-ecdf-42c0-ba5e-7f60cb7a33d5
+		summarizeBy: none
+		sourceColumn: USER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONSULTANT_LOGIN
+		dataType: string
+		lineageTag: febaf5ec-4860-4dc8-b411-5194d2beb1b2
+		summarizeBy: none
+		sourceColumn: CONSULTANT_LOGIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: 37e48c4c-aab7-4b73-9222-b3b482db740a
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTION_NM
+		dataType: string
+		lineageTag: dca4ed5d-a94e-4d4e-aea9-10898a319167
+		summarizeBy: none
+		sourceColumn: ACTION_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column INITIAL_LOAD_IND
+		dataType: string
+		lineageTag: ae93c494-9101-4c41-985a-932a5d533095
+		summarizeBy: none
+		sourceColumn: INITIAL_LOAD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHOOSEBOX_REFRESH_IND
+		dataType: string
+		lineageTag: dda7c7b3-2a02-4066-852d-209f8c58491d
+		summarizeBy: none
+		sourceColumn: CHOOSEBOX_REFRESH_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TSTUDIO_TEMPLATE
+		dataType: string
+		lineageTag: fb9e7b5a-1352-48b3-9fc3-0c14d6fba1d7
+		summarizeBy: none
+		sourceColumn: TSTUDIO_TEMPLATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCS_PACKAGE_NAME
+		dataType: string
+		lineageTag: e5b0de3a-dac1-4d22-a089-acf580d1c5a1
+		summarizeBy: none
+		sourceColumn: PCS_PACKAGE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCS_PACKAGE
+		dataType: string
+		lineageTag: 9aeba855-e0a5-46d3-bbb2-0283b0197519
+		summarizeBy: none
+		sourceColumn: PCS_PACKAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Datadog - V365 Addin' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_RAW"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)data_cntr_cd,#(lf)account_id#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)user_info as #(lf)(#(lf)select distinct#(lf)tenant_dc,#(lf)user_id,#(lf)case when #(lf)-- vena internal user using their own login for customer tenant#(lf)((login_email ilike '%vena%' or ntfctn_email ilike '%vena%') #(lf)-- admin@customername logins used by vena employees through SSO#(lf)or (last_impersonation_login_dt is not null and admin_access_ind = 'Y' and built_in_admin_accnt = 'Y'))#(lf)then 'Y' else null end as consultant_login,#(lf)case#(lf)when admin_access_ind = 'Y' or mdlr_access_ind = 'Y' or mngr_access_ind = 'Y' then 'power user'#(lf)when (admin_access_ind = 'N' and mdlr_access_ind = 'N' and mngr_access_ind = 'N' and cntrbtr_access_ind = 'Y') then 'business user'#(lf)end as user_type#(lf)from PROD_HARMONIZED.PRODUCT.VW_USER_PROF_EML_INCLD#(lf)where crnt_rcrd_ind = 'Y'#(lf)),#(lf)#(lf)process as #(lf)(#(lf)select #(lf)process.tenant_id,#(lf)process.data_cntr_cd,#(lf)process.process_id,#(lf)process_nm,#(lf)process_status_nm#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROCESS_LOG process#(lf)inner join #(lf)(#(lf)select#(lf)tenant_id,#(lf)data_cntr_cd,#(lf)process_id,#(lf)max(etl_updt_dts) as maxdate#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROCESS_LOG #(lf)group by #(lf)tenant_id,#(lf)data_cntr_cd,#(lf)process_id#(lf))maxdate#(lf)on process.tenant_id = maxdate.tenant_id and process.data_cntr_cd = maxdate.data_cntr_cd and process.process_id = maxdate.process_id and process.etl_updt_dts = maxdate.maxdate#(lf)),#(lf)#(lf)tstudio as #(lf)(#(lf)select distinct#(lf)data_center,#(lf)A.tenant_id,#(lf)file_id,#(lf)solution_package_name,#(lf)solution_package_template_name,#(lf)solution_package_template_version,#(lf)etl_load_date#(lf)from PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING A#(lf)--where solution_package_name ilike '%studio%'#(lf)where solution_package_template_name ilike 'template studio%'#(lf)and to_date(etl_load_date) >= '2025-02-01'#(lf)and solution_package_template_name <> 'Template Studio Report'#(lf)),#(lf)#(lf)pcs as #(lf)(#(lf)select distinct#(lf)data_center,#(lf)metrics.tenant_id,#(lf)file_id,#(lf)solution_package_name,#(lf)solution_package_template_name,#(lf)solution_package_template_version#(lf)from PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING metrics #(lf)inner join prod_tenant_info on prod_tenant_info.tenant_id = metrics.tenant_id and prod_tenant_info.data_cntr_cd = metrics.data_center#(lf)where solution_package_name <> ''#(lf)and solution_package_template_name <> ''#(lf)and solution_package_template_version ilike '%.%'#(lf)and replace(solution_package_template_version, '.', '') >= 100#(lf))#(lf)#(lf)select distinct#(lf)staging.tenant_id,#(lf)staging.data_cntr_cd,#(lf)account_id,#(lf)concat(staging.data_cntr_cd,'.',staging.tenant_id) as dc_tenant_id,#(lf)staging.user_id,#(lf)user_type,#(lf)consultant_login,#(lf)staging.process_id,#(lf)process.process_nm,#(lf)process_status_nm,#(lf)staging.file_id,#(lf)tstudio.solution_package_template_name as tstudio_template,#(lf)pcs.solution_package_template_name as pcs_package_name,#(lf)pcs.solution_package_template_version as pcs_package,#(lf)addin_type,#(lf)Action_nm,#(lf)initial_load_ind,#(lf)choosebox_refresh_ind,#(lf)number_of_empty_slices,#(lf)Number_of_slices,#(lf)total_duration_ms,#(lf)total_duration_for_refreshing_slices_ms,#(lf)total_duration_for_refreshing_slices_ms/nullif(number_of_slices,0) as duration_per_slice,#(lf)event_dt as etl_load_date#(lf)from PROD_HARMONIZED.PRODUCT.RUM_DATA_LOG staging#(lf)inner join prod_tenant_info on staging.tenant_id = prod_tenant_info.tenant_id and staging.data_cntr_cd = prod_tenant_info.data_cntr_cd#(lf)left join user_info on concat(staging.data_cntr_cd,'.',staging.tenant_id) = user_info.tenant_dc and staging.user_id = user_info.user_id #(lf)left join process on staging.tenant_id = process.tenant_id and staging.data_cntr_cd = process.data_cntr_cd and staging.process_id = process.process_id#(lf)left join tstudio on tstudio.file_id = staging.file_id and tstudio.data_center = staging.data_cntr_cd and tstudio.tenant_id = staging.tenant_id#(lf)left join pcs on pcs.data_center = staging.data_cntr_cd and pcs.tenant_id = staging.tenant_id and pcs.file_id = staging.file_id #(lf)where staging.file_id is not null #(lf)and total_duration_ms is not null#(lf)and total_duration_ms is not null", null, [EnableFolding=true]),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "ETL_LOAD_DATE", "ETL_LOAD_DATE - Copy"),
+				    #"Calculated End of Week" = Table.TransformColumns(#"Duplicated Column",{{"ETL_LOAD_DATE - Copy", Date.EndOfWeek, type datetime}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Calculated End of Week",{{"ETL_LOAD_DATE - Copy", "End of Week"}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Renamed Columns", "End of Week", "End of Week - Copy"),
+				    #"Duplicated Column2" = Table.DuplicateColumn(#"Duplicated Column1", "ETL_LOAD_DATE", "ETL_LOAD_DATE - Copy"),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Duplicated Column2",{{"ETL_LOAD_DATE - Copy", "Start of Month"}}),
+				    #"Calculated Start of Month1" = Table.TransformColumns(#"Renamed Columns3",{{"Start of Month", Date.StartOfMonth, type datetime}}),
+				    #"Calculated End of Month" = Table.TransformColumns(#"Calculated Start of Month1",{{"End of Week - Copy", Date.EndOfMonth, type datetime}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Calculated End of Month",{{"End of Week - Copy", "End of Month"}}),
+				    #"Calculated Start of Week" = Table.TransformColumns(#"Renamed Columns1",{{"End of Week", Date.StartOfWeek, type datetime}}),
+				    #"Calculated Start of Month" = Table.TransformColumns(#"Calculated Start of Week",{{"End of Month", Date.StartOfMonth, type datetime}}),
+				    #"Sorted Rows1" = Table.Sort(#"Calculated Start of Month",{{"End of Month", Order.Descending}}),
+				    #"Added Custom" = Table.AddColumn(#"Sorted Rows1", "TOTAL_DRATION_SEC", each [TOTAL_DURATION_MS]/1000),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "TOTAL_DURATION_FOR_REFRESHING_SLICES_SEC", each [TOTAL_DURATION_FOR_REFRESHING_SLICES_MS]/1000),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Added Custom1",{{"TOTAL_DRATION_SEC", "TOTAL_DURATION_SEC"}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns2",{"TOTAL_DURATION_FOR_REFRESHING_SLICES_MS", "TOTAL_DURATION_MS"}),
+				    #"Added Custom2" = Table.AddColumn(#"Removed Columns", "DURATION_PER_SLICE_SEC", each [DURATION_PER_SLICE]/1000),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Added Custom2",{"DURATION_PER_SLICE"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns1",{{"TOTAL_DURATION_SEC", type number}, {"TOTAL_DURATION_FOR_REFRESHING_SLICES_SEC", type number}, {"DURATION_PER_SLICE_SEC", type number}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"End of Month", Order.Descending}}),
+				    #"Added Custom3" = Table.AddColumn(#"Sorted Rows", "tenant_file_id", each Text.Combine({[TENANT_ID],[FILE_ID]},".")),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom3",{{"End of Week", type date}, {"End of Month", type date}, {"Start of Month", type date}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

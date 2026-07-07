@@ -1,0 +1,47 @@
+table 'AdHoc Addin - FY26 MVP'
+	lineageTag: 3efeca15-1113-4070-8225-3de364fecc91
+
+	column END_OF_MONTH
+		dataType: dateTime
+		isKey
+		formatString: MMMM yyyy
+		lineageTag: a9408154-59e1-49d6-b6ca-9d50c1760525
+		summarizeBy: none
+		sourceColumn: END_OF_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UNIQUE_USERS
+		dataType: decimal
+		lineageTag: 85866413-34b2-469d-ba7a-a6841fcb45e2
+		summarizeBy: sum
+		sourceColumn: UNIQUE_USERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ROLLING_AVERAGE_MAU
+		dataType: decimal
+		lineageTag: 570b9f0e-9f60-4239-8c05-a6172752cf5d
+		summarizeBy: sum
+		sourceColumn: ROLLING_AVERAGE_MAU
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'AdHoc Addin - FY26 MVP' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_RAW"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)tenant_nm,#(lf)account_id,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)),#(lf)#(lf)by_month as#(lf)(#(lf)select#(lf)last_day(action_datetime) as end_of_month,#(lf)count(distinct user_id) as unique_users#(lf)from PROD_RAW.PROD_TEAM_SANDBOX.ADHOC_RUM_DATA_STAGING staging #(lf)inner join prod_tenant_info on staging.customer_id = prod_tenant_info.tenant_id and staging.region = prod_tenant_info.data_cntr_cd#(lf)group by #(lf)last_day(action_datetime)#(lf))#(lf)#(lf)select#(lf)end_of_month,#(lf)unique_users,#(lf)avg(unique_users) OVER (order by end_of_month ROWS between 2 PRECEDING and CURRENT ROW) as rolling_average_MAU#(lf)from by_month#(lf)--group by end_of_month", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

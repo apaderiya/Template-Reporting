@@ -1,0 +1,120 @@
+table 'Template Sizes - Desktop Add-in'
+	lineageTag: 77a6643d-5cf3-470a-8eb5-a54a1370c2eb
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: 36b5f047-d0b1-474b-a8c9-c8d39b29cce0
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 64aac259-2b4e-4eeb-9709-0d6405d7dc8c
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 83d29428-1c38-4c60-ba19-b834a02632e3
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		isKey
+		lineageTag: 02a6f8c4-6284-488e-8e5b-df80a590bccf
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SIZE_MB
+		dataType: decimal
+		lineageTag: 9519198d-9f7b-4a34-a741-b4f61a8d0808
+		summarizeBy: sum
+		sourceColumn: SIZE_MB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TMPLT_PRPRTY_NM
+		dataType: string
+		lineageTag: 1fbbdf01-d602-499b-af91-f70d952ebfca
+		summarizeBy: none
+		sourceColumn: TMPLT_PRPRTY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_EXTN_NM
+		dataType: string
+		lineageTag: 14395485-91fe-4dad-b635-57373a0dfa33
+		summarizeBy: none
+		sourceColumn: FILE_EXTN_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAVE_TYP_NM
+		dataType: string
+		lineageTag: 5e224071-7a80-41b9-a8a9-d3b35a115f69
+		summarizeBy: none
+		sourceColumn: SAVE_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TASK_FILE
+		dataType: string
+		lineageTag: 4f73232f-df1a-4984-a113-e22c6f0ce08e
+		summarizeBy: none
+		sourceColumn: TASK_FILE
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATEST_REFRESH_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: da23f4aa-4196-4ef0-89f1-633ae6b1eebf
+		summarizeBy: none
+		sourceColumn: LATEST_REFRESH_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Size Range'
+		dataType: string
+		lineageTag: b5c3c9e5-ea33-4971-99b1-7935f532f4ce
+		summarizeBy: none
+		sourceColumn: Size Range
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDIN_TYPE
+		dataType: string
+		lineageTag: 24605312-9182-416a-a118-95cf6b9081cf
+		summarizeBy: none
+		sourceColumn: ADDIN_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Template Sizes - Desktop Add-in' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with prod_tenant_list as #(lf)(#(lf)select#(lf)data_cntr_cd,#(lf)tenant_id,#(lf)tenant_nm#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm = 'PRODUCTION'#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)maxdate as #(lf)(#(lf)select #(lf)files.data_cntr_cd,#(lf)files.tenant_id,#(lf)file_id,#(lf)max(eff_dts) as maxdate#(lf)from PROD_HARMONIZED.PRODUCT.FILE_CHANGE_LOG files #(lf)group by #(lf)files.data_cntr_cd,#(lf)files.tenant_id,#(lf)file_id#(lf)),#(lf)#(lf)files as #(lf)(#(lf)select distinct#(lf)    tenant_id,#(lf)    user_id,#(lf)    rcrd_id,#(lf)    session_id,#(lf)    event_nm,#(lf)    timing_ctgry_nm,#(lf)    timing_vrbl_nm,#(lf)    timing_val as file_id,#(lf)    session_start_dts as hydra_timestamp,#(lf)    src_system_cd#(lf)#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)#(lf)where event_nm ilike '%fileid%'#(lf)and timing_ctgry_nm = 'DesktopAddin'#(lf)),#(lf)#(lf)latest_refresh as#(lf)(#(lf)select distinct#(lf)    hydra.tenant_id,#(lf)    files.file_id,#(lf)    to_date(max(session_start_dts)) as latest_refresh_date,#(lf)    'Desktop Add-in' as addin_type#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS hydra#(lf)inner join prod_tenant_list on hydra.tenant_id = prod_tenant_list.tenant_id #(lf)left join files on files.tenant_id = hydra.tenant_id and files.user_id = hydra.user_id and files.session_id = hydra.session_id and files.timing_vrbl_nm = hydra.timing_vrbl_nm #(lf)where hydra.event_nm ilike '%simplerefresh%'   #(lf)and hydra.timing_ctgry_nm = 'DesktopAddin'#(lf)and file_id is not null #(lf)group by #(lf)    hydra.tenant_id,#(lf)    files.file_id#(lf)#(lf)#(lf)UNION ALL #(lf)#(lf)select #(lf)customer_id as tenant_id,#(lf)file_id,#(lf)to_date(max(etl_load_date)) as latest_refresh_date,#(lf)'365' as addin_type#(lf)from PROD_RAW.PROD_TEAM_SANDBOX.VENALYTICS_RUM_DATA_STAGING staging#(lf)inner join prod_tenant_list on staging.customer_id = prod_tenant_list.tenant_id and staging.region = prod_tenant_list.data_cntr_cd#(lf)where file_id is not null #(lf)and total_duration is not null#(lf)group by #(lf)customer_id,#(lf)file_id#(lf))#(lf)#(lf)#(lf)select distinct #(lf)files.data_cntr_cd,#(lf)files.tenant_id,#(lf)prod_tenant_list.tenant_nm,#(lf)files.file_id,#(lf)addin_type,#(lf)file_size_bytes/1000000 as size_mb,#(lf)file_extn_nm,#(lf)tmplt_prprty_nm,#(lf)save_typ_nm,#(lf)case when task_id is not null then 'TRUE' else 'FALSE' end as task_file,#(lf)latest_refresh_date#(lf)from PROD_HARMONIZED.PRODUCT.FILE_CHANGE_LOG files #(lf)inner join maxdate on maxdate.data_cntr_cd = files.data_cntr_cd and maxdate.tenant_id = files.tenant_id and maxdate.file_id = files.file_id and maxdate.maxdate = files.eff_dts#(lf)inner join prod_tenant_list on prod_tenant_list.tenant_id = files.tenant_id and prod_tenant_list.data_cntr_cd = files.data_cntr_cd#(lf)inner join latest_refresh on latest_refresh.tenant_id = files.tenant_id and latest_refresh.file_id = files.file_id #(lf)where file_size_bytes is not null#(lf)and action_nm not in ('DELETED')#(lf)and save_typ_nm = 'FILE'#(lf)and (file_size_bytes <> 0 and file_size_bytes is not null)#(lf)#(lf)UNION ALL #(lf)#(lf)select #(lf)files.data_cntr_cd,#(lf)files.tenant_id,#(lf)tenant_nm,#(lf)files.glbl_file_id as file_id,#(lf)addin_type,#(lf)files.file_size_bytes/1000000 as size_mb,#(lf)files.file_extn_nm,#(lf)'Global' as tmplt_prprty_nm,#(lf)'Global' as save_typ_nm,#(lf)'Global - N/A' as task_file,#(lf)latest_refresh_date#(lf)#(lf)from PROD_HARMONIZED.PRODUCT.GLBL_FILE_DTL files#(lf)inner join prod_tenant_list on prod_tenant_list.tenant_id = files.tenant_id and prod_tenant_list.data_cntr_cd = files.data_cntr_cd#(lf)inner join latest_refresh on latest_refresh.tenant_id = files.tenant_id and latest_refresh.file_id = files.glbl_file_id#(lf)where addin_type = 'Desktop Add-in'#(lf)-- removing duplicate that breaks PBI data model #(lf)and file_id not in ('1410554659510026240')", null, [EnableFolding=true]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([ADDIN_TYPE] = "Desktop Add-in")),
+				    #"Added Conditional Column" = Table.AddColumn(#"Filtered Rows", "Size Range", each if [SIZE_MB] < 5 then "1. 5MB or less" else if [SIZE_MB] < 10 then "2. 5-10MB" else if [SIZE_MB] < 20 then "3. 10-20MB " else if [SIZE_MB] < 30 then "4. 20-30MB" else if [SIZE_MB] < 50 then "5. 30-50MB" else if [SIZE_MB] < 100 then "6. 50-100MB" else if [SIZE_MB] >= 100 then "7. 100MB+" else null),
+				    #"Removed Duplicates" = Table.Distinct(#"Added Conditional Column", {"FILE_ID"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

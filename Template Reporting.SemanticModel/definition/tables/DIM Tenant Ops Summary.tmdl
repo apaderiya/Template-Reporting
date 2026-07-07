@@ -1,0 +1,282 @@
+table 'DIM Tenant Ops Summary'
+	lineageTag: 146ef695-72dd-4312-9d60-84af39982bb9
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: 7fa0bad0-7b45-406f-adf3-2d4c5192f383
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_NM
+		dataType: string
+		lineageTag: 95d2610f-d2d8-4483-91fc-af8c7a6f7c1d
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column VH_TENANT_ID
+		dataType: string
+		isKey
+		lineageTag: 1bd7beeb-811f-46a1-a85b-c3e72136fd9a
+		summarizeBy: none
+		sourceColumn: VH_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: ab4bbe80-1aa0-45d0-b4f6-1cf9e85e8e8f
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: b0f79dc0-b07a-454e-89be-0f587201035d
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: 3f98bd96-7e0c-4f2e-8b8d-e0840ff413bf
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ARR_USD_AMT
+		dataType: decimal
+		lineageTag: f7f7af8a-a5c5-468f-9e79-9c6a372a9de1
+		summarizeBy: sum
+		sourceColumn: ARR_USD_AMT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BECAME_CUSTOMER_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5aa2694d-3067-47c4-9083-a75a2725a30f
+		summarizeBy: none
+		sourceColumn: BECAME_CUSTOMER_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SALES_SEGMENT
+		dataType: string
+		lineageTag: 0ed0aa5f-6060-4d80-a186-41686824adc6
+		summarizeBy: none
+		sourceColumn: SALES_SEGMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column INDUSTRY
+		dataType: string
+		lineageTag: ec44f2d4-c17a-4dfd-9bf0-c09efa211050
+		summarizeBy: none
+		sourceColumn: INDUSTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMPLOYEE_COUNT
+		dataType: decimal
+		lineageTag: 3715f721-8111-4f0c-b9f0-f11887f9179f
+		summarizeBy: sum
+		sourceColumn: EMPLOYEE_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RENEWAL_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3567549e-485c-4a09-9ecb-2cded5e44793
+		summarizeBy: none
+		sourceColumn: RENEWAL_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IMPLEMENTATION_STATE
+		dataType: string
+		lineageTag: 2082ab45-47e3-4012-8275-8e8b2e0e55e1
+		summarizeBy: none
+		sourceColumn: IMPLEMENTATION_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column GO_LIVE_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e99a2a62-efd9-4f51-830b-337c013fc078
+		summarizeBy: none
+		sourceColumn: GO_LIVE_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DAYS_POST_GO_LIVE
+		dataType: decimal
+		lineageTag: 38b618ef-ed40-4524-87f7-94c0901d1f9f
+		summarizeBy: sum
+		sourceColumn: DAYS_POST_GO_LIVE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IS_EVER_EMS_CUSTOMER
+		dataType: decimal
+		lineageTag: 691d8a5f-e7ab-4d32-883b-51c50f1e9c0f
+		summarizeBy: sum
+		sourceColumn: IS_EVER_EMS_CUSTOMER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IS_CURRENTLY_EMS
+		dataType: decimal
+		lineageTag: 40302897-4a48-4f12-a39c-6137e5ec6e61
+		summarizeBy: sum
+		sourceColumn: IS_CURRENTLY_EMS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FILES_WITH_OP_TABLES
+		dataType: decimal
+		lineageTag: 179f6168-15ad-4ce3-82ac-b93535519132
+		summarizeBy: sum
+		sourceColumn: FILES_WITH_OP_TABLES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_OP_FILE_CHANGES
+		dataType: decimal
+		lineageTag: 098cb3fd-8f7d-400f-8f7a-4c7186149777
+		summarizeBy: sum
+		sourceColumn: TOTAL_OP_FILE_CHANGES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_DATA_MODELS
+		dataType: decimal
+		lineageTag: 03b02cb3-c54b-4d5d-b954-3bc2283ba6e1
+		summarizeBy: sum
+		sourceColumn: NUM_DATA_MODELS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_DIMENSIONS
+		dataType: decimal
+		lineageTag: 148f4e20-b509-464f-8743-143c112f155a
+		summarizeBy: sum
+		sourceColumn: NUM_DIMENSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_MEMBERS
+		dataType: decimal
+		lineageTag: 21ce026c-6143-4c35-8bd8-ed3dcb310f9d
+		summarizeBy: sum
+		sourceColumn: NUM_MEMBERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_REFRESHES_LTM_OP_FILES
+		dataType: decimal
+		lineageTag: d53c40f1-cc1c-406b-85c6-64a6c040775f
+		summarizeBy: sum
+		sourceColumn: TOTAL_REFRESHES_LTM_OP_FILES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_READ_ACTIONS_LTM
+		dataType: decimal
+		lineageTag: af01a2f0-6079-4e0f-bd7a-56810d869452
+		summarizeBy: sum
+		sourceColumn: TOTAL_READ_ACTIONS_LTM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_WRITE_ACTIONS_LTM
+		dataType: decimal
+		lineageTag: 930d0e68-1270-4b19-9b76-79476ca4ee52
+		summarizeBy: sum
+		sourceColumn: TOTAL_WRITE_ACTIONS_LTM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_SYNC_FULL_ACTIONS_LTM
+		dataType: decimal
+		lineageTag: 8fb1a5ef-3f1a-4b54-a340-4d788b849d69
+		summarizeBy: sum
+		sourceColumn: TOTAL_SYNC_FULL_ACTIONS_LTM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_SYNC_PARTIAL_ACTIONS_LTM
+		dataType: decimal
+		lineageTag: b173ee34-3b63-4e8c-9a87-7e1f63734fe5
+		summarizeBy: sum
+		sourceColumn: TOTAL_SYNC_PARTIAL_ACTIONS_LTM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_VENA_TABLES
+		dataType: decimal
+		lineageTag: 6bc636ff-cd8b-411c-b100-67e3e9d141c6
+		summarizeBy: sum
+		sourceColumn: NUM_VENA_TABLES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'DIM Tenant Ops Summary' = m
+		mode: import
+		queryGroup: 'Operations Table'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_HARMONIZED"]}[Data], "WITH prod_tenants AS (#(lf)    SELECT DISTINCT#(lf)        DATA_CNTR_CD,#(lf)        TENANT_ID,#(lf)        TENANT_NM,#(lf)        LEFT(ACCOUNT_ID, 15) AS ACCOUNT_ID#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    WHERE CRNT_RCRD_IND = 'Y'#(lf)      AND TENANT_TYP_NM = 'PRODUCTION'#(lf)      AND TENANT_ENBLD_STATUS_NM = 'ENABLED'#(lf)      AND ORGANIZATION_TYP_NM = 'CUSTOMER'#(lf)),#(lf)#(lf)account_profile AS (#(lf)    SELECT#(lf)        LEFT(ACCOUNT_ID, 15)    AS ACCOUNT_ID,#(lf)        ACCOUNT_NM,#(lf)        ROUND(ARR_USD_AMT, 2)   AS ARR_USD_AMT,#(lf)        BECAME_CUSTOMER_DT,#(lf)        SGMNT_OVRD_CD           AS SALES_SEGMENT,#(lf)        INDSTRY_NM              AS INDUSTRY,#(lf)        EMPL_CNT                AS EMPLOYEE_COUNT,#(lf)        STATUS_NM,#(lf)        GO_LIVE_DT,#(lf)        RENEWAL_DT#(lf)    FROM PROD_HARMONIZED.SALES.VW_ACCOUNT_PROF#(lf)    WHERE CRNT_RCRD_IND = 'Y' #(lf)),#(lf)#(lf)ems_projects AS (#(lf)    SELECT#(lf)        LEFT(ACCOUNT_ID, 15) AS ACCOUNT_ID,#(lf)        PROJECT_KICKOFF_DT,#(lf)        SRVCS_EXPIRY_DT#(lf)    FROM PROD_PRESENTATION.PROFESSIONAL_SERVICES.VW_PS_PROJECTS#(lf)    WHERE CRNT_RCRD_IND = 'Y'#(lf)      AND UPPER(PROJECT_STATUS_NM) = 'ACTIVE'#(lf)      AND COALESCE(INTRNL_PROJECT_IND, 'N') = 'N'#(lf)      AND (UPPER(COALESCE(COHORT_NM, ''))      LIKE '%EXPERT%'#(lf)        OR UPPER(COALESCE(SRVCS_DLVRD_NMS, '')) LIKE '%EXPERT%')#(lf)),#(lf)#(lf)ems_flags AS (#(lf)    SELECT#(lf)        ACCOUNT_ID,#(lf)        MAX(CASE WHEN PROJECT_KICKOFF_DT IS NOT NULL THEN 1 ELSE 0 END) AS IS_EVER_EMS_CUSTOMER,#(lf)        MAX(CASE WHEN PROJECT_KICKOFF_DT <= CURRENT_DATE#(lf)                  AND SRVCS_EXPIRY_DT    >  CURRENT_DATE THEN 1 ELSE 0 END) AS IS_CURRENTLY_EMS#(lf)    FROM ems_projects#(lf)    GROUP BY ACCOUNT_ID#(lf)),#(lf)#(lf)raw_template_metrics AS (#(lf)    SELECT#(lf)        p.DATA_CNTR_CD AS DATA_CENTER,#(lf)        t.TENANT_ID,#(lf)        t.FILE_ID,#(lf)        t.ETL_LOAD_DATE,#(lf)        t.CONTENT_ID,#(lf)        COALESCE(TRY_TO_NUMBER(t.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS), 0) AS NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        COALESCE(TRY_TO_NUMBER(t.NUMBER_OF_WRITEBACK_QUERIES), 0)           AS NUMBER_OF_WRITEBACK_QUERIES#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING t#(lf)    INNER JOIN prod_tenants p#(lf)        ON RIGHT(t.DATA_CENTER, 3) = p.DATA_CNTR_CD#(lf)       AND t.TENANT_ID = p.TENANT_ID#(lf)),#(lf)#(lf)latest_record_per_etl_date AS (#(lf)    SELECT *,#(lf)        CASE WHEN NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS > 0#(lf)              OR NUMBER_OF_WRITEBACK_QUERIES > 0#(lf)             THEN 1 ELSE 0 END AS HAS_OP_TABLE_LOGIC#(lf)    FROM raw_template_metrics#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID, ETL_LOAD_DATE#(lf)        ORDER BY CONTENT_ID DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)first_op_record AS (#(lf)    SELECT#(lf)        DATA_CENTER, TENANT_ID, FILE_ID,#(lf)        MIN(ETL_LOAD_DATE) AS FIRST_OPS_USE_DATE#(lf)    FROM latest_record_per_etl_date#(lf)    WHERE HAS_OP_TABLE_LOGIC = 1#(lf)    GROUP BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)),#(lf)#(lf)relevant_history AS (#(lf)    SELECT l.*#(lf)    FROM latest_record_per_etl_date l#(lf)    INNER JOIN first_op_record f USING (DATA_CENTER, TENANT_ID, FILE_ID)#(lf)    WHERE l.ETL_LOAD_DATE >= f.FIRST_OPS_USE_DATE#(lf)),#(lf)#(lf)change_detection AS (#(lf)    SELECT#(lf)        DATA_CENTER, TENANT_ID, FILE_ID, ETL_LOAD_DATE,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES,#(lf)        LAG(NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID ORDER BY ETL_LOAD_DATE) AS PREV_CM,#(lf)        LAG(NUMBER_OF_WRITEBACK_QUERIES) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID ORDER BY ETL_LOAD_DATE) AS PREV_WB#(lf)    FROM relevant_history#(lf)),#(lf)#(lf)op_file_metrics AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        COUNT(DISTINCT FILE_ID) AS FILES_WITH_OP_TABLES,#(lf)        COUNT_IF(NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS <> PREV_CM#(lf)              OR NUMBER_OF_WRITEBACK_QUERIES        <> PREV_WB) AS TOTAL_OP_FILE_CHANGES#(lf)    FROM change_detection#(lf)    GROUP BY DATA_CENTER, TENANT_ID#(lf)),#(lf)#(lf)model_dim_counts AS (#(lf)    SELECT#(lf)        DATA_CNTR_CD AS DATA_CENTER,#(lf)        TENANT_ID,#(lf)        COUNT(DISTINCT MODEL_ID) AS NUM_DATA_MODELS,#(lf)        COUNT(DISTINCT DIM_ID)   AS NUM_DIMENSIONS#(lf)    FROM PROD_HARMONIZED.PRODUCT.MODEL_DIM_DTL#(lf)    GROUP BY DATA_CNTR_CD, TENANT_ID#(lf)),#(lf)#(lf)member_counts AS (#(lf)    SELECT#(lf)        DATA_CNTR_CD AS DATA_CENTER,#(lf)        TENANT_ID,#(lf)        COUNT(DISTINCT MEMBER_ID) AS NUM_MEMBERS#(lf)    FROM PROD_HARMONIZED.PRODUCT.DIM_MEMBER_DTL#(lf)    GROUP BY DATA_CNTR_CD, TENANT_ID#(lf)),#(lf)#(lf)vena_table_counts AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        COUNT(DISTINCT ID) AS NUM_VENA_TABLES#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_VENA_TABLES_STAGING#(lf)    WHERE ID IS NOT NULL#(lf)    GROUP BY DATA_CENTER, TENANT_ID#(lf)),#(lf)#(lf)op_file_refresh_metrics AS (#(lf)    SELECT#(lf)        r.DATA_CNTR_CD AS DATA_CENTER,#(lf)        r.TENANT_ID,#(lf)        COUNT(*) AS TOTAL_REFRESHES_LTM_OP_FILES#(lf)    FROM PROD_HARMONIZED.PRODUCT.RUM_DATA_LOG r#(lf)    INNER JOIN first_op_record f#(lf)        ON r.DATA_CNTR_CD = f.DATA_CENTER#(lf)       AND r.TENANT_ID    = f.TENANT_ID#(lf)       AND r.FILE_ID      = f.FILE_ID#(lf)    WHERE r.FILE_ID IS NOT NULL#(lf)      AND TO_DATE(r.EVENT_DT) >= DATEADD(year, -1, CURRENT_DATE())#(lf)    GROUP BY r.DATA_CNTR_CD, r.TENANT_ID#(lf)),#(lf)#(lf)op_actions AS (#(lf)    SELECT#(lf)        RIGHT(DATA_CENTER, 3) AS DATA_CENTER,#(lf)        TENANT_ID,#(lf)        OPERATION_TYPE AS ACTION_TYPE#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_OPTABLE_SAVE_METRICS#(lf)    WHERE OPERATION_TYPE IN ('write', 'sync_full', 'sync_partial')#(lf)#(lf)    UNION ALL#(lf)#(lf)    SELECT#(lf)        RIGHT(DATA_CENTER, 3) AS DATA_CENTER,#(lf)        TENANT_ID,#(lf)        OPERATION_TYPE AS ACTION_TYPE#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_OPTABLE_READ_METRICS#(lf)    WHERE OPERATION_TYPE = 'read_query'#(lf)),#(lf)#(lf)op_action_metrics AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        COUNT_IF(ACTION_TYPE = 'read_query')   AS TOTAL_READ_ACTIONS_LTM,#(lf)        COUNT_IF(ACTION_TYPE = 'write')        AS TOTAL_WRITE_ACTIONS_LTM,#(lf)        COUNT_IF(ACTION_TYPE = 'sync_full')    AS TOTAL_SYNC_FULL_ACTIONS_LTM,#(lf)        COUNT_IF(ACTION_TYPE = 'sync_partial') AS TOTAL_SYNC_PARTIAL_ACTIONS_LTM#(lf)    FROM op_actions#(lf)    GROUP BY DATA_CENTER, TENANT_ID#(lf))#(lf)#(lf)SELECT#(lf)    ap.ACCOUNT_ID,#(lf)    ap.ACCOUNT_NM,#(lf)    CONCAT(pt.DATA_CNTR_CD, '.', pt.TENANT_ID) AS VH_TENANT_ID,#(lf)    pt.TENANT_ID,#(lf)    pt.TENANT_NM,#(lf)    pt.DATA_CNTR_CD,#(lf)#(lf)    ap.ARR_USD_AMT,#(lf)    ap.BECAME_CUSTOMER_DT,#(lf)    ap.SALES_SEGMENT,#(lf)    ap.INDUSTRY,#(lf)    ap.EMPLOYEE_COUNT,#(lf)    ap.RENEWAL_DT,#(lf)#(lf)    CASE#(lf)        WHEN UPPER(ap.STATUS_NM) = 'LIVE'                                  THEN 'Live'#(lf)        WHEN UPPER(ap.STATUS_NM) LIKE '%IMPLEMENTATION%'#(lf)         AND UPPER(ap.STATUS_NM) NOT LIKE '%TERMINAT%'                     THEN 'In Implementation'#(lf)        WHEN UPPER(ap.STATUS_NM) = 'NEVER STARTED'                         THEN 'New'#(lf)        WHEN UPPER(ap.STATUS_NM) LIKE '%TERMINAT%'                         THEN 'Terminated'#(lf)        ELSE ap.STATUS_NM#(lf)    END AS IMPLEMENTATION_STATE,#(lf)    ap.GO_LIVE_DT,#(lf)    CASE#(lf)        WHEN ap.GO_LIVE_DT IS NOT NULL#(lf)         AND ap.GO_LIVE_DT <= CURRENT_DATE#(lf)        THEN DATEDIFF(day, ap.GO_LIVE_DT, CURRENT_DATE)#(lf)    END AS DAYS_POST_GO_LIVE,#(lf)#(lf)    COALESCE(ef.IS_EVER_EMS_CUSTOMER, 0) AS IS_EVER_EMS_CUSTOMER,#(lf)    COALESCE(ef.IS_CURRENTLY_EMS, 0)     AS IS_CURRENTLY_EMS,#(lf)#(lf)    COALESCE(ofm.FILES_WITH_OP_TABLES, 0)  AS FILES_WITH_OP_TABLES,#(lf)    COALESCE(ofm.TOTAL_OP_FILE_CHANGES, 0) AS TOTAL_OP_FILE_CHANGES,#(lf)#(lf)    COALESCE(mdc.NUM_DATA_MODELS, 0) AS NUM_DATA_MODELS,#(lf)    COALESCE(mdc.NUM_DIMENSIONS, 0)  AS NUM_DIMENSIONS,#(lf)    COALESCE(mc.NUM_MEMBERS, 0)      AS NUM_MEMBERS,#(lf)    COALESCE(vtc.NUM_VENA_TABLES, 0)      AS NUM_VENA_TABLES,#(lf)#(lf)    COALESCE(rfm.TOTAL_REFRESHES_LTM_OP_FILES, 0) AS TOTAL_REFRESHES_LTM_OP_FILES,#(lf)#(lf)    COALESCE(oam.TOTAL_READ_ACTIONS_LTM, 0)         AS TOTAL_READ_ACTIONS_LTM,#(lf)    COALESCE(oam.TOTAL_WRITE_ACTIONS_LTM, 0)        AS TOTAL_WRITE_ACTIONS_LTM,#(lf)    COALESCE(oam.TOTAL_SYNC_FULL_ACTIONS_LTM, 0)    AS TOTAL_SYNC_FULL_ACTIONS_LTM,#(lf)    COALESCE(oam.TOTAL_SYNC_PARTIAL_ACTIONS_LTM, 0) AS TOTAL_SYNC_PARTIAL_ACTIONS_LTM#(lf)#(lf)FROM prod_tenants pt#(lf)INNER JOIN op_file_metrics       ofm ON ofm.DATA_CENTER = pt.DATA_CNTR_CD AND ofm.TENANT_ID = pt.TENANT_ID#(lf)LEFT  JOIN account_profile        ap ON ap.ACCOUNT_ID   = pt.ACCOUNT_ID#(lf)LEFT  JOIN ems_flags              ef ON ef.ACCOUNT_ID   = pt.ACCOUNT_ID#(lf)LEFT  JOIN model_dim_counts      mdc ON mdc.DATA_CENTER = pt.DATA_CNTR_CD AND mdc.TENANT_ID = pt.TENANT_ID#(lf)LEFT  JOIN member_counts          mc ON mc.DATA_CENTER  = pt.DATA_CNTR_CD AND mc.TENANT_ID  = pt.TENANT_ID#(lf)LEFT  JOIN op_file_refresh_metrics rfm ON rfm.DATA_CENTER = pt.DATA_CNTR_CD AND rfm.TENANT_ID = pt.TENANT_ID#(lf)LEFT  JOIN op_action_metrics     oam ON oam.DATA_CENTER = pt.DATA_CNTR_CD AND oam.TENANT_ID = pt.TENANT_ID#(lf)LEFT  JOIN vena_table_counts     vtc ON vtc.DATA_CENTER = pt.DATA_CNTR_CD AND vtc.TENANT_ID = pt.TENANT_ID#(lf)ORDER BY#(lf)    ap.ACCOUNT_ID,#(lf)    pt.TENANT_ID,#(lf)    FILES_WITH_OP_TABLES DESC", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

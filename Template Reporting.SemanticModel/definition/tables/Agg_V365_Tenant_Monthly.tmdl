@@ -1,0 +1,218 @@
+table Agg_V365_Tenant_Monthly
+	lineageTag: 59a56b55-e3f8-4f04-ae97-f2f9a15f134d
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 760b55ad-9736-4ebd-a49c-fe000e96bb55
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 553e558e-2af6-4fb3-bc98-460dc6dcd0cf
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: a82e1986-6bcb-4b9c-9dd6-70f418219a7f
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: 0fc71068-637d-4ed2-8460-ad35600416ea
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONSULTANT_LOGIN
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3cf2f464-5fbd-4ea6-bc42-64bc790933f8
+		summarizeBy: none
+		sourceColumn: CONSULTANT_LOGIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR_MONTH
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 70e03f43-90c3-4a6c-b63b-7e76b6a1f754
+		summarizeBy: none
+		sourceColumn: YEAR_MONTH
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column REFRESH_COUNT
+		dataType: decimal
+		lineageTag: c59ec3aa-dcef-48d2-bb81-ec528793f22d
+		summarizeBy: sum
+		sourceColumn: REFRESH_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column REFRESHES_BELOW_8S
+		dataType: decimal
+		lineageTag: 4ed80fee-cf8d-4589-8dbf-186ffe23f4c4
+		summarizeBy: sum
+		sourceColumn: REFRESHES_BELOW_8S
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AVG_DURATION_SEC
+		dataType: decimal
+		lineageTag: 68e41441-9abc-46dc-a149-7c8ce2ca23ad
+		summarizeBy: sum
+		sourceColumn: AVG_DURATION_SEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P25_DURATION
+		dataType: decimal
+		lineageTag: c93949ef-bcf7-495f-9a41-daa0a6b244c3
+		summarizeBy: sum
+		sourceColumn: P25_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P50_DURATION
+		dataType: decimal
+		lineageTag: 9c6d770c-4d66-4ea2-a53e-f49a3d082603
+		summarizeBy: sum
+		sourceColumn: P50_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P70_DURATION
+		dataType: decimal
+		lineageTag: fde27dfd-0ddb-45bb-8e28-aa53ea28a43d
+		summarizeBy: sum
+		sourceColumn: P70_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P80_DURATION
+		dataType: decimal
+		lineageTag: de8adbc1-256d-4435-8b06-492d6f9d9404
+		summarizeBy: sum
+		sourceColumn: P80_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P90_DURATION
+		dataType: decimal
+		lineageTag: 7ef7bbbb-21a7-4dd9-8eca-aafa7f0f185a
+		summarizeBy: sum
+		sourceColumn: P90_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P95_DURATION
+		dataType: decimal
+		lineageTag: 2e687ad6-c6c7-4911-89e5-918f16b8118a
+		summarizeBy: sum
+		sourceColumn: P95_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column P99_DURATION
+		dataType: decimal
+		lineageTag: cf494e74-49e4-45a7-9cbc-980fc27de2dd
+		summarizeBy: sum
+		sourceColumn: P99_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISTINCT_USERS
+		dataType: decimal
+		lineageTag: c6b9a989-4760-4ddc-a067-3a2de73f4f15
+		summarizeBy: sum
+		sourceColumn: DISTINCT_USERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISTINCT_FILES
+		dataType: decimal
+		lineageTag: 4e7bd609-daa1-4e99-a018-a8239ec0ee10
+		summarizeBy: sum
+		sourceColumn: DISTINCT_FILES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOST_RECENT_REFRESH
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a6eab7f5-a288-44d9-b946-f6de3e96d61a
+		summarizeBy: none
+		sourceColumn: MOST_RECENT_REFRESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column HAS_TSTUDIO
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: abe889bf-05dc-4068-8f03-6c1db5aecd0c
+		summarizeBy: none
+		sourceColumn: HAS_TSTUDIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column HAS_PCS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dd68f799-519c-432f-84c7-dd4641ec46ce
+		summarizeBy: none
+		sourceColumn: HAS_PCS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Agg_V365_Tenant_Monthly = m
+		mode: import
+		queryGroup: 'V365 Add-in - Datasets'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_RAW"]}[Data], "WITH prod_tenant_info AS (#(lf)    SELECT DISTINCT#(lf)        tenant_id,#(lf)        tenant_nm,#(lf)        data_cntr_cd,#(lf)        account_id#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    WHERE crnt_rcrd_ind = 'Y'#(lf)      AND tenant_typ_nm = 'PRODUCTION'#(lf)      AND organization_typ_nm = 'CUSTOMER'#(lf)      AND tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)user_info AS (#(lf)    SELECT#(lf)        tenant_dc,#(lf)        user_id,#(lf)        CASE #(lf)            WHEN (login_email ILIKE '%vena%' OR ntfctn_email ILIKE '%vena%')#(lf)              OR (last_impersonation_login_dt IS NOT NULL #(lf)                  AND admin_access_ind = 'Y' #(lf)                  AND built_in_admin_accnt = 'Y')#(lf)            THEN 'Y' ELSE 'N'#(lf)        END AS consultant_login#(lf)    FROM PROD_HARMONIZED.PRODUCT.VW_USER_PROF_EML_INCLD#(lf)    WHERE crnt_rcrd_ind = 'Y'#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY tenant_dc, user_id#(lf)        ORDER BY user_id#(lf)    ) = 1#(lf)),#(lf)#(lf)tstudio_flags AS (#(lf)    SELECT DISTINCT tenant_id, data_center, file_id#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING#(lf)    WHERE solution_package_template_name ILIKE 'template studio%'#(lf)      AND solution_package_template_name <> 'Template Studio Report'#(lf)      AND TO_DATE(etl_load_date) >= '2025-02-01'#(lf)),#(lf)#(lf)pcs_flags AS (#(lf)    SELECT DISTINCT tenant_id, data_center, file_id#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING#(lf)    WHERE solution_package_name <> ''#(lf)      AND solution_package_template_name <> ''#(lf)      AND solution_package_template_version ILIKE '%.%'#(lf)      AND REPLACE(solution_package_template_version, '.', '') >= 100#(lf)),#(lf)#(lf)base_data AS (#(lf)    SELECT#(lf)        s.tenant_id,#(lf)        t.tenant_nm,#(lf)        t.data_cntr_cd,#(lf)        t.account_id,#(lf)        s.file_id,#(lf)        s.user_id,#(lf)        COALESCE(u.consultant_login, 'N')            AS consultant_login,#(lf)        s.total_duration_ms / 1000.0                  AS total_duration_sec,#(lf)        s.event_dt,#(lf)        DATE_TRUNC('MONTH', s.event_dt)               AS year_month,#(lf)        CASE WHEN ts.file_id IS NOT NULL #(lf)             THEN 1 ELSE 0 END                        AS is_tstudio_file,#(lf)        CASE WHEN pf.file_id IS NOT NULL #(lf)             THEN 1 ELSE 0 END                        AS is_pcs_file#(lf)    FROM PROD_HARMONIZED.PRODUCT.RUM_DATA_LOG s#(lf)    INNER JOIN prod_tenant_info t#(lf)        ON s.tenant_id = t.tenant_id#(lf)       AND s.data_cntr_cd = t.data_cntr_cd#(lf)    LEFT JOIN user_info u#(lf)        ON CONCAT(s.data_cntr_cd, '.', s.tenant_id) = u.tenant_dc#(lf)       AND s.user_id = u.user_id#(lf)    LEFT JOIN tstudio_flags ts#(lf)        ON s.tenant_id = ts.tenant_id#(lf)       AND s.file_id = ts.file_id#(lf)       AND s.data_cntr_cd = ts.data_center#(lf)    LEFT JOIN pcs_flags pf#(lf)        ON s.tenant_id = pf.tenant_id#(lf)       AND s.file_id = pf.file_id#(lf)       AND s.data_cntr_cd = pf.data_center#(lf)    WHERE s.file_id IS NOT NULL#(lf)      AND s.initial_load_ind = 'Y'#(lf)      AND s.action_nm = 'refresh'#(lf)      AND s.total_duration_ms IS NOT NULL#(lf)      AND TO_DATE(s.event_dt) >= CURRENT_DATE - 365#(lf))#(lf)#(lf)SELECT#(lf)    tenant_id,#(lf)    tenant_nm,#(lf)    data_cntr_cd,#(lf)    account_id,#(lf)    consultant_login,#(lf)    year_month,#(lf)    COUNT(*)                                                                        AS refresh_count,#(lf)    COUNT(CASE WHEN total_duration_sec <= 8 THEN 1 END)                             AS refreshes_below_8s,#(lf)    ROUND(AVG(total_duration_sec), 4)                                                AS avg_duration_sec,#(lf)    ROUND(PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p25_duration,#(lf)    ROUND(PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p50_duration,#(lf)    ROUND(PERCENTILE_CONT(0.70) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p70_duration,#(lf)    ROUND(PERCENTILE_CONT(0.80) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p80_duration,#(lf)    ROUND(PERCENTILE_CONT(0.90) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p90_duration,#(lf)    ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p95_duration,#(lf)    ROUND(PERCENTILE_CONT(0.99) WITHIN GROUP (ORDER BY total_duration_sec), 4)       AS p99_duration,#(lf)    COUNT(DISTINCT user_id)                                                          AS distinct_users,#(lf)    COUNT(DISTINCT file_id)                                                          AS distinct_files,#(lf)    MAX(event_dt)                                                                    AS most_recent_refresh,#(lf)    CASE WHEN SUM(is_tstudio_file) > 0 #(lf)         THEN TRUE ELSE FALSE END                                                    AS has_tstudio,#(lf)    CASE WHEN SUM(is_pcs_file) > 0 #(lf)         THEN TRUE ELSE FALSE END                                                    AS has_pcs#(lf)FROM base_data #(lf)GROUP BY#(lf)    tenant_id, tenant_nm, data_cntr_cd, account_id,#(lf)    consultant_login, year_month#(lf)ORDER BY#(lf)    tenant_id, year_month", null, [EnableFolding=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"CONSULTANT_LOGIN", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,99 @@
+table 'Hydra - Creation Timestamps'
+	lineageTag: fc0d785b-a3e3-453f-805d-dd3d38bf7166
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: ccaf49a0-46cb-48d9-85d7-46308b6d541e
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 039f6149-4d98-4d52-92ce-6be8a5e18097
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: ba013bac-3bf2-4d93-b2e1-83d0824fff12
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BIT_EXCEL
+		dataType: string
+		lineageTag: 9432c13c-2acc-4d66-bf6f-664ff98a8d14
+		summarizeBy: none
+		sourceColumn: BIT_EXCEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDIN_VERSION
+		dataType: string
+		lineageTag: eaa9b265-ce45-4287-b0d1-36ff17160b7c
+		summarizeBy: none
+		sourceColumn: ADDIN_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATION_TIMESTAMP_APPROX
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d38cf210-4e7a-4923-8869-263deedc510a
+		summarizeBy: none
+		sourceColumn: CREATION_TIMESTAMP_APPROX
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year and Month'
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: ac9e80a5-e5b9-4078-803c-079fd304af43
+		summarizeBy: none
+		sourceColumn: Year and Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'User Detail.CONSULTANT_LOGIN'
+		dataType: string
+		lineageTag: 6d3df55d-ea0f-4902-a87a-f3541006674c
+		summarizeBy: none
+		sourceColumn: User Detail.CONSULTANT_LOGIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Detail.PERMISSIONS_CATEGORY'
+		dataType: string
+		lineageTag: f14ff93b-eab0-4414-a178-8410c16d9c5e
+		summarizeBy: none
+		sourceColumn: User Detail.PERMISSIONS_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Hydra - Creation Timestamps' = m
+		mode: import
+		queryGroup: 'Core Dataset'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with prod_tenant_list as #(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)TENANT_NM, #(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION', 'SANDBOX')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)bit_version as #(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)user_id,#(lf)session_id,#(lf)event_nm,#(lf)timing_vrbl_nm,#(lf)right(timing_val, 2) as bit_excel#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)where event_nm ilike '%ExcelVersion%'#(lf)),#(lf)#(lf)addin_version as#(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)user_id,#(lf)session_id,#(lf)event_nm,#(lf)timing_vrbl_nm,#(lf)timing_val as addin_version#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)where event_nm ilike '%addinversion%'#(lf)),#(lf)#(lf)files as #(lf)(#(lf)select distinct#(lf)    tenant_id,#(lf)    user_id,#(lf)    rcrd_id,#(lf)    session_id,#(lf)    event_nm,#(lf)    timing_ctgry_nm,#(lf)    timing_vrbl_nm,#(lf)    timing_val as file_id,#(lf)    session_start_dts as hydra_timestamp,#(lf)    src_system_cd#(lf)#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS #(lf)#(lf)where event_nm ilike '%fileid%'#(lf)and timing_ctgry_nm = 'DesktopAddin'#(lf))#(lf)#(lf)select distinct#(lf)    hydra.tenant_id,#(lf)    tenant_nm,#(lf)    concat(tenant_nm,' - ',hydra.timing_vrbl_nm) as tenant_template_name,#(lf)    hydra.user_id,#(lf)    files.file_id,#(lf)    hydra.timing_vrbl_nm,#(lf)    bit_excel,#(lf)    addin_version,#(lf)    min(hydra.session_start_dts) as creation_timestamp_approx#(lf)    #(lf)#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS hydra#(lf)inner join prod_tenant_list on hydra.tenant_id = prod_tenant_list.tenant_id #(lf)left join bit_version on bit_version.tenant_id = hydra.tenant_id and bit_version.user_id = hydra.user_id and bit_version.session_id = hydra.session_id #(lf)left join addin_version on addin_version.tenant_id = hydra.tenant_id and addin_version.user_id = hydra.user_id and addin_version.session_id = hydra.session_id #(lf)left join files on files.tenant_id = hydra.tenant_id and files.user_id = hydra.user_id and files.session_id = hydra.session_id and files.timing_vrbl_nm = hydra.timing_vrbl_nm #(lf)#(lf)where hydra.event_nm ilike '%simplerefresh%'   #(lf)and hydra.timing_ctgry_nm = 'DesktopAddin'#(lf)and to_date(session_start_dts) >= '2023-02-01'#(lf)#(lf)group by #(lf)    hydra.tenant_id,#(lf)    tenant_nm,#(lf)    concat(tenant_nm,' - ',hydra.timing_vrbl_nm),#(lf)    hydra.user_id,#(lf)    files.file_id,#(lf)    hydra.timing_vrbl_nm,#(lf)    bit_excel,#(lf)    addin_version", null, [EnableFolding=true]),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "CREATION_TIMESTAMP_APPROX", "CREATION_TIMESTAMP_APPROX - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"CREATION_TIMESTAMP_APPROX - Copy", "Year and Month"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Year and Month", type date}}),
+				    #"Calculated Start of Month" = Table.TransformColumns(#"Changed Type",{{"Year and Month", Date.StartOfMonth, type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Calculated Start of Month", {"TENANT_ID", "USER_ID"}, #"User Detail", {"TENANT_ID", "USER_ID"}, "User Detail", JoinKind.LeftOuter),
+				    #"Expanded User Detail" = Table.ExpandTableColumn(#"Merged Queries", "User Detail", {"CONSULTANT_LOGIN", "PERMISSIONS_CATEGORY"}, {"User Detail.CONSULTANT_LOGIN", "User Detail.PERMISSIONS_CATEGORY"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Expanded User Detail",{"TENANT_ID", "TENANT_NM", "USER_ID", "BIT_EXCEL", "ADDIN_VERSION", "CREATION_TIMESTAMP_APPROX", "Year and Month", "User Detail.CONSULTANT_LOGIN", "User Detail.PERMISSIONS_CATEGORY"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

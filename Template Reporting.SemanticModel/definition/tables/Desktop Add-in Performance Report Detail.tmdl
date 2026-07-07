@@ -1,0 +1,94 @@
+table 'Desktop Add-in Performance Report Detail'
+	lineageTag: a150401b-f851-427e-ba6a-97024785ecfc
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: e027de5b-683c-4765-ab6c-0422778b082a
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 6fb8737f-cc65-4572-9bed-8e37ee9c066b
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DC_TENANT_ID
+		dataType: string
+		lineageTag: e95be832-cf0e-4095-abd9-f17b09bf02f5
+		summarizeBy: none
+		sourceColumn: DC_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: 051e190a-1725-4e3c-b831-d63fe6bf189d
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: 508612e2-5b69-41df-ac2a-ac7ccd620a08
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SESSION_ID
+		dataType: string
+		lineageTag: 27ea0b86-ea5e-424f-9339-33f823d35413
+		summarizeBy: none
+		sourceColumn: SESSION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TEMPLATE_NAME
+		dataType: string
+		lineageTag: 9b199d96-d785-4d2a-8e7f-8f6b12913627
+		summarizeBy: none
+		sourceColumn: TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SESSION_START_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a17ac125-b1ea-4253-bf26-5259878a87c0
+		summarizeBy: none
+		sourceColumn: SESSION_START_DTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 8e29648e-1758-46a1-b629-361f268e4e01
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Desktop Add-in Performance Report Detail' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)tenant_nm,#(lf)account_id,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)--sandbox was removed on march 3rd, was counted beforehand, may skew metrics#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf))#(lf)#(lf)select #(lf)data_cntr_cd,#(lf)hydra.tenant_id,#(lf)concat(data_cntr_cd,'.',hydra.tenant_id) as dc_tenant_id,#(lf)account_id,#(lf)user_id,#(lf)session_id,#(lf)timing_vrbl_nm as template_name,#(lf)session_start_dts#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS hydra#(lf)inner join prod_tenant_info on prod_tenant_info.tenant_id = hydra.tenant_id #(lf)where event_nm = 'PerformanceReportClicked'", null, [EnableFolding=true]),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "SESSION_START_DTS", "SESSION_START_DTS - Copy"),
+				    #"Extracted Date" = Table.TransformColumns(#"Duplicated Column",{{"SESSION_START_DTS - Copy", DateTime.Date, type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Date",{{"SESSION_START_DTS - Copy", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

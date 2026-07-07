@@ -1,0 +1,191 @@
+table 'Datadog - AdHoc Addin'
+	lineageTag: 9634efdd-fb06-4405-ae70-760fadb73fb5
+
+	measure 'FY26 MVP - Monthly Active Users (Trailing 90 Days)' = calculate(DISTINCTCOUNT('Datadog - AdHoc Addin'[USER_ID]), 'Datadog - AdHoc Addin'[Date] >= today()-90)/3
+		formatString: #,0
+		lineageTag: 9d1decb4-7a17-4fe5-847b-1f2738aa51d3
+
+	measure 'FY26 MVP - EOM' =
+			calculate(DISTINCTCOUNT('Datadog - AdHoc Addin'[USER_ID]), DATESBETWEEN('Datadog - AdHoc Addin'[Date],max('Datadog - AdHoc Addin'[Date])-90, max('Datadog - AdHoc Addin'[Date]))
+			
+			
+			
+			)
+		formatString: #,0
+		lineageTag: 2f0bd8bf-7f0f-4e32-b8f3-6261e1372cd2
+
+	measure 'FY26 MVP - EOM date table' = calculate(DISTINCTCOUNT('Datadog - AdHoc Addin'[USER_ID]), 'Date Table'[Date] <= today(), DATESBETWEEN('Date Table'[Date],max('Date Table'[Date])-90, max('Date Table'[Date])))
+		formatString: #,0
+		lineageTag: 375f20b7-e86b-4074-9b09-de12f38e4783
+
+	measure Measure = today()-90
+		formatString: #,0
+		lineageTag: 2ff5a52d-a5f7-43cd-9f8f-fa9eac8a4275
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: ef180742-fb32-4ad8-9307-f5b25328df68
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VENA_HUB
+		dataType: string
+		lineageTag: 563b6bf4-da50-4434-ace9-f797b42df551
+		summarizeBy: none
+		sourceColumn: VENA_HUB
+
+		annotation SummarizationSetBy = Automatic
+
+	column DC_TENANT_ID
+		dataType: string
+		lineageTag: 52a606cd-faa1-4b9e-bd6f-116b65ff8a6a
+		summarizeBy: none
+		sourceColumn: DC_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: 2854bf2a-7064-42d2-a99b-01aa2aa13a0a
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTION_DATETIME
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 0fe1e1e8-5c20-462a-9817-30324d0a489f
+		summarizeBy: none
+		sourceColumn: ACTION_DATETIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column AUTH_TYPE
+		dataType: string
+		lineageTag: 1b9968a6-245b-45ec-981e-21f947e199e6
+		summarizeBy: none
+		sourceColumn: AUTH_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: a589c7c6-a538-4053-83c6-6f509681d00d
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OFFICE_VERSION
+		dataType: string
+		lineageTag: bdddfed4-4faf-4faa-aa1c-e30eeae24c32
+		summarizeBy: none
+		sourceColumn: OFFICE_VERSION
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_INTERSECTIONS
+		dataType: decimal
+		lineageTag: 66f205b7-9dc8-471a-9366-8b483c35dd0a
+		summarizeBy: sum
+		sourceColumn: TOTAL_INTERSECTIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column REFRESH_DURATION_SEC
+		dataType: decimal
+		lineageTag: 1238e1c1-26b8-431e-9f5c-f7e805bd7d81
+		summarizeBy: sum
+		sourceColumn: REFRESH_DURATION_SEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 83b80e94-2a29-44cb-879e-12f9231a3ea2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 28c686fd-6f4f-4819-a6ec-359d311ed496
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: e1c081f9-e5fc-4fd4-ae60-746488f7a17a
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'end of month'
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 845626cd-7e4d-4ecb-be5a-0495ee8a0304
+		summarizeBy: none
+		sourceColumn: end of month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'EOM label' =
+			
+			IF('Datadog - AdHoc Addin'[Date]=EOMONTH('Datadog - AdHoc Addin'[Date],1),"Yes","No")
+		lineageTag: bd460ee0-d5e5-472d-bda3-27f032a5aa25
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRIBUTOR_ADHOC_ENABLED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dbab15f1-39eb-4b4b-97d9-f39894a8b144
+		summarizeBy: none
+		sourceColumn: CONTRIBUTOR_ADHOC_ENABLED
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_TYPE
+		dataType: string
+		lineageTag: 86ac9e34-e487-4ea9-95cb-d9fbc7d04b21
+		summarizeBy: none
+		sourceColumn: USER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Datadog - AdHoc Addin' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_RAW"]}[Data], "with prod_tenant_info as #(lf)(#(lf)select#(lf)data_cntr_cd,#(lf)tenant_id,#(lf)account_id,#(lf)tenant_nm#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)adhoc_enabled as#(lf)(#(lf)select distinct#(lf)concat(data_center,'.',tenant_id) as vh_tenant_id,#(lf)CONTRIBUTOR_ADHOC_ENABLED#(lf)from PROD_RAW.MT_SERVER.MTSERVER_TENANT_SETTINGS_STAGING#(lf)where contributor_adhoc_enabled = 'TRUE' #(lf)    OR tenant_id IN ('631326086198067200', '928495359901696000')#(lf)),#(lf)#(lf)user_info as #(lf)(#(lf)select distinct#(lf)tenant_dc,#(lf)user_id,#(lf)case when #(lf)((login_email ilike '%vena%' or ntfctn_email ilike '%vena%') #(lf)or (last_impersonation_login_dt is not null and admin_access_ind = 'Y' and built_in_admin_accnt = 'Y'))#(lf)then 'Y' else null end as consultant_login,#(lf)case#(lf)when (admin_access_ind = 'Y' or mdlr_access_ind = 'Y' or mngr_access_ind = 'Y') then 'power user'#(lf)when (admin_access_ind = 'N' and mdlr_access_ind = 'N' and mngr_access_ind = 'N' and cntrbtr_access_ind = 'Y') then 'business user'#(lf)end as user_type#(lf)from PROD_HARMONIZED.PRODUCT.VW_USER_PROF_EML_INCLD users#(lf)inner join prod_tenant_info #(lf)    on concat(prod_tenant_info.data_cntr_cd, '.', prod_tenant_info.tenant_id) = users.tenant_dc#(lf)where crnt_rcrd_ind = 'Y'#(lf)),#(lf)#(lf)original_rows as#(lf)(#(lf)select#(lf)customer_id as tenant_id,#(lf)tenant_nm,#(lf)account_id,#(lf)CONTRIBUTOR_ADHOC_ENABLED,#(lf)region as vena_hub,#(lf)concat(region,'.',customer_id) as dc_tenant_id, #(lf)staging.user_id,#(lf)user_type,#(lf)action_datetime,#(lf)auth_type,#(lf)file_id, #(lf)office_version,#(lf)total_intersections,#(lf)refresh_duration/1000 as refresh_duration_sec#(lf)from PROD_RAW.PROD_TEAM_SANDBOX.ADHOC_RUM_DATA_STAGING staging #(lf)inner join prod_tenant_info #(lf)    on concat(region,'.',customer_id) = concat(data_cntr_cd,'.',tenant_id)#(lf)left join user_info #(lf)    on concat(region,'.',customer_id) = user_info.tenant_dc #(lf)   and staging.user_id = user_info.user_id #(lf)left join adhoc_enabled #(lf)    on vh_tenant_id = concat(region,'.',customer_id)#(lf)),#(lf)#(lf)abbott_rum_rows as#(lf)(#(lf)    select #(lf)    staging.customer_id as tenant_id,#(lf)    'Abbott Established Pharmaceuticals' as tenant_nm,#(lf)    '0011O00002G24Yc' as account_id,#(lf)    null as CONTRIBUTOR_ADHOC_ENABLED,#(lf)    staging.region as vena_hub,#(lf)    concat(staging.region,'.',staging.customer_id) as dc_tenant_id, #(lf)    staging.user_id,#(lf)    null as user_type,#(lf)    staging.action_datetime,#(lf)    staging.auth_type,#(lf)    staging.file_id, #(lf)    staging.office_version,#(lf)    staging.total_intersections,#(lf)    staging.refresh_duration/1000 as refresh_duration_sec#(lf)    from PROD_RAW.PROD_TEAM_SANDBOX.ADHOC_RUM_DATA_STAGING staging#(lf)    where staging.customer_id = '1309079513996591104'#(lf)),#(lf)#(lf)private_hub_no_rum_rows as#(lf)(#(lf)select#(lf)prod_tenant_info.tenant_id,#(lf)prod_tenant_info.tenant_nm,#(lf)prod_tenant_info.account_id,#(lf)adhoc_enabled.CONTRIBUTOR_ADHOC_ENABLED,#(lf)prod_tenant_info.data_cntr_cd as vena_hub,#(lf)concat(prod_tenant_info.data_cntr_cd,'.',prod_tenant_info.tenant_id) as dc_tenant_id,#(lf)null as user_id,#(lf)null as user_type,#(lf)null as action_datetime,#(lf)null as auth_type,#(lf)null as file_id,#(lf)null as office_version,#(lf)null as total_intersections,#(lf)null as refresh_duration_sec#(lf)from prod_tenant_info#(lf)left join adhoc_enabled #(lf)    on adhoc_enabled.vh_tenant_id = concat(prod_tenant_info.data_cntr_cd,'.',prod_tenant_info.tenant_id)#(lf)where prod_tenant_info.tenant_id in ('631326086198067200', '928495359901696000')#(lf))#(lf)#(lf)select *#(lf)from original_rows#(lf)#(lf)union all#(lf)#(lf)select *#(lf)from abbott_rum_rows#(lf)#(lf)union all#(lf)#(lf)select *#(lf)from private_hub_no_rum_rows", null, [EnableFolding=true]),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "ACTION_DATETIME", "ACTION_DATETIME - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"ACTION_DATETIME - Copy", "Date"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Changed Type", "ACTION_DATETIME", "ACTION_DATETIME - Copy"),
+				    #"Calculated End of Month" = Table.TransformColumns(#"Duplicated Column1",{{"ACTION_DATETIME - Copy", Date.EndOfMonth, type datetime}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Calculated End of Month",{{"ACTION_DATETIME - Copy", type date}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type1",{{"ACTION_DATETIME - Copy", "end of month"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

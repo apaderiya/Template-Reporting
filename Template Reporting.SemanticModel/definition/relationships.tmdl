@@ -1,0 +1,248 @@
+relationship a39f5f8b-cd4b-4184-9b2b-1411b5b6e15d
+	fromColumn: 'Hydra UI - Simple Refreshes'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship e8b79236-1092-416c-942b-4bfed471def3
+	isActive: false
+	fromColumn: 'Additional Tenant Info'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship a313324e-3177-4eff-ac38-7b1bffe92a30
+	fromColumn: 'Hydra UI - Simple Refreshes'.TENANT_ID
+	toColumn: 'Additional Tenant Info'.TENANT_ID
+
+relationship e94cc16e-a41f-4e5d-8239-14433cba0172
+	fromColumn: 'Datadog - V365 Addin'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship 269f1881-f07a-49be-895b-ad2f83952f0d
+	fromColumn: 'Datadog - V365 Addin'.DC_TENANT_ID
+	toColumn: 'Additional Tenant Info'.DC_TENANT_ID
+
+relationship 5cb695c0-c0b6-4508-847c-dbf4eec39705
+	fromColumn: 'Hydra UI - Simple Refreshes'.DATE_OF_REFRESH
+	toColumn: 'Date Table'.Date
+
+relationship 23b13e9f-4fb8-4aa8-ad18-f8817a96f167
+	fromColumn: 'Datadog - V365 Addin'.ETL_LOAD_DATE
+	toColumn: 'Date Table'.Date
+
+relationship db6456ec-678c-4ac2-b784-2491023f9215
+	fromColumn: 'User Detail'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship ce263602-aaa8-4632-b989-d17509ef2e8a
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Summary Template Addins Tenant Info'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship 9a3543db-d4e9-45c9-a86e-4fd0a08f9518
+	fromColumn: 'Desktop Add-in Versions'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship a9d7b28a-8101-4352-92f6-457ffa25fa50
+	fromColumn: 'Desktop Add-in Version Usage'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship 1a6a2d30-7036-41fb-8899-d33bc7615c75
+	fromColumn: 'Desktop Add-in Version Usage'.REQUEST_END_DATE
+	toColumn: 'Date Table'.Date
+
+relationship 5bcba952-1cf4-4c0e-80ce-c2a884b4e3c1
+	fromColumn: 'Desktop Add-in Versions'.TENANT_ID
+	toColumn: 'Additional Tenant Info'.TENANT_ID
+
+relationship AutoDetected_d8cda4fc-d397-443e-b0c2-26466c944d41
+	fromColumn: 'Hydra - Creation Timestamps'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_95b89aa7-bb15-41d8-8fba-0247fa3c2cf0
+	isActive: false
+	fromColumn: 'Hydra - Creation Timestamps'.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship AutoDetected_f085f69e-ecc1-4bd0-b0bc-bc3e71a7983a
+	fromColumn: 'Datadog - V365 Template Creation'.DC_TENANT_ID
+	toColumn: 'Additional Tenant Info'.DC_TENANT_ID
+
+relationship AutoDetected_072b2853-b648-4444-a6b7-3af7b9c6214c
+	fromColumn: 'Desktop Add-in Modified and Saved'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_bc7115c8-be3b-4b27-8562-6fb712315f7b
+	isActive: false
+	fromColumn: 'Desktop Add-in Modified and Saved'.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship 8fe5802b-9bfd-a0d2-cbc7-7a4b94ff2e59
+	fromColumn: 'Desktop Add-in Modified and Saved'.SAVED_MODIFIED_DATE
+	toColumn: 'Date Table'.Date
+
+relationship AutoDetected_85932db8-6d58-4c61-ab5d-45b94629828d
+	isActive: false
+	fromColumn: 'Template Sizes - Desktop Add-in'.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship AutoDetected_9a903e6d-76b6-411a-a06b-df084bdac625
+	fromColumn: 'Tempalte Sizes Global'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship bfcc8964-c944-c7b7-9f6c-4c75bb45ef6f
+	fromColumn: 'Hydra UI - Simple Refreshes'.FILE_ID
+	toColumn: 'Template Sizes - Desktop Add-in'.FILE_ID
+
+relationship AutoDetected_d76e1b99-16f7-4fb1-bf8f-8308b0b2cef3
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: '365 customers first use'.DC_TENANT_ID
+	toColumn: 'Additional Tenant Info'.DC_TENANT_ID
+
+relationship AutoDetected_c6683eec-c0c9-4768-87f3-1850467a1385
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Normalized Desktop Add-in Users'.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship 56304db1-0c3d-ba98-693a-60adddea6c2a
+	fromColumn: 'Hydra UI - Simple Refreshes'.TENANT_ID
+	toColumn: 'Normalized Desktop Add-in Users'.TENANT_ID
+
+relationship AutoDetected_95d5b5ca-cda6-4720-bce6-3e9079591462
+	fromColumn: 'Datadog - AdHoc Addin'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_ac7c06c5-15f0-4dc2-a5a8-8835d73dd083
+	fromColumn: 'Datadog - AdHoc Addin'.TENANT_ID
+	toColumn: 'Normalized Desktop Add-in Users'.TENANT_ID
+
+relationship 4caf8fc2-f444-c681-70fc-3f5c8b55f317
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Datadog - AdHoc Addin'.Date
+	toColumn: 'Date Table'.Date
+
+relationship AutoDetected_80410630-37e9-41c2-bbb5-13e15df96ded
+	isActive: false
+	fromColumn: 'Datadog - AdHoc Addin'.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship AutoDetected_8a61f5f6-7456-4458-8d8b-8238ff256a05
+	fromColumn: 'Datadog - AdHoc Addin'.TENANT_NM
+	toColumn: 'Old Contributor Add-in'.TENANT_NM
+
+relationship 940f9a46-a9cc-4649-599e-433a6978b661
+	crossFilteringBehavior: bothDirections
+	fromColumn: '365 Performance Report Detail'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_d743eae4-339d-43a9-9ccf-ead7a5916d06
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Performance Report Tool Summary'.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_b8b518c3-b552-4831-8449-5ba4330e5879
+	isActive: false
+	fromColumn: 'Performance Report Tool Summary'.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship 74f6a353-a863-575f-54f4-5c0413b4191d
+	fromColumn: '365 Performance Report Detail'.Date
+	toColumn: 'Date Table'.Date
+
+relationship 7f7e1b70-cf4a-e7f2-521b-7a0dde929960
+	fromColumn: 'Desktop Add-in Performance Report Detail'.Date
+	toColumn: 'Date Table'.Date
+
+relationship 222b9729-86e6-4e70-f08b-2d080eb7f8d2
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Date Table'.Date
+	toColumn: 'AdHoc Addin - FY26 MVP'.END_OF_MONTH
+
+relationship AutoDetected_d49c6005-f731-4866-82a8-7326a6b99fdd
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Summary Template Addins Tenant Info'.ACCOUNT_NM
+	toColumn: 'Dimesnions Customer Accounts'.ACCOUNT_NM
+
+relationship AutoDetected_6b23bc4c-6a08-4097-a46a-7b8cdf6ec80e
+	fromColumn: VW_DIM_TEMPLATE_METRICS.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_a751aa39-63e9-4a62-afe9-ad1f778a5179
+	isActive: false
+	fromColumn: VW_DIM_TEMPLATE_METRICS.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship AutoDetected_c50b8093-bea0-4bfb-a36b-c59417859001
+	fromColumn: VW_DIM_TEMPLATE_METRICS.TENANT_NM
+	toColumn: 'Old Contributor Add-in'.TENANT_NM
+
+relationship AutoDetected_d2ea360b-b5c3-4a1c-87b6-3226d08bddf2
+	fromColumn: Agg_Hydra_SimpleRefresh_Tenant_Monthly.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_b5f1baf5-2a75-4b64-9697-a4296f3462ba
+	fromColumn: Agg_Hydra_SimpleRefresh.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_34c536ff-d988-455f-986e-942cde4c45cf
+	fromColumn: Agg_Hydra_SimpleRefresh.FILE_ID
+	toColumn: 'Template Sizes - Desktop Add-in'.FILE_ID
+
+relationship AutoDetected_c219bd23-3345-42c4-89f0-980d606a0b94
+	fromColumn: Agg_V365_Tenant_Monthly.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_c2abb126-613f-401a-a770-010d7d6255f4
+	fromColumn: Agg_V365_Template_Refresh.TENANT_ID
+	toColumn: 'Production Tenant Info'.TENANT_ID
+
+relationship AutoDetected_caf9b3cd-22cd-4bda-b074-e720f7b06d30
+	fromColumn: Agg_V365_Tenant_Monthly.TENANT_ID
+	toColumn: 'Normalized Desktop Add-in Users'.TENANT_ID
+
+relationship AutoDetected_8e6d2d81-84ca-41ca-a6e7-fe46b50fcd2f
+	fromColumn: Agg_V365_Template_Refresh.TENANT_ID
+	toColumn: 'Normalized Desktop Add-in Users'.TENANT_ID
+
+relationship AutoDetected_9092ee6f-22d3-444b-9acc-74de8e0d9f3c
+	isActive: false
+	fromColumn: Agg_V365_Tenant_Monthly.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship AutoDetected_334d895c-1f72-44d1-bc76-27b7900c5bd2
+	isActive: false
+	fromColumn: Agg_V365_Template_Refresh.TENANT_NM
+	toColumn: 'Summary Template Addins Tenant Info'.TENANT_NM
+
+relationship 7a5d9089-0ca9-a932-5d6a-0e8a30d746df
+	fromColumn: Agg_V365_Template_Refresh.YEAR_MONTH
+	toColumn: 'Period Selector'.'Months Back'
+
+relationship 354dbcc8-8d29-3dba-e962-3a0a5a445dad
+	fromColumn: 'FCT Ops File Changes'.CHANGE_DATE
+	toColumn: 'Date Table'.Date
+
+relationship 2f5cfa55-5aea-4c48-bca6-01a2e00c34fd
+	fromColumn: 'FCT Ops Table Actions'.ACTION_DATE
+	toColumn: 'Date Table'.Date
+
+relationship a5eedb63-92b4-384c-38d7-4ec2ff96dab0
+	fromColumn: 'DIM Ops File'.VH_TENANT_ID
+	toColumn: 'DIM Tenant Ops Summary'.VH_TENANT_ID
+
+relationship 5e918b7a-c9f5-e29f-685f-650efbe95fe3
+	fromColumn: 'FCT Ops Table Actions'.VH_TENANT_ID
+	toColumn: 'DIM Tenant Ops Summary'.VH_TENANT_ID
+
+relationship e395f90c-23c1-da94-6017-6c7a59fe4907
+	fromColumn: 'FCT Ops File Changes'.VH_FILE_ID
+	toColumn: 'DIM Ops File'.VH_FILE_ID
+
+relationship e112b761-bb00-43b3-6298-c8c8dff9c1be
+	isActive: false
+	fromColumn: 'DIM Ops File'.FIRST_OPS_USE_DATE
+	toColumn: 'Date Table'.Date
+

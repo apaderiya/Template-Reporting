@@ -1,0 +1,94 @@
+table 'Datadog - V365 Template Creation'
+	lineageTag: 1e476f40-d57c-47cd-96e2-705eb0083278
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: ea61efe1-a08e-46a3-9b9d-96b950b67915
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CENTER
+		dataType: string
+		lineageTag: e9e06b70-54c5-40e3-a205-e21f4bf4e539
+		summarizeBy: none
+		sourceColumn: DATA_CENTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column DC_TENANT_ID
+		dataType: string
+		lineageTag: f3d19300-f4f7-432a-ba2c-4e46c5fd9231
+		summarizeBy: none
+		sourceColumn: DC_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: 28425c9a-d793-43f7-896f-6c294049b171
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: 5b729d09-f8c2-4b33-827d-f4e6884ab569
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATION_DATE_APPROX
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 821c7471-90cd-4cbc-9f02-26e91e114f4e
+		summarizeBy: none
+		sourceColumn: CREATION_DATE_APPROX
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year and Month'
+		dataType: dateTime
+		formatString: MMMM yyyy
+		lineageTag: 4532d858-c898-4849-9b36-f2bfcbdaddc0
+		summarizeBy: none
+		sourceColumn: Year and Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Detail.CONSULTANT_LOGIN'
+		dataType: string
+		lineageTag: 4c20cb83-6d0b-4a2a-b586-339f2337f018
+		summarizeBy: none
+		sourceColumn: User Detail.CONSULTANT_LOGIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Detail.PERMISSIONS_CATEGORY'
+		dataType: string
+		lineageTag: 212ffa50-4fda-4bd0-a06d-eee3593a2e01
+		summarizeBy: none
+		sourceColumn: User Detail.PERMISSIONS_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Datadog - V365 Template Creation' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf))#(lf)#(lf)#(lf)select #(lf)customer_id as tenant_id,#(lf)region as data_center,#(lf)concat(region,'.',tenant_id) as dc_tenant_id,#(lf)user_id,#(lf)file_id,#(lf)min(etl_load_date) as creation_date_approx#(lf)#(lf)from PROD_RAW.PROD_TEAM_SANDBOX.VENALYTICS_RUM_DATA_STAGING staging#(lf)inner join prod_tenant_info on staging.customer_id = prod_tenant_info.tenant_id and staging.region = prod_tenant_info.data_cntr_cd#(lf)where file_id is not null #(lf)and total_duration is not null#(lf)and is_initial_load = 'TRUE'#(lf)AND ACTION_NAME = 'refresh'#(lf)#(lf)group by #(lf)customer_id, #(lf)region, #(lf)concat(region,'.',tenant_id),#(lf)user_id,#(lf)file_id", null, [EnableFolding=true]),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "CREATION_DATE_APPROX", "CREATION_DATE_APPROX - Copy"),
+				    #"Calculated Start of Month" = Table.TransformColumns(#"Duplicated Column",{{"CREATION_DATE_APPROX - Copy", Date.StartOfMonth, type datetime}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Calculated Start of Month",{{"CREATION_DATE_APPROX - Copy", "Year and Month"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"TENANT_ID", "USER_ID"}, #"User Detail", {"TENANT_ID", "USER_ID"}, "User Detail", JoinKind.LeftOuter),
+				    #"Expanded User Detail" = Table.ExpandTableColumn(#"Merged Queries", "User Detail", {"CONSULTANT_LOGIN", "PERMISSIONS_CATEGORY"}, {"User Detail.CONSULTANT_LOGIN", "User Detail.PERMISSIONS_CATEGORY"})
+				in
+				    #"Expanded User Detail"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

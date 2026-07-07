@@ -1,0 +1,117 @@
+table 'FCT Ops File Changes'
+	lineageTag: dc6d8d41-7d5f-4264-9fbd-fa7e570da69a
+
+	column DATA_CENTER
+		dataType: string
+		lineageTag: ad5103fa-e604-4bc5-8a4c-7813af0ac2df
+		summarizeBy: none
+		sourceColumn: DATA_CENTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: afabf2bd-536c-4bc0-88bf-8113ce5c8907
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: 1dbcbd55-a245-469e-9b32-8437f49db131
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANGE_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 33efd371-7870-4e68-845a-f972672aa78a
+		summarizeBy: none
+		sourceColumn: CHANGE_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NEXT_CHANGE_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 5f3de76e-f402-48cd-bb28-767f77dfc21a
+		summarizeBy: none
+		sourceColumn: NEXT_CHANGE_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
+		dataType: decimal
+		lineageTag: 46969b03-3930-43df-8429-7c5cf4d16424
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUMBER_OF_WRITEBACK_QUERIES
+		dataType: decimal
+		lineageTag: 0c8f353d-221c-4281-96e0-ae6cb90a62b9
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_WRITEBACK_QUERIES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHANGE_FLAG
+		dataType: string
+		lineageTag: 4301be9d-93b7-4a60-9e87-7638a2de5770
+		summarizeBy: none
+		sourceColumn: CHANGE_FLAG
+
+		annotation SummarizationSetBy = Automatic
+
+	column V365_INITIAL_REFRESH_COUNT_IN_PERIOD
+		dataType: decimal
+		lineageTag: 4f10547b-30bc-4583-9423-08cb3ac79844
+		summarizeBy: sum
+		sourceColumn: V365_INITIAL_REFRESH_COUNT_IN_PERIOD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VH_TENANT_ID
+		dataType: string
+		lineageTag: 9522cf32-ff62-4d98-abdc-8db65a215d52
+		summarizeBy: none
+		sourceColumn: VH_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VH_FILE_ID
+		dataType: string
+		lineageTag: dafb204b-8f94-45fa-b4fc-7f90252f8761
+		summarizeBy: none
+		sourceColumn: VH_FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'FCT Ops File Changes' = m
+		mode: import
+		queryGroup: 'Operations Table'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_HARMONIZED"]}[Data], "WITH prod_tenants AS (#(lf)    SELECT DISTINCT#(lf)        DATA_CNTR_CD,#(lf)        TENANT_ID#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    WHERE CRNT_RCRD_IND = 'Y'#(lf)      AND TENANT_TYP_NM = 'PRODUCTION'#(lf)      AND TENANT_ENBLD_STATUS_NM = 'ENABLED'#(lf)      AND ORGANIZATION_TYP_NM = 'CUSTOMER'#(lf)),#(lf)#(lf)raw_template_metrics AS (#(lf)    SELECT#(lf)        p.DATA_CNTR_CD  AS DATA_CENTER,#(lf)        t.TENANT_ID,#(lf)        t.FILE_ID,#(lf)        t.ETL_LOAD_DATE,#(lf)        t.CONTENT_ID,#(lf)        COALESCE(TRY_TO_NUMBER(t.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS), 0) AS NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        COALESCE(TRY_TO_NUMBER(t.NUMBER_OF_WRITEBACK_QUERIES), 0)           AS NUMBER_OF_WRITEBACK_QUERIES#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING t#(lf)    INNER JOIN prod_tenants p#(lf)        ON RIGHT(t.DATA_CENTER, 3) = p.DATA_CNTR_CD#(lf)       AND t.TENANT_ID = p.TENANT_ID#(lf)),#(lf)#(lf)latest_record_per_etl_date AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        ETL_LOAD_DATE,#(lf)        CONTENT_ID,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES,#(lf)        CASE #(lf)            WHEN NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS > 0#(lf)              OR NUMBER_OF_WRITEBACK_QUERIES > 0#(lf)            THEN 1#(lf)            ELSE 0#(lf)        END AS HAS_OP_TABLE_LOGIC#(lf)    FROM raw_template_metrics#(lf)    QUALIFY ROW_NUMBER() OVER (#(lf)        PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID, ETL_LOAD_DATE#(lf)        ORDER BY CONTENT_ID DESC#(lf)    ) = 1#(lf)),#(lf)#(lf)first_op_record AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        MIN(ETL_LOAD_DATE) AS FIRST_OP_ETL_LOAD_DATE#(lf)    FROM latest_record_per_etl_date#(lf)    WHERE HAS_OP_TABLE_LOGIC = 1#(lf)    GROUP BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)),#(lf)#(lf)relevant_history AS (#(lf)    SELECT#(lf)        l.DATA_CENTER,#(lf)        l.TENANT_ID,#(lf)        l.FILE_ID,#(lf)        l.ETL_LOAD_DATE,#(lf)        l.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        l.NUMBER_OF_WRITEBACK_QUERIES#(lf)    FROM latest_record_per_etl_date l#(lf)    INNER JOIN first_op_record f#(lf)        ON l.DATA_CENTER   = f.DATA_CENTER#(lf)       AND l.TENANT_ID     = f.TENANT_ID#(lf)       AND l.FILE_ID       = f.FILE_ID#(lf)       AND l.ETL_LOAD_DATE >= f.FIRST_OP_ETL_LOAD_DATE#(lf)),#(lf)#(lf)change_detection AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        ETL_LOAD_DATE AS CHANGE_DATE,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES,#(lf)        LAG(NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)            ORDER BY ETL_LOAD_DATE#(lf)        ) AS PREV_CHOOSE_MAPPINGS,#(lf)        LAG(NUMBER_OF_WRITEBACK_QUERIES) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)            ORDER BY ETL_LOAD_DATE#(lf)        ) AS PREV_WRITEBACK_QUERIES,#(lf)        ROW_NUMBER() OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)            ORDER BY ETL_LOAD_DATE#(lf)        ) AS RECORD_SEQUENCE#(lf)    FROM relevant_history#(lf)),#(lf)#(lf)fact_change_rows AS (#(lf)    SELECT#(lf)        DATA_CENTER,#(lf)        TENANT_ID,#(lf)        FILE_ID,#(lf)        CHANGE_DATE,#(lf)        NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)        NUMBER_OF_WRITEBACK_QUERIES,#(lf)        PREV_CHOOSE_MAPPINGS,#(lf)        PREV_WRITEBACK_QUERIES,#(lf)        RECORD_SEQUENCE#(lf)    FROM change_detection#(lf)    WHERE RECORD_SEQUENCE = 1#(lf)       OR NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS <> PREV_CHOOSE_MAPPINGS#(lf)       OR NUMBER_OF_WRITEBACK_QUERIES        <> PREV_WRITEBACK_QUERIES#(lf)),#(lf)#(lf)fact_with_periods AS (#(lf)    SELECT#(lf)        f.*,#(lf)        LEAD(CHANGE_DATE) OVER (#(lf)            PARTITION BY DATA_CENTER, TENANT_ID, FILE_ID#(lf)            ORDER BY CHANGE_DATE#(lf)        ) AS NEXT_CHANGE_DATE#(lf)    FROM fact_change_rows f#(lf)),#(lf)#(lf)v365_refresh_events AS (#(lf)    SELECT#(lf)        r.DATA_CNTR_CD                 AS DATA_CENTER,#(lf)        r.TENANT_ID,#(lf)        r.FILE_ID,#(lf)        TO_DATE(r.EVENT_DT)            AS REFRESH_DATE#(lf)    FROM PROD_HARMONIZED.PRODUCT.RUM_DATA_LOG r#(lf)    WHERE r.FILE_ID IS NOT NULL#(lf)      AND r.INITIAL_LOAD_IND = 'Y'#(lf))#(lf)#(lf)SELECT#(lf)    CONCAT(fp.DATA_CENTER, '.', fp.TENANT_ID)  AS VH_TENANT_ID,#(lf)    fp.DATA_CENTER,#(lf)    fp.TENANT_ID,#(lf)    fp.FILE_ID,#(lf)    fp.CHANGE_DATE,#(lf)    fp.NEXT_CHANGE_DATE,#(lf)    fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)    fp.NUMBER_OF_WRITEBACK_QUERIES,#(lf)#(lf)    CASE#(lf)        WHEN fp.RECORD_SEQUENCE = 1 THEN 'FIRST_INSTANCE'#(lf)        WHEN fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS > fp.PREV_CHOOSE_MAPPINGS#(lf)         AND fp.NUMBER_OF_WRITEBACK_QUERIES        > fp.PREV_WRITEBACK_QUERIES THEN 'BOTH_INCREASED'#(lf)        WHEN fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS < fp.PREV_CHOOSE_MAPPINGS#(lf)         AND fp.NUMBER_OF_WRITEBACK_QUERIES        < fp.PREV_WRITEBACK_QUERIES THEN 'BOTH_DECREASED'#(lf)        WHEN fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS <> fp.PREV_CHOOSE_MAPPINGS#(lf)         AND fp.NUMBER_OF_WRITEBACK_QUERIES        <> fp.PREV_WRITEBACK_QUERIES THEN 'BOTH_CHANGED_MIXED'#(lf)        WHEN fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS > fp.PREV_CHOOSE_MAPPINGS THEN 'CHOOSE_MAPPING_INCREASED'#(lf)        WHEN fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS < fp.PREV_CHOOSE_MAPPINGS THEN 'CHOOSE_MAPPING_DECREASED'#(lf)        WHEN fp.NUMBER_OF_WRITEBACK_QUERIES > fp.PREV_WRITEBACK_QUERIES THEN 'WRITEBACK_QUERY_INCREASED'#(lf)        WHEN fp.NUMBER_OF_WRITEBACK_QUERIES < fp.PREV_WRITEBACK_QUERIES THEN 'WRITEBACK_QUERY_DECREASED'#(lf)    END AS CHANGE_FLAG,#(lf)#(lf)    COUNT(r.FILE_ID) AS V365_INITIAL_REFRESH_COUNT_IN_PERIOD#(lf)#(lf)FROM fact_with_periods fp#(lf)LEFT JOIN v365_refresh_events r#(lf)    ON r.DATA_CENTER   = fp.DATA_CENTER#(lf)   AND r.TENANT_ID     = fp.TENANT_ID#(lf)   AND r.FILE_ID       = fp.FILE_ID#(lf)   AND r.REFRESH_DATE >= fp.CHANGE_DATE#(lf)   AND (fp.NEXT_CHANGE_DATE IS NULL OR r.REFRESH_DATE < fp.NEXT_CHANGE_DATE)#(lf)GROUP BY#(lf)    fp.DATA_CENTER,#(lf)    fp.TENANT_ID,#(lf)    fp.FILE_ID,#(lf)    fp.CHANGE_DATE,#(lf)    fp.NEXT_CHANGE_DATE,#(lf)    fp.NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS,#(lf)    fp.NUMBER_OF_WRITEBACK_QUERIES,#(lf)    fp.PREV_CHOOSE_MAPPINGS,#(lf)    fp.PREV_WRITEBACK_QUERIES,#(lf)    fp.RECORD_SEQUENCE#(lf)ORDER BY#(lf)    fp.DATA_CENTER,#(lf)    fp.TENANT_ID,#(lf)    fp.FILE_ID,#(lf)    fp.CHANGE_DATE", null, [EnableFolding=true]),
+				    #"Added Custom" = Table.AddColumn(Source, "VH_FILE_ID", each [VH_TENANT_ID] & "." & [FILE_ID])
+				in
+				    #"Added Custom"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

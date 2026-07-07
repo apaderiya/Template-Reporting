@@ -1,0 +1,1280 @@
+table _Measures
+	lineageTag: cabf0f2c-b7c6-4261-a486-1389f308969e
+
+	measure '% Below 8s (Vena)' = ```
+			
+			    DIVIDE([Refreshes Below 8s (Vena)],
+			           [Total Refreshes (Vena)])
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: af4a4e06-b9df-4415-831c-bd72372189cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Below 8s (Tenant)' =
+			
+			DIVIDE(
+			    [Refreshes Below 8s (Tenant)],
+			    [Total Refreshes (Tenant)]
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 57b95199-8a52-4cac-802a-b298aeb9b6a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Timing (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[AVG_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: a70aaeb1-bd89-486f-9357-7ba0d42c5152
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Most Recent Refresh' = MAX(Agg_Hydra_SimpleRefresh_Tenant_Monthly[MOST_RECENT_REFRESH])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 26f9ab8c-4158-4417-8f9d-8ae62af3cef8
+
+	measure 'P25 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P25_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 13e9a8ce-dcef-4eac-b61d-11dcd55622d6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P50 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P50_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 2f2b9d44-08c5-4647-9f0c-e372135832ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P70 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P70_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 98bd9e10-958b-466a-9dd3-fd4a33f443a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P80 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P80_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 199d807f-8f2a-4a37-9036-b200bd0c5679
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P90 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P90_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 8b8117dc-df99-4e4f-a34b-8a654256cdaf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P95 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P95_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 72a159de-df94-425f-b15b-f14077fd36aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P99 (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh_Tenant_Monthly,
+			            Agg_Hydra_SimpleRefresh_Tenant_Monthly[P99_TIMING] * Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: ea4ebd32-8b15-4670-8e7f-f5ee1b18b863
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Refreshes Below 8s (Tenant)' = SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESHES_BELOW_8S])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 897bd6d5-c0a3-4019-b8b4-5d15e23d95f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Refreshes (Tenant)' = SUM(Agg_Hydra_SimpleRefresh_Tenant_Monthly[REFRESH_COUNT])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Hydra
+		lineageTag: 7bc9a021-5651-4b95-80f7-8c2bdd029eb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Distinct Tenants' = SUM(Agg_Hydra_SimpleRefresh_Monthly[DISTINCT_TENANTS])
+		formatString: #,0
+		displayFolder: Vena_Monthly_Hydra
+		lineageTag: c4ef590f-fc86-429e-9131-a556291d27a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Distinct Users' = SUM(Agg_Hydra_SimpleRefresh_Monthly[DISTINCT_USERS])
+		formatString: #,0
+		displayFolder: Vena_Monthly_Hydra
+		lineageTag: b054de86-aa01-4c20-b1f3-36cad8c2a9f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P50 Latest Month' = ```
+			
+			    VAR _MaxMonth = MAX(Agg_Hydra_SimpleRefresh_Monthly[YEAR_MONTH])
+			    RETURN
+			    CALCULATE(
+			        MAX(Agg_Hydra_SimpleRefresh[P50_TIMING]),
+			        Agg_Hydra_SimpleRefresh_Monthly[YEAR_MONTH] = _MaxMonth
+			    )
+			```
+		formatString: #,0
+		displayFolder: Vena_Monthly_Hydra
+		lineageTag: ccb6f567-8566-4636-bc15-3aa9e13e81fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P95 Latest Month' = ```
+			
+			    VAR _MaxMonth = MAX(Agg_Hydra_SimpleRefresh_Monthly[YEAR_MONTH])
+			    RETURN
+			    CALCULATE(
+			        MAX(Agg_Hydra_SimpleRefresh_Monthly[P95_TIMING]),
+			        Agg_Hydra_SimpleRefresh_Monthly[YEAR_MONTH] = _MaxMonth
+			    )
+			```
+		formatString: #,0
+		displayFolder: Vena_Monthly_Hydra
+		lineageTag: 5b1b355f-40a7-4fce-a91d-c2dd08d3cb09
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Refreshes Below 8s (Vena)' = SUM(Agg_Hydra_SimpleRefresh_Monthly[REFRESHES_BELOW_8S])
+		formatString: #,0
+		displayFolder: Vena_Monthly_Hydra
+		lineageTag: 491d3e9f-37e6-4795-a7bf-fe9de10788e0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Refreshes (Vena)' = SUM(Agg_Hydra_SimpleRefresh_Monthly[TOTAL_REFRESHES])
+		formatString: #,0
+		displayFolder: Vena_Monthly_Hydra
+		lineageTag: 8937b1d2-3f49-4843-b1dc-33129c602b6b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Refresh Time' = AVERAGE(Agg_Hydra_SimpleRefresh[AVG_TIMING])
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: a4bee04a-8a23-480d-abbf-1f6df892692a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Timing Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX('Agg_Hydra_SimpleRefresh',
+			            'Agg_Hydra_SimpleRefresh'[AVG_TIMING] * 'Agg_Hydra_SimpleRefresh'[REFRESH_COUNT]
+			        ),
+			        SUM('Agg_Hydra_SimpleRefresh'[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 444d2c3a-57d5-48c8-9502-d0fa5c80162d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P25 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P25_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: c8f54f76-3c3b-4c8a-9c4a-ab5f13c4566e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P50 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P50_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 112bea9e-0a51-4ad6-94c4-637c105625c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P70 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P70_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 1a9d98fd-e6ca-4bc6-bdf5-7877340b2263
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P80 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P80_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: fa5a3932-0b68-463a-974a-1bd5304fade4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P90 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P90_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: d8b22dfb-679e-4439-913f-90abda997222
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P95 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P95_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: d97fded4-771d-48e9-90f2-73511c262dfe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P99 Template (Weighted)' = ```
+			
+			    DIVIDE(
+			        SUMX(Agg_Hydra_SimpleRefresh,
+			            Agg_Hydra_SimpleRefresh[P99_TIMING] * Agg_Hydra_SimpleRefresh[REFRESH_COUNT]
+			        ),
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT])
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: bf58dec4-354e-4523-ba48-ebc8b6e3c751
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Refresh Count (30d)' = ```
+			
+			    VAR _StartOfMonth = DATE(YEAR(TODAY()), MONTH(TODAY()), 1)
+			    RETURN
+			    CALCULATE(
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _StartOfMonth
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 290c52b9-6c00-4099-8c51-8d780d73365a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Refresh Count (3m)' = ```
+			
+			    VAR _Start = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1),-2)
+			    RETURN
+			    CALCULATE(
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _Start
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 8c44740d-03de-416b-bb70-674cae188a90
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Refresh Count (6m)' = ```
+			
+			    VAR _Start = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1),-5)
+			    RETURN
+			    CALCULATE(
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _Start
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 73eceb6b-07a2-482f-8311-bbfb10edf5bf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Refresh Count (Dynamic Period)' = ```
+			
+			    VAR _MonthsBack = SELECTEDVALUE('Period Selector'[Months Back], 12)
+			    VAR _StartDate = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), -_MonthsBack + 1)
+			    RETURN
+			    CALCULATE(
+			        SUM(Agg_Hydra_SimpleRefresh[REFRESH_COUNT]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _StartDate
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: a6cb73c4-e8a0-437c-862c-b9c5574214f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Unique Templates (Dynamic)' = ```
+			
+			    VAR _MonthsBack = SELECTEDVALUE('Period Selector'[Months Back], 12)
+			    VAR _StartDate = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), -_MonthsBack + 1)
+			    RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Agg_Hydra_SimpleRefresh[FILE_ID]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _StartDate
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: e34638a2-ce26-426c-aeba-36b664109e2c
+
+	measure 'Unique Tenants (Dynamic)' = ```
+			
+			    VAR _MonthsBack = SELECTEDVALUE('Period Selector'[Months Back], 12)
+			    VAR _StartDate = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), -_MonthsBack + 1)
+			    RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Agg_Hydra_SimpleRefresh[TENANT_ID]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _StartDate
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 85bafcf1-1035-4007-9f22-3e1424bd8be3
+
+	measure 'Unique Users (Dynamic)' = ```
+			
+			    VAR _MonthsBack = SELECTEDVALUE('Period Selector'[Months Back], 12)
+			    VAR _StartDate = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), -_MonthsBack + 1)
+			    RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Agg_Hydra_SimpleRefresh[DISTINCT_USERS]),
+			        Agg_Hydra_SimpleRefresh[YEAR_MONTH] >= _StartDate
+			    )
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: bb7ea7af-41a5-4c11-8130-1a4432816dcb
+
+	measure 'Slow Templates Count' = ```
+			
+			    COUNTROWS(
+			        FILTER(
+			            VALUES(Agg_Hydra_SimpleRefresh[TIMING_VRBL_NM]),
+			            [Avg Timing Template (Weighted)] > 8
+			        )
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 8cf49796-09e0-441c-9267-643729474d49
+
+	measure 'Worst Template P95' = ```
+			
+			    MAXX(
+			        VALUES(Agg_Hydra_SimpleRefresh[TIMING_VRBL_NM]),
+			        [P95 Template (Weighted)]
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: af33dba5-f520-4e17-a628-2b5dd6298eb5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Worst Template Name' = ```
+			
+			    VAR _MaxP95 = [Worst Template P95]
+			    RETURN
+			    MAXX(
+			        FILTER(
+			            VALUES(Agg_Hydra_SimpleRefresh[TIMING_VRBL_NM]),
+			            [P95 Template (Weighted)] = _MaxP95
+			        ),
+			        Agg_Hydra_SimpleRefresh[TIMING_VRBL_NM]
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: Hydra_SimpleRefesh
+		lineageTag: 9d98b0d6-fff1-4fff-998b-afbac5e1c9fb
+
+	measure 'V365 Total Refreshes (Vena)' = SUM('agg_v365_vena_monthly'[total_refreshes])
+		formatString: #,0
+		displayFolder: Vena_Monthly_Datadog
+		lineageTag: 7f601f25-1b35-4afa-a222-67ec060bcf1a
+
+	measure 'V365 Refreshes Below 8s (Vena)' = SUM('agg_v365_vena_monthly'[refreshes_below_8s])
+		formatString: #,0
+		displayFolder: Vena_Monthly_Datadog
+		lineageTag: 49f06fcb-70ba-4f60-a86b-a466fb5791c0
+
+	measure 'V365 % Below 8s (Vena)' =
+			DIVIDE(
+			    [V365 Refreshes Below 8s (Vena)],
+			    [V365 Total Refreshes (Vena)]
+			)
+		formatString: #,0
+		displayFolder: Vena_Monthly_Datadog
+		lineageTag: 7b7f6f4e-4d5b-49eb-b8c1-c32ba3cfcde4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'V365 P50 Latest Month' =
+			VAR _MaxMonth = MAX('agg_v365_vena_monthly'[year_month])
+			RETURN
+			CALCULATE(
+			    MAX('agg_v365_vena_monthly'[p50_duration]),
+			    'agg_v365_vena_monthly'[year_month] = _MaxMonth
+			)
+		formatString: #,0
+		displayFolder: Vena_Monthly_Datadog
+		lineageTag: 81b6f3a4-672b-4b93-a2ed-eb12366da79d
+
+	measure 'V365 P95 Latest Month' =
+			VAR _MaxMonth = MAX('agg_v365_vena_monthly'[year_month])
+			RETURN
+			CALCULATE(
+			    MAX('agg_v365_vena_monthly'[p95_duration]),
+			    'agg_v365_vena_monthly'[year_month] = _MaxMonth
+			)
+		formatString: #,0
+		displayFolder: Vena_Monthly_Datadog
+		lineageTag: ee054f9e-58a4-4b55-a39b-f72b01339753
+
+	measure 'V365 % Below 8s Latest Month' =
+			VAR _MaxMonth = MAX('agg_v365_vena_monthly'[year_month])
+			RETURN
+			CALCULATE(
+			    MAX('agg_v365_vena_monthly'[pct_below_8s]),
+			    'agg_v365_vena_monthly'[year_month] = _MaxMonth
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Vena_Monthly_Datadog
+		lineageTag: caad799e-76e6-480f-80cc-5715da821600
+
+	measure 'V365 Total Refreshes (Tenant)' = SUM('agg_v365_tenant_monthly'[refresh_count])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 84a7244c-a1d6-42d9-af97-e70407ed71cb
+
+	measure 'V365 % Below 8s (Tenant)' =
+			DIVIDE(
+			    [V365 Total Refreshes (Tenant)],
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: ba9d0c8a-70e1-4236-b177-aa65153668b6
+
+	measure 'V365 Most Recent Refresh' = MAX('agg_v365_tenant_monthly'[most_recent_refresh])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 920877ca-afa4-489a-879c-25f9804dd4af
+
+	measure 'V365 Tenant P25 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p25_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 9941c80a-7d63-469f-8a48-3bcb3d45294f
+
+	measure 'V365 Tenant P50 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p50_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 81dc2cd5-5894-45d5-aafd-db8df3acae46
+
+	measure 'V365 Tenant P70 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p70_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 0abde5ef-5199-4d22-b562-4e327be99381
+
+	measure 'V365 Tenant P80 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p80_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: b35c317c-ec1d-4df2-9041-8cd95ecae365
+
+	measure 'V365 Tenant P90 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p90_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: fac26f04-0426-4576-96e5-42e79134987f
+
+	measure 'V365 Tenant P95 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p95_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: bae03ddf-6966-42c4-b889-8de87c0d0ba6
+
+	measure 'V365 Tenant P99 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[p99_duration]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 92ebcc58-3723-4ec1-b820-8ee9c51fe138
+
+	measure 'V365 Tenant Avg Duration (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_tenant_monthly',
+			        'agg_v365_tenant_monthly'[avg_duration_sec]
+			            * 'agg_v365_tenant_monthly'[refresh_count]
+			    ),
+			    SUM('agg_v365_tenant_monthly'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: b52b0262-7b91-4145-a856-699604f167f8
+
+	measure 'V365 Selected Tenant Count' = DISTINCTCOUNT('agg_v365_tenant_monthly'[tenant_id])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: f5c976bc-5865-495e-97f2-405bafc3fbc2
+
+	measure 'V365 Refreshes Below 8s (Tenant)' = SUM(Agg_V365_Tenant_Monthly[REFRESHES_BELOW_8S])
+		formatString: #,0
+		displayFolder: Tenant_Monthly_Datadog
+		lineageTag: 1960bc17-6252-44c2-b349-a24951e72114
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'V365 Refresh Count (Dynamic)' =
+			VAR _MonthsBack = SELECTEDVALUE('Period Selector'[Months Back], 12)
+			VAR _StartDate = EDATE(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), -_MonthsBack + 1)
+			RETURN
+			CALCULATE(
+			    SUM('agg_v365_template_refresh'[refresh_count]),
+			    'agg_v365_template_refresh'[year_month] >= _StartDate
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 9627c1b8-fbc1-4fe5-bdba-8b18aacd23ba
+
+	measure 'V365 Avg Duration (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_template_refresh',
+			        'agg_v365_template_refresh'[avg_duration_sec]
+			            * 'agg_v365_template_refresh'[refresh_count]
+			    ),
+			    SUM('agg_v365_template_refresh'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 21055cc9-701b-4ed0-918e-ebbc2c2f727f
+
+	measure 'V365 P50 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_template_refresh',
+			        'agg_v365_template_refresh'[p50_duration]
+			            * 'agg_v365_template_refresh'[refresh_count]
+			    ),
+			    SUM('agg_v365_template_refresh'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: a88a27ba-9010-44ab-9aaf-8e3a6dac4c52
+
+	measure 'V365 P80 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_template_refresh',
+			        'agg_v365_template_refresh'[p80_duration]
+			            * 'agg_v365_template_refresh'[refresh_count]
+			    ),
+			    SUM('agg_v365_template_refresh'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: b10d6749-0008-4c43-8cfe-b22e059216b4
+
+	measure 'V365 P95 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_template_refresh',
+			        'agg_v365_template_refresh'[p95_duration]
+			            * 'agg_v365_template_refresh'[refresh_count]
+			    ),
+			    SUM('agg_v365_template_refresh'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 7c9376fe-4b2a-41fd-a178-a88bfbbed98a
+
+	measure 'V365 P99 (Weighted)' =
+			DIVIDE(
+			    SUMX(
+			        'agg_v365_template_refresh',
+			        'agg_v365_template_refresh'[p99_duration]
+			            * 'agg_v365_template_refresh'[refresh_count]
+			    ),
+			    SUM('agg_v365_template_refresh'[refresh_count])
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 1cfa5273-de74-467f-b001-e0ce3161594e
+
+	measure 'V365 % Below 8s' =
+			DIVIDE(
+			    SUM('agg_v365_template_refresh'[refreshes_below_8s]),
+			    SUM('agg_v365_template_refresh'[refresh_count])
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 8d2b01bb-065e-4133-984d-342fc4ca2fd1
+
+	measure 'V365 Slow Templates Count' =
+			COUNTROWS(
+			    FILTER(
+			        VALUES('agg_v365_template_refresh'[file_id]),
+			        [V365 Avg Duration (Weighted)] > 8
+			    )
+			)
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 5743d319-6d7b-4e8c-9b53-b88a2bb4e736
+
+	measure 'V365 Worst Template P95' = ```
+			
+			    MAXX(
+			        VALUES('agg_v365_template_refresh'[file_id]),
+			        [V365 P95 (Weighted)]
+			    )
+			```
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 3eaf0ca3-ac88-4b13-ae3f-edb79f80d017
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'V365 Worst Template ID' = ```
+			
+			    VAR _MaxP95 = [V365 Worst Template P95]
+			    RETURN
+			    MAXX(
+			        FILTER(
+			            VALUES('agg_v365_template_refresh'[file_id]),
+			            [V365 P95 (Weighted)] = _MaxP95
+			        ),
+			        'agg_v365_template_refresh'[file_id]
+			    )
+			```
+		formatString: #,0
+		displayFolder: V365_Weighted_Measures
+		lineageTag: 42930d18-1cf8-401f-9326-bd50015bdf84
+
+	measure 'Customers - Total' = ```
+			
+			DISTINCTCOUNT( 'DIM Tenant Ops Summary'[VH_TENANT_ID] )
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 98bfbd25-f1fb-4977-b05d-e13900424b73
+
+	measure 'Files - Total' = ```
+			
+			DISTINCTCOUNT( 'DIM Ops File'[VH_FILE_ID] )
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: fac7febb-6baa-412f-ae0c-6fbcee2e984c
+
+	measure 'Customers - Active Last 30d' = ```
+			
+			VAR CutoffDate = TODAY() - 30
+			VAR TenantsWithReads =
+			    CALCULATETABLE(
+			        VALUES( 'FCT Ops Table Actions'[VH_TENANT_ID] ),
+			        'FCT Ops Table Actions'[ACTION_DATE] >= CutoffDate,
+			        'FCT Ops Table Actions'[ACTION_TYPE] = "read_query"
+			    )
+			VAR TenantsWithWrites =
+			    CALCULATETABLE(
+			        VALUES( 'FCT Ops Table Actions'[VH_TENANT_ID] ),
+			        'FCT Ops Table Actions'[ACTION_DATE] >= CutoffDate,
+			        'FCT Ops Table Actions'[ACTION_TYPE] IN { "write"}
+			    )
+			RETURN
+			    COUNTROWS( INTERSECT( TenantsWithReads, TenantsWithWrites ) )
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 4dc17e3b-6aa9-4bea-81e5-637b4fc86cd5
+
+	measure 'Customers - Changes Last 30d' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT( 'FCT Ops File Changes'[VH_TENANT_ID] ),
+			    'FCT Ops File Changes'[CHANGE_DATE] >= TODAY() - 30,
+			    'FCT Ops File Changes'[CHANGE_FLAG] <> "FIRST_INSTANCE"
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 7f510863-eef5-49f3-8954-467cd51a069a
+
+	measure 'Files - Changes Last 30d' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT( 'FCT Ops File Changes'[FILE_ID] ),
+			    'FCT Ops File Changes'[NEXT_CHANGE_DATE] >= TODAY() - 30
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 19911946-dbd7-425a-989f-a677b6072409
+
+	measure 'Files - Refreshed Last 30d' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT( 'DIM Ops File'[VH_FILE_ID] ),
+			    'DIM Ops File'[V365_MOST_RECENT_REFRESH_DATE] >= TODAY() - 30
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 0d512675-4a5e-4ff7-941d-21c9fe40828d
+
+	measure 'Funnel - Step 1 Tenants' =
+			
+			DISTINCTCOUNT( 'DIM Tenant Ops Summary'[VH_TENANT_ID] )
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: bc66a216-06d0-4c5c-bb40-fb04a279d09b
+
+	measure 'Funnel - Step 3 Tenants w/ File Actions' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT( 'FCT Ops Table Actions'[VH_TENANT_ID] ),
+			    'FCT Ops Table Actions'[ACTION_TYPE] <> "create"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 947383bf-1900-4022-ae57-8830136d4a8f
+
+	measure 'Funnel - Step 4 Tenants w/ Changes' = ```
+			
+			    CALCULATE(
+			        DISTINCTCOUNT('FCT Ops File Changes'[VH_TENANT_ID]),
+			        'FCT Ops File Changes'[NEXT_CHANGE_DATE] <> BLANK()
+			    )
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 6280cf05-7202-4825-ae2d-9ded82a98ebf
+
+	measure 'Usage - Reads Last 30d' = ```
+			
+			CALCULATE(
+			    SUM( 'FCT Ops Table Actions'[EVENT_COUNT] ),
+			    'FCT Ops Table Actions'[ACTION_DATE] >= TODAY() - 30,
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "read_query"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 29a43918-a706-4fda-9d2e-d29324b9fa17
+
+	measure 'Usage - Writes Last 30d' = ```
+			
+			CALCULATE(
+			    SUM( 'FCT Ops Table Actions'[EVENT_COUNT] ),
+			    'FCT Ops Table Actions'[ACTION_DATE] >= TODAY() - 30,
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "write"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: b61f75cf-f86c-488f-baec-809108887e13
+
+	measure 'Chart - Adoption by Month' =
+			
+			VAR CurrentMonthStart = MIN( 'Date Table'[Date] )
+			VAR CurrentMonthEnd   = MAX( 'Date Table'[Date] )
+			
+			VAR FileFirstActivation =
+			    CALCULATETABLE(
+			        ADDCOLUMNS(
+			            VALUES( 'FCT Ops File Changes'[VH_FILE_ID] ),
+			            "FirstWBDate",
+			            CALCULATE(
+			                MIN( 'FCT Ops File Changes'[CHANGE_DATE] ),
+			                'FCT Ops File Changes'[NUMBER_OF_WRITEBACK_QUERIES] >= 1
+			            )
+			        ),
+			        ALL( 'Date Table' )
+			    )
+			
+			VAR FilesThisMonth =
+			    FILTER(
+			        FileFirstActivation,
+			        NOT ISBLANK( [FirstWBDate] )
+			            && [FirstWBDate] >= CurrentMonthStart
+			            && [FirstWBDate] <= CurrentMonthEnd
+			    )
+			
+			RETURN
+			    COUNTROWS( FilesThisMonth )
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 93643524-b6a0-403e-bd34-04698f2ff281
+
+	measure 'Chart - File Modifications by Month' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT( 'FCT Ops File Changes'[VH_FILE_ID] ),
+			    'FCT Ops File Changes'[CHANGE_FLAG] <> "FIRST_INSTANCE"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: a171560f-e109-4e98-9952-aa0fd27366b7
+
+	measure 'Chart - Write Events by Month' = ```
+			
+			CALCULATE(
+			    SUM( 'FCT Ops Table Actions'[EVENT_COUNT] ),
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "write"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 187cae56-943f-4c45-9bb6-7f08034a85d6
+
+	measure 'Funnel - Value' =
+			
+			SWITCH(
+			    SELECTEDVALUE( 'Funnel Steps'[Step Order] ),
+			    1, [Funnel - Step 1 Tenants],
+			    2, [Funnel - Step 2 Tenants w/ Files],
+			    3, [Funnel - Step 3 Tenants w/ File Actions],
+			    4, [Funnel - Step 4 Tenants w/ Changes]
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 5e81ac0d-71ed-4462-9fce-7fb3d1078d34
+
+	measure 'Usage - Sync Full Last 30d' =
+			
+			CALCULATE(
+			    SUM( 'FCT Ops Table Actions'[EVENT_COUNT] ),
+			    'FCT Ops Table Actions'[ACTION_DATE] >= TODAY() - 30,
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "sync_full"
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 65c5cfa1-1072-4836-9c60-2236e3fd1c20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Files Adopted - Writeback 0 to 1' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('FCT Ops File Changes'[FILE_ID]),
+			    'FCT Ops File Changes'[CHANGE_FLAG] = "FIRST_INSTANCE",
+			    'FCT Ops File Changes'[NUMBER_OF_WRITEBACK_QUERIES] > 0
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 7682c707-a6de-4168-b95c-587e621a467d
+
+	measure 'Files Modified' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('FCT Ops File Changes'[FILE_ID]),
+			    'FCT Ops File Changes'[CHANGE_FLAG] <> "FIRST_INSTANCE"
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 5ca36d5c-16c9-425b-aa91-28032095fef3
+
+	measure 'Write Instances' =
+			
+			CALCULATE(
+			    SUM('FCT Ops Table Actions'[EVENT_COUNT]),
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "write"
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: d9b00d72-e30b-4144-a69e-13876e61eb26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sync Full Instances' =
+			
+			CALCULATE(
+			    SUM('FCT Ops Table Actions'[EVENT_COUNT]),
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "sync_full"
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: c7330c2f-174b-4edd-8727-297f78beff05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sync Partial Instances' =
+			
+			CALCULATE(
+			    SUM('FCT Ops Table Actions'[EVENT_COUNT]),
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "sync"
+			    )
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 06a9ba59-b475-4591-89af-552c59f82047
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Read Instances' =
+			
+			CALCULATE(
+			    SUM('FCT Ops Table Actions'[EVENT_COUNT]),
+			    'FCT Ops Table Actions'[ACTION_TYPE] = "read"
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 61130c22-a927-4479-a33a-0f206f6d61fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Usage Instances' =
+			
+			CALCULATE(
+			    SUM('FCT Ops Table Actions'[EVENT_COUNT]),
+			    'FCT Ops Table Actions'[ACTION_TYPE] IN {
+			        "read_query",
+			        "write",
+			        "sync_full",
+			        "sync_partial"
+			    }
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: afaf3f1d-df15-4bb6-be88-0095490c6bd2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Action Volume' = ```
+			
+			SUM( 'FCT Ops Table Actions'[EVENT_COUNT] )
+			
+			```
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 583678d2-ec97-460d-a326-820d43ea082d
+
+	measure 'Funnel - Step 2 Tenants w/ Files' =
+			
+			DISTINCTCOUNT( 'DIM Ops File'[VH_TENANT_ID] )
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: e3c0ad4e-7f3c-4506-9935-57d10bafc216
+
+	measure 'P50 Duration (ms)' =
+			CALCULATE (
+			    PERCENTILEX.INC ( 'FCT Ops Table Actions', 'FCT Ops Table Actions'[avg_duration_ms], 0.50 ),
+			    KEEPFILTERS ( 'FCT Ops Table Actions'[action_type] <> "create" )
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: 4d3e5e19-ce47-4ebf-a321-aaa3dfe2c4c7
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'P90 Duration (ms)' =
+			
+			CALCULATE (
+			    PERCENTILEX.INC ( 'FCT Ops Table Actions', 'FCT Ops Table Actions'[avg_duration_ms], 0.90 ),
+			    KEEPFILTERS ( 'FCT Ops Table Actions'[action_type] <> "create" )
+			)
+		formatString: #,0
+		displayFolder: Ops Table
+		lineageTag: c965af63-a99f-4f8f-b17d-94d53d57dbba
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Perf - Total Event Count' = ```
+			
+			SUM( 'FCT Ops Table Actions'[EVENT_COUNT] )
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: 0cff5a1d-e32a-4c97-96d4-f2e127b43904
+
+	measure 'Perf - P50 Duration Sec' = ```
+			
+			DIVIDE(
+			    PERCENTILEX.INC(
+			        'FCT Ops Table Actions',
+			        'FCT Ops Table Actions'[AVG_DURATION_MS],
+			        0.5
+			    ),
+			    1000
+			)
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: f48dea1f-64fd-4382-8487-efc95eafcb47
+
+	measure 'Perf - P75 Duration Sec' = ```
+			
+			DIVIDE(
+			    PERCENTILEX.INC(
+			        'FCT Ops Table Actions',
+			        'FCT Ops Table Actions'[AVG_DURATION_MS],
+			        0.75
+			    ),
+			    1000
+			)
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: 1c12d905-e1aa-4be4-9816-5c07648cd660
+
+	measure 'Perf - P90 Duration Sec' = ```
+			
+			DIVIDE(
+			    PERCENTILEX.INC(
+			        'FCT Ops Table Actions',
+			        'FCT Ops Table Actions'[AVG_DURATION_MS],
+			        0.9
+			    ),
+			    1000
+			)
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: 7a916102-662c-402b-a61c-0333a4529335
+
+	measure 'Perf - Avg Duration Sec' = ```
+			
+			DIVIDE(
+			    AVERAGE( 'FCT Ops Table Actions'[AVG_DURATION_MS] ),
+			    1000
+			)
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: c2149f26-a8e1-485d-aef7-ae5b8ed960db
+
+	measure 'Perf - Max Duration Sec' = ```
+			
+			DIVIDE(
+			    MAX( 'FCT Ops Table Actions'[AVG_DURATION_MS] ),
+			    1000
+			)
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: c6942b3c-79ce-471c-887e-c189b646afdc
+
+	measure 'Perf - Fleet P90 Duration Sec' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        PERCENTILEX.INC(
+			            'FCT Ops Table Actions',
+			            'FCT Ops Table Actions'[AVG_DURATION_MS],
+			            0.9
+			        ),
+			        ALL( 'FCT Ops Table Actions' )
+			    ),
+			    1000
+			)
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: 230bc65f-7282-4948-82df-6540e35108ee
+
+	measure 'Perf - Outlier Category' = ```
+			
+			VAR TenantP90 =
+			    PERCENTILEX.INC(
+			        'FCT Ops Table Actions',
+			        'FCT Ops Table Actions'[AVG_DURATION_MS],
+			        0.9
+			    )
+			VAR FleetP90 =
+			    CALCULATE(
+			        PERCENTILEX.INC(
+			            'FCT Ops Table Actions',
+			            'FCT Ops Table Actions'[AVG_DURATION_MS],
+			            0.9
+			        ),
+			        ALL( 'FCT Ops Table Actions' )
+			    )
+			RETURN
+			    IF( TenantP90 > FleetP90 * 1.5, "Outlier", "Normal" )
+			
+			```
+		displayFolder: Ops Table
+		lineageTag: ba57d889-7488-44a0-afc1-bf4abf72f8da
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

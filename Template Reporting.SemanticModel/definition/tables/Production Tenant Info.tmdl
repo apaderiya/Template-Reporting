@@ -1,0 +1,411 @@
+table 'Production Tenant Info'
+	lineageTag: 6c539633-e1ec-4c8e-a7b8-98e94da3698b
+
+	column TENANT_ID
+		dataType: string
+		isKey
+		lineageTag: 80cdac14-54d1-4095-a549-8e0b45d00527
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: 9f037863-7853-409a-94ce-4adeb1ef7a61
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ENBLD_STATUS_NM
+		dataType: string
+		lineageTag: 56da993e-184c-4374-8a25-d4a64f630bba
+		summarizeBy: none
+		sourceColumn: TENANT_ENBLD_STATUS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_TYP_NM
+		dataType: string
+		lineageTag: c5270f20-3404-41e9-af4c-071bf8f0c966
+		summarizeBy: none
+		sourceColumn: TENANT_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: a211968c-298d-48ee-959b-d7e82bcddb1b
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: e28dfa7a-f5e3-49c0-8e22-e28fb64115d9
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENABLE_VENA_365_CONNECT_BY_DEFAULT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a961ed3a-5b08-4a8f-a2dd-6ccf1229fede
+		summarizeBy: none
+		sourceColumn: ENABLE_VENA_365_CONNECT_BY_DEFAULT
+
+		annotation SummarizationSetBy = Automatic
+
+	column EFF_FROM_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2dcfd0cd-d742-4786-98a7-aaa01a1b7ac9
+		summarizeBy: none
+		sourceColumn: EFF_FROM_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EFF_TO_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fbfa5af8-f412-4e8c-96b8-c6d16d30f572
+		summarizeBy: none
+		sourceColumn: EFF_TO_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CRNT_RCRD_IND
+		dataType: string
+		lineageTag: 6c719d08-9e73-4a82-a4db-fabb9c9fb0e8
+		summarizeBy: none
+		sourceColumn: CRNT_RCRD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_TYP_NM_MANUAL
+		dataType: string
+		lineageTag: 2ee8c475-12e7-4d7b-9e2e-065e46ccbf05
+		summarizeBy: none
+		sourceColumn: TENANT_TYP_NM_MANUAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SSO_ENBLD_IND
+		dataType: string
+		lineageTag: 3ac36580-407f-47a4-9c07-a023531398ef
+		summarizeBy: none
+		sourceColumn: SSO_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_CREATED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7d92d8ce-1f1d-40d0-b860-907355b8cd94
+		summarizeBy: none
+		sourceColumn: TENANT_CREATED_DTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_PRMSNS_IND
+		dataType: string
+		lineageTag: 0d4d0c59-6f5e-46f7-bf27-e441db5c7a8c
+		summarizeBy: none
+		sourceColumn: DATA_PRMSNS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TWO_FA_AUTH_ENBLD_IND
+		dataType: string
+		lineageTag: 77d0e2b5-ed84-4e39-b95b-7efc16f69f89
+		summarizeBy: none
+		sourceColumn: TWO_FA_AUTH_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TWO_FA_AUTH_ADMIN_CNTRLD_IND
+		dataType: string
+		lineageTag: 5b13388c-3f3a-4bdf-95d6-c78b4a29da6b
+		summarizeBy: none
+		sourceColumn: TWO_FA_AUTH_ADMIN_CNTRLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column IP_CNNCTN_ALLOWED_LIST_ENBLD_IND
+		dataType: string
+		lineageTag: 324a0e3d-94cc-495d-bf34-684325341c14
+		summarizeBy: none
+		sourceColumn: IP_CNNCTN_ALLOWED_LIST_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column IP_CNNCTN_DENY_LIST_ENBLD_IND
+		dataType: string
+		lineageTag: 3475a7bf-b457-424d-8f6e-67ce198d1823
+		summarizeBy: none
+		sourceColumn: IP_CNNCTN_DENY_LIST_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMPRSNTN_ENBLD_IND
+		dataType: string
+		lineageTag: 83305487-d418-4080-81a8-56552bead616
+		summarizeBy: none
+		sourceColumn: IMPRSNTN_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_IP_CHNG_BLCKD_IND
+		dataType: string
+		lineageTag: bab099af-2c19-4f84-8669-668ffd2444cd
+		summarizeBy: none
+		sourceColumn: USER_IP_CHNG_BLCKD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TMPLT_IP_CHNG_BLCKD_IND
+		dataType: string
+		lineageTag: e27127be-e4bd-42c7-bc49-47746173fd8c
+		summarizeBy: none
+		sourceColumn: TMPLT_IP_CHNG_BLCKD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TKN_EXPRTN_INTRVL_MINS
+		dataType: decimal
+		lineageTag: 91a5aade-b3fe-49d3-b273-c6ba506a9697
+		summarizeBy: sum
+		sourceColumn: TKN_EXPRTN_INTRVL_MINS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TMPLT_EXPRTN_INTRVL_MINS
+		dataType: decimal
+		lineageTag: 202acae8-f6b1-45d2-b4b0-7349f668f624
+		summarizeBy: sum
+		sourceColumn: TMPLT_EXPRTN_INTRVL_MINS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HBSPT_CONTACT_ID
+		dataType: string
+		lineageTag: e82a363d-ed6f-472c-8a80-c1a278ae8f01
+		summarizeBy: none
+		sourceColumn: HBSPT_CONTACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMPLCT_PROCESS_PRMSNS_ENBLD_IND
+		dataType: string
+		lineageTag: ac42c08a-a634-4574-8549-f350d0ce19e0
+		summarizeBy: none
+		sourceColumn: IMPLCT_PROCESS_PRMSNS_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMPLCT_MODEL_PRMSNS_ENBLD_IND
+		dataType: string
+		lineageTag: 6f04a421-a233-41f5-a558-1420e69f8ddc
+		summarizeBy: none
+		sourceColumn: IMPLCT_MODEL_PRMSNS_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRIAL_TENANT_VRSN_NBR
+		dataType: string
+		lineageTag: cbb7d3f1-582d-477b-a2ad-91b080a8f5ff
+		summarizeBy: none
+		sourceColumn: TRIAL_TENANT_VRSN_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column LICENSE_CNTRCT_USERS_LMT_NBR
+		dataType: string
+		lineageTag: 0fc0144e-115a-4d84-9533-dbcf1a96790c
+		summarizeBy: none
+		sourceColumn: LICENSE_CNTRCT_USERS_LMT_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column POWER_BI_ENBLD_IND
+		dataType: string
+		lineageTag: 3c42611a-353e-47ee-8c9c-fb4bd2ed0251
+		summarizeBy: none
+		sourceColumn: POWER_BI_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column POWER_BI_EMBED_ENBLD_IND
+		dataType: string
+		lineageTag: 1e6f3f43-157b-4435-a1ab-a97b9372bf6e
+		summarizeBy: none
+		sourceColumn: POWER_BI_EMBED_ENBLD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDTNL_VENA_TBLS_CNT
+		dataType: decimal
+		lineageTag: db44ee3f-28f6-4881-9f39-3b99bd812b45
+		summarizeBy: sum
+		sourceColumn: ADDTNL_VENA_TBLS_CNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SRC_SYSTM_CD
+		dataType: string
+		lineageTag: 1f24ab5c-82d6-4bcf-b606-6129e4691d28
+		summarizeBy: none
+		sourceColumn: SRC_SYSTM_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETL_LOAD_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: edce8a77-5150-4bfd-8869-865b9f58c051
+		summarizeBy: none
+		sourceColumn: ETL_LOAD_DTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETL_UPDT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b9938b15-c879-49f1-b679-140b67d9dfb3
+		summarizeBy: none
+		sourceColumn: ETL_UPDT_DTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORGANIZATION_TYP_NM
+		dataType: string
+		lineageTag: bca960d1-568a-4c21-8fcc-a219e2006bce
+		summarizeBy: none
+		sourceColumn: ORGANIZATION_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TKN_LOGOUT_RULE_IND
+		dataType: string
+		lineageTag: 6592d1f9-c5d1-4875-8dbf-afc6a2a4abbc
+		summarizeBy: none
+		sourceColumn: TKN_LOGOUT_RULE_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Name'
+		dataType: string
+		lineageTag: 42e5475d-2130-4da0-ba9f-89381ac5b0ea
+		summarizeBy: none
+		sourceColumn: Account Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column VENA_COPILOT_EXPRTN_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e090d123-a41d-4943-a411-71062577310a
+		summarizeBy: none
+		sourceColumn: VENA_COPILOT_EXPRTN_DTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column VENA_COPILOT_NUM_OF_PAID_LIC
+		dataType: decimal
+		lineageTag: 57f79691-4e78-4197-b156-023e2b9fb96e
+		summarizeBy: sum
+		sourceColumn: VENA_COPILOT_NUM_OF_PAID_LIC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TKN_EXPRTN_INTRVL_FOR_TEAMS_MINS
+		dataType: decimal
+		lineageTag: 1bb7b6df-581f-4504-888b-7b465762d54c
+		summarizeBy: sum
+		sourceColumn: TKN_EXPRTN_INTRVL_FOR_TEAMS_MINS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column KVS_SERVER_ID
+		dataType: string
+		lineageTag: 3031267e-c3f9-4bfa-85dd-032efd261158
+		summarizeBy: none
+		sourceColumn: KVS_SERVER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column KVS_SERVER_VRSN_NM
+		dataType: string
+		lineageTag: 7fe2102e-72c8-4446-906b-7ea45994f5bb
+		summarizeBy: none
+		sourceColumn: KVS_SERVER_VRSN_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column KVS_SERVERS_NM
+		dataType: string
+		lineageTag: 620b229f-437f-4ec2-a991-e6307a2f199c
+		summarizeBy: none
+		sourceColumn: KVS_SERVERS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column AUTH0_ORG_ID
+		dataType: string
+		lineageTag: 535671ec-b54a-4762-954a-eebf944cf8f7
+		summarizeBy: none
+		sourceColumn: AUTH0_ORG_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AUTH0_INTEGRATION_STTS
+		dataType: string
+		lineageTag: 602e396c-a2a5-4dc9-b8a0-15140df352ce
+		summarizeBy: none
+		sourceColumn: AUTH0_INTEGRATION_STTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DO_NOT_EXPORT_IND
+		dataType: string
+		lineageTag: 965d76cf-80b3-4c9b-9a76-33985e87bf32
+		summarizeBy: none
+		sourceColumn: DO_NOT_EXPORT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Production Tenant Info' = m
+		mode: import
+		queryGroup: 'Core Dataset'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_Power_user_read_WH"){[Name="PROD_RAW"]}[Data], "with prod_tenant_info as #(lf)   (#(lf)   SELECT *#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION', 'SANDBOX')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)V365_flag as #(lf)(#(lf)select#(lf)settings. tenant_id,#(lf)data_center,#(lf)enable_vena_365_connect_by_default,#(lf)ETL_LOAD_DATE#(lf)FROM PROD_RAW.MT_SERVER.MTSERVER_TENANT_SETTINGS_STAGING settings#(lf)inner join#(lf)(#(lf)    select#(lf)        tenant_id,#(lf)        max(etl_load_date) as maxdate#(lf)    from PROD_RAW.MT_SERVER.MTSERVER_TENANT_SETTINGS_STAGING#(lf)    group by tenant_id#(lf))maxdate#(lf)#(lf)on settings.tenant_id = maxdate.tenant_id and settings.etl_load_date = maxdate.maxdate#(lf)order by tenant_id#(lf))#(lf)#(lf)select#(lf)prod_tenant_info.*,#(lf)V365_flag.enable_vena_365_connect_by_default#(lf)from prod_tenant_info#(lf)left join v365_flag on v365_flag.tenant_id = prod_tenant_info.tenant_id", null, [EnableFolding=true]),
+				    #"Removed Duplicates" = Table.Distinct(Source, {"TENANT_ID"}),
+				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates",{{"TENANT_NM", Order.Ascending}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Sorted Rows", {"TENANT_ID"}, #"Additional Tenant Info", {"TENANT_ID"}, "Additional Tenant Info", JoinKind.LeftOuter),
+				    #"Expanded Additional Tenant Info" = Table.ExpandTableColumn(#"Merged Queries", "Additional Tenant Info", {"ACCOUNT_NM"}, {"Additional Tenant Info.ACCOUNT_NM"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Additional Tenant Info",{{"Additional Tenant Info.ACCOUNT_NM", "Account Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

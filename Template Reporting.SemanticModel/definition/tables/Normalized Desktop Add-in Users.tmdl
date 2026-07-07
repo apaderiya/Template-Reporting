@@ -1,0 +1,43 @@
+table 'Normalized Desktop Add-in Users'
+	lineageTag: ebfc19a9-87b0-438f-a92c-1c67f57154fd
+
+	column TENANT_ID
+		dataType: string
+		isKey
+		lineageTag: 18722732-4119-4f7c-9b78-794c0cbba63e
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: adc13c6e-e7b2-40ad-a086-f3507a369281
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Max Refresh Time'
+		dataType: decimal
+		lineageTag: a5824f00-705d-4aa5-8695-8aaa5f37ea1d
+		summarizeBy: sum
+		sourceColumn: Max Refresh Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Normalized Desktop Add-in Users' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with prod_tenant_list as #(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)TENANT_NM, #(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION', 'SANDBOX')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf))#(lf)#(lf)select#(lf)hydra.tenant_id,#(lf)tenant_nm,#(lf)MAX(CAST(timing_val as INT))#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS hydra#(lf)inner join prod_tenant_list on hydra.tenant_id = prod_tenant_list.tenant_id #(lf)where hydra.event_nm ilike '%simplerefresh%'   #(lf)and hydra.timing_ctgry_nm = 'DesktopAddin'#(lf)and to_date(session_start_dts) >= (current_date()-365)#(lf)group by #(lf)hydra.tenant_id,#(lf)tenant_nm#(lf)having MAX(CAST(timing_val as INT)) <=600", null, [EnableFolding=true]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"MAX(CAST(TIMING_VAL AS INT))", "Max Refresh Time"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

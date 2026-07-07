@@ -1,0 +1,57 @@
+table 'Tempalte Sizes Global'
+	lineageTag: 60be6534-b1a4-4b4b-888f-f7848b71af02
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: de99d8ca-4eac-4cae-9eb5-cc8dbc7352a7
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: b211d79b-f420-4d6a-a82c-739b459bea7c
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GLBL_FILE_ID
+		dataType: string
+		lineageTag: ea4b9007-6c76-41a5-bef3-9b87d572ebcb
+		summarizeBy: none
+		sourceColumn: GLBL_FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_SIZE_MB
+		dataType: decimal
+		lineageTag: 08d0c00e-32f1-4ec2-8ba7-5c309ae561f9
+		summarizeBy: sum
+		sourceColumn: FILE_SIZE_MB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FILE_EXTN_NM
+		dataType: string
+		lineageTag: e2b1db19-f2b5-44b1-8d96-71e1a0b0538d
+		summarizeBy: none
+		sourceColumn: FILE_EXTN_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Tempalte Sizes Global' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with prod_tenant_list as #(lf)(#(lf)select#(lf)data_cntr_cd,#(lf)tenant_id,#(lf)tenant_nm#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm = 'PRODUCTION'#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf))#(lf)#(lf)#(lf)select #(lf)files.data_cntr_cd,#(lf)files.tenant_id,#(lf)files.glbl_file_id,#(lf)files.file_size_bytes/1000000 as file_size_mb,#(lf)files.file_extn_nm#(lf)from PROD_HARMONIZED.PRODUCT.GLBL_FILE_DTL files#(lf)inner join prod_tenant_list on prod_tenant_list.tenant_id = files.tenant_id and prod_tenant_list.data_cntr_cd = files.data_cntr_cd", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

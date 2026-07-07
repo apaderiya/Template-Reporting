@@ -1,0 +1,144 @@
+table 'Summary Template Addins Tenant Info'
+	lineageTag: 15475738-77af-4907-a99a-068674b6a7b1
+
+	measure 'Used Desktop Addin' = calculate(DISTINCTCOUNT('Summary Template Addins Tenant Info'[TENANT_ID]),and('Summary Template Addins Tenant Info'[LATEST_365_TS] > 2024-02-01, 'Summary Template Addins Tenant Info'[LATEST_DESKTOP_TS] < 2024-04-30))
+		formatString: #,0
+		lineageTag: 38b724ab-3230-461e-9372-0ba79c8f614c
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: b1aa732d-cbf3-4c6a-a42e-2227cd7678c2
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		isKey
+		lineageTag: bcc40e45-d784-4771-bfae-43571296385e
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATEST_DESKTOP_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1435cfb6-767e-4367-bb82-30e510067834
+		summarizeBy: none
+		sourceColumn: LATEST_DESKTOP_TS
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATEST_365_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3c0ab94e-1393-4aca-a2aa-fb615474d04b
+		summarizeBy: none
+		sourceColumn: LATEST_365_TS
+
+		annotation SummarizationSetBy = Automatic
+
+	column WHICH_ADDIN
+		dataType: string
+		lineageTag: 17dfea8c-93fb-4002-a933-bb65add8ad75
+		summarizeBy: none
+		sourceColumn: WHICH_ADDIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column EFF_FROM_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7b0de342-b2d8-4ce4-a0c3-e6c13d24e35b
+		summarizeBy: none
+		sourceColumn: EFF_FROM_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: 9b023a3c-3716-4d5a-81a7-06e072fcdfd9
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ARR_USD
+		dataType: decimal
+		lineageTag: 086284c3-411e-420a-b874-dbf974def12e
+		summarizeBy: sum
+		sourceColumn: ARR_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHURN_PROBABILITY
+		dataType: decimal
+		lineageTag: 4e2ed09a-cdb9-4292-9f7c-0bffd2720984
+		summarizeBy: sum
+		sourceColumn: CHURN_PROBABILITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WHICH_ADDIN_LTM
+		dataType: string
+		lineageTag: b7a4ae34-6132-499b-bef5-2b944a4dee63
+		summarizeBy: none
+		sourceColumn: WHICH_ADDIN_LTM
+
+		annotation SummarizationSetBy = Automatic
+
+	column INITIALIZATIONS_LEGACY_MAC_CONNECTOR
+		dataType: decimal
+		lineageTag: 2e808427-ec1b-44d9-9814-c586a08a32f7
+		summarizeBy: sum
+		sourceColumn: INITIALIZATIONS_LEGACY_MAC_CONNECTOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOST_RECENT_LEGACY_MAC_CONNECTOR_USAGE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f1891f09-7dba-49dd-8c8a-0fd79aca0500
+		summarizeBy: none
+		sourceColumn: MOST_RECENT_LEGACY_MAC_CONNECTOR_USAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column LEGACY_MAC_CONNECTOR_USAGE_STATUS
+		dataType: string
+		lineageTag: f1aaaa47-bda2-4af1-8d1e-c6bc1eb70d7e
+		summarizeBy: none
+		sourceColumn: LEGACY_MAC_CONNECTOR_USAGE_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_NM
+		dataType: string
+		lineageTag: d54fe53d-cf67-4e07-a80c-43aaca9cedd3
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Summary Template Addins Tenant Info' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_RAW"]}[Data], "with prod_tenant_list as #(lf)(#(lf)select distinct#(lf)tenant_id,#(lf)TENANT_NM, #(lf)eff_from_dt,#(lf)account_id,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)where CRNT_RCRD_IND = 'Y'#(lf)and tenant_typ_nm in ('PRODUCTION')#(lf)and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)arr as #(lf)(#(lf)select#(lf)dc_tenant_id,#(lf)account_nm,#(lf)arr_usd#(lf)from PROD_HARMONIZED.PRODUCT.VW_ENBLD_PRODUCTION_TENANTS#(lf)),#(lf)#(lf)acc as #(lf)(#(lf)select #(lf)account_id,#(lf)became_customer_dt,#(lf)indstry_nm,#(lf)territory_sgmnt_nm,#(lf)renewal_dt#(lf)from PROD_HARMONIZED.SALES.VW_ACCOUNT_PROF#(lf)),#(lf)#(lf)cont as #(lf)#(lf)(#(lf)SELECT distinct#(lf)substr(tenant_dc,charindex('.', tenant_dc)+1,len(tenant_dc)) as tenant_id,#(lf)user_id#(lf)FROM PROD_HARMONIZED.PRODUCT.VW_USER_PROF#(lf)where crnt_rcrd_ind = 'Y'#(lf)--and actvtn_status_nm = 'ACTIVE'#(lf)and cntrbtr_access_ind = 'Y'#(lf)--and admin_access_ind = 'N'#(lf)and last_impersonation_login_dt is null #(lf)and ntfctn_email is null#(lf)order by user_id#(lf)),#(lf)#(lf)hydra as #(lf)(#(lf)select #(lf)    hydra.tenant_id,#(lf)--    tenant_nm,#(lf)    max(session_start_dts) as latest_desktop_ts#(lf)#(lf)from PROD_HARMONIZED.PRODUCT.HYDRA_UI_ACTIONS hydra#(lf)inner join cont on cont.tenant_id = hydra.tenant_id and cont.user_id = hydra.user_id#(lf)#(lf)where hydra.event_nm ilike '%simplerefresh%'   #(lf)and hydra.timing_ctgry_nm = 'DesktopAddin'#(lf)--and to_date(session_start_dts) < '2024-05-01'#(lf)group by hydra.tenant_id--,tenant_nm#(lf)),#(lf)#(lf)#(lf)v as #(lf)(#(lf)select #(lf)region,#(lf)customer_id as tenant_id,#(lf)--tenant_nm,#(lf)max(etl_load_date) as latest_365_ts#(lf)#(lf)from PROD_RAW.PROD_TEAM_SANDBOX.VENALYTICS_RUM_DATA_STAGING staging#(lf)--inner join prod_tenant_list on staging.customer_id = prod_tenant_list.tenant_id and staging.region = prod_tenant_list.data_cntr_cd#(lf)inner join cont on cont.tenant_id = staging.customer_id and staging.user_id =staging.user_id#(lf)where file_id is not null #(lf)and total_duration is not null#(lf)--and etl_load_date < '2024-05-01'#(lf)and is_initial_load = 'True'#(lf)group by region,customer_id--, tenant_nm#(lf)),#(lf)#(lf)v9 as#(lf)(#(lf)select #(lf)v9.sf_account_id,#(lf)predict_proba_1 as churn_probability #(lf)from PROD_PRESENTATION.CHURN_PREDICTION.VW_CHURN_PREDICTION_MONTHLY__MODEL_V9 v9#(lf)inner join #(lf)(#(lf)select #(lf)sf_account_id,#(lf)max(fiscal_month) as maxdate#(lf)from PROD_PRESENTATION.CHURN_PREDICTION.VW_CHURN_PREDICTION_MONTHLY__MODEL_V9#(lf)group by sf_account_id#(lf))maxdate#(lf)on v9.sf_account_id = maxdate.sf_account_id and v9.fiscal_month = maxdate.maxdate#(lf)),#(lf)#(lf)legacy_connector as #(lf)(#(lf)select #(lf)track.account_id,#(lf)sum(num_events) as total_events,#(lf)sum(num_minutes) as total_minutes,#(lf)max(_fivetran_synced) as latest_usage#(lf)from PROD_RAW.PENDO.TRACK_TYPE_EVENT track #(lf)where track_type_id = 'm6dr7UFzH5cEzVPeyHcm-dKK3_4'#(lf)group by #(lf)track.account_id#(lf))#(lf)#(lf)select #(lf)prod_tenant_list.tenant_id,#(lf)prod_tenant_list.tenant_nm,#(lf)prod_tenant_list.account_id,#(lf)account_nm,#(lf)arr_usd,#(lf)churn_probability,#(lf)eff_from_dt,#(lf)latest_desktop_ts,#(lf)latest_365_ts,#(lf)case #(lf)when latest_desktop_ts >= (current_date()-30) and latest_365_ts >= (current_date()-30) then 'Used Both Addins Recently'#(lf)when latest_desktop_ts >= (current_date()-30) and latest_365_ts is null then 'Used Desktop Addin Recently'#(lf)when latest_desktop_ts is null  and latest_365_ts >= (current_date()-30) then 'Used 365 Addin Recently'#(lf)end as which_addin,#(lf)case #(lf)when latest_desktop_ts >= (current_date()-365) and latest_365_ts >= (current_date()-365) then 'Refreshed Templates for Both Addins Past Year'#(lf)when latest_desktop_ts >= (current_date()-365) and latest_365_ts is null then 'Refreshed Templates for Desktop Addin Past Year'#(lf)when latest_desktop_ts is null  and latest_365_ts >= (current_date()-365) then 'Refreshed Templates for 365 Addin Past Year'#(lf)end as which_addin_LTM,#(lf)total_events as initializations_legacy_mac_connector,#(lf)latest_usage as most_recent_legacy_mac_connector_usage,#(lf)case #(lf)when latest_usage >= (current_date()-365) then 'Legacy Mac Connector Used LTM'#(lf)when latest_usage < (current_date()-365) then 'Legacy Mac Connector Used but Not Within LTM'#(lf)when latest_usage is null then 'Legacy Mac Connector Never Used'#(lf)else null end as legacy_mac_connector_usage_status#(lf)from prod_tenant_list#(lf)left join v on prod_tenant_list.tenant_id = v.tenant_id and prod_tenant_list.data_cntr_cd = v.region#(lf)left join v9 on prod_tenant_list.account_id = left(v9.sf_account_id,15)#(lf)left join legacy_connector on concat(data_cntr_cd,'.',prod_tenant_list.tenant_id) = legacy_connector.account_id#(lf)left join arr on arr.dc_tenant_id = concat(data_cntr_cd,'.',prod_tenant_list.tenant_id)#(lf)left join hydra on prod_tenant_list.tenant_id = hydra.tenant_id#(lf)--tough to deal with in relationships, exists in aws and azure#(lf)where prod_tenant_list.tenant_id <> '1497761032260681728'", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

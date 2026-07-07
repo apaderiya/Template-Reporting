@@ -1,0 +1,74 @@
+table MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING
+	lineageTag: 60f5dcb3-0221-4bbe-8222-d88397ed5c71
+
+	column DATA_CENTER
+		dataType: string
+		lineageTag: 6b43d3ad-0a8f-4023-9381-6fa977e3f2d7
+		summarizeBy: none
+		sourceColumn: DATA_CENTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: d0745a31-33f8-4079-9bd0-f6c0cbd6a06d
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TABLE_ID
+		dataType: string
+		lineageTag: 3e31f72e-f96b-489f-863a-bb5ba587af31
+		summarizeBy: none
+		sourceColumn: TABLE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COLUMN_COUNT
+		dataType: decimal
+		lineageTag: 2e628bc2-bf46-44af-a5da-2b2599ae96bc
+		summarizeBy: sum
+		sourceColumn: COLUMN_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ROW_COUNT
+		dataType: decimal
+		lineageTag: 5b796178-7228-4405-bc65-764b63a5f554
+		summarizeBy: sum
+		sourceColumn: ROW_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ETL_LOAD_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: b862585c-dce8-4b87-b852-b1b901fb0c88
+		summarizeBy: none
+		sourceColumn: ETL_LOAD_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING = m
+		mode: import
+		queryGroup: 'Operations Table'
+		source =
+				let
+				    Source = Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]),
+				    PROD_RAW_Database = Source{[Name="PROD_RAW",Kind="Database"]}[Data],
+				    PROD_TEAM_SANDBOX_Schema = PROD_RAW_Database{[Name="PROD_TEAM_SANDBOX",Kind="Schema"]}[Data],
+				    MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING_Table = PROD_TEAM_SANDBOX_Schema{[Name="MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING",Kind="Table"]}[Data]
+				in
+				    MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,105 @@
+table 'FCT Ops Table Actions'
+	lineageTag: 884e022f-1b31-433c-86c4-c3c41a657917
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: 6895b11a-179c-4d0a-8b4f-2a810214554f
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: a26c9ac2-b1f5-49a9-84ce-5475db5d4aad
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 2f987225-821c-4327-9496-caa63f92a63c
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TABLE_ID
+		dataType: string
+		lineageTag: 088a2194-893e-451c-9c10-0099783779e4
+		summarizeBy: none
+		sourceColumn: TABLE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTION_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 3875f31b-49a9-41cd-b048-a8c04da5fd47
+		summarizeBy: none
+		sourceColumn: ACTION_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ACTION_TYPE
+		dataType: string
+		lineageTag: 248a3b6f-6ec2-4df3-a054-5d4d7cd33fa7
+		summarizeBy: none
+		sourceColumn: ACTION_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_COUNT
+		dataType: decimal
+		lineageTag: c359132d-b309-43cc-81b8-02264293517f
+		summarizeBy: sum
+		sourceColumn: EVENT_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_DURATION_MS
+		dataType: decimal
+		lineageTag: e2737fc8-3d3a-45a6-bd87-25f7c4767713
+		summarizeBy: sum
+		sourceColumn: TOTAL_DURATION_MS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AVG_DURATION_MS
+		dataType: decimal
+		lineageTag: 19f97e8c-c32c-4967-b463-2cc7c41f9a63
+		summarizeBy: sum
+		sourceColumn: AVG_DURATION_MS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VH_TENANT_ID
+		dataType: string
+		lineageTag: a8f9f011-2e7b-49a1-b349-3755c3bf539d
+		summarizeBy: none
+		sourceColumn: VH_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'FCT Ops Table Actions' = m
+		mode: import
+		queryGroup: 'Operations Table'
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_HARMONIZED"]}[Data], "WITH prod_tenant_list AS (#(lf)    SELECT DISTINCT#(lf)        tenant_id,#(lf)        tenant_nm,#(lf)        data_cntr_cd#(lf)    FROM PROD_HARMONIZED.PRODUCT.TENANT_PROF#(lf)    WHERE CRNT_RCRD_IND = 'Y'#(lf)      AND tenant_typ_nm = 'PRODUCTION'#(lf)      AND organization_typ_nm = 'CUSTOMER'#(lf)      AND tenant_enbld_status_nm = 'ENABLED'#(lf)),#(lf)#(lf)save_actions AS (#(lf)    SELECT#(lf)        tenant_id,#(lf)        table_id,#(lf)        etl_load_date  AS action_date,#(lf)        operation_type AS action_type,#(lf)        row_count,#(lf)        column_count,#(lf)        duration_ms#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_OPTABLE_SAVE_METRICS#(lf)    WHERE operation_type IN ('write', 'sync_full', 'sync_partial')#(lf)),#(lf)#(lf)read_actions AS (#(lf)    SELECT#(lf)        tenant_id,#(lf)        table_id,#(lf)        etl_load_date  AS action_date,#(lf)        operation_type AS action_type,#(lf)        row_count,#(lf)        column_count,#(lf)        duration_ms#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_OPTABLE_READ_METRICS#(lf)    WHERE operation_type = 'read_query'#(lf)),#(lf)#(lf)-- All dates a table_id ever appears across every source#(lf)table_id_sightings AS (#(lf)    SELECT tenant_id, table_id, etl_load_date#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_OPTABLE_SAVE_METRICS#(lf)    WHERE table_id IS NOT NULL#(lf)#(lf)    UNION ALL#(lf)#(lf)    SELECT tenant_id, table_id, etl_load_date#(lf)    FROM PROD_RAW.MT_SERVER.MTSERVER_OPTABLE_READ_METRICS#(lf)    WHERE table_id IS NOT NULL#(lf)#(lf)    UNION ALL#(lf)#(lf)    SELECT tenant_id, table_id, etl_load_date#(lf)    FROM PROD_RAW.PROD_TEAM_SANDBOX.MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING#(lf)    WHERE table_id IS NOT NULL#(lf)),#(lf)#(lf)-- Create = earliest date the table_id appears anywhere#(lf)create_actions AS (#(lf)    SELECT#(lf)        tenant_id,#(lf)        table_id,#(lf)        MIN(etl_load_date) AS action_date,#(lf)        'create'           AS action_type,#(lf)        NULL               AS row_count,#(lf)        NULL               AS column_count,#(lf)        NULL               AS duration_ms#(lf)    FROM table_id_sightings#(lf)    GROUP BY tenant_id, table_id#(lf)),#(lf)#(lf)all_actions AS (#(lf)    SELECT * FROM save_actions#(lf)    UNION ALL#(lf)    SELECT * FROM read_actions#(lf)    UNION ALL#(lf)    SELECT * FROM create_actions#(lf)),#(lf)#(lf)fct_optable_actions AS (#(lf)    SELECT#(lf)        CONCAT(p.data_cntr_cd, '.', a.TENANT_ID)  AS VH_TENANT_ID,#(lf)        p.data_cntr_cd,#(lf)        a.tenant_id,#(lf)        p.tenant_nm,#(lf)        a.table_id,#(lf)        a.action_date,#(lf)        a.action_type,#(lf)        COUNT(*)           AS event_count,#(lf)        SUM(a.duration_ms) AS total_duration_ms,#(lf)        AVG(a.duration_ms) AS avg_duration_ms#(lf)    FROM all_actions a#(lf)    INNER JOIN prod_tenant_list p#(lf)        ON a.tenant_id = p.tenant_id#(lf)    GROUP BY#(lf)        p.data_cntr_cd,#(lf)        a.tenant_id,#(lf)        p.tenant_nm,#(lf)        a.table_id,#(lf)        a.action_date,#(lf)        a.action_type#(lf))#(lf)#(lf)SELECT *#(lf)FROM fct_optable_actions#(lf)ORDER BY tenant_id, table_id, action_date, action_type", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,194 @@
+table 'Additional Tenant Info'
+	lineageTag: 340f327d-b3bd-4268-9988-88a49eb8d435
+
+	column DC_TENANT_ID
+		dataType: string
+		isKey
+		lineageTag: fd9cc439-ddf2-4779-9314-eafe3e32272d
+		summarizeBy: none
+		sourceColumn: DC_TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ENBLD_STATUS_NM
+		dataType: string
+		lineageTag: 9e99dba2-2123-4d4a-a221-7f093568ea63
+		summarizeBy: none
+		sourceColumn: TENANT_ENBLD_STATUS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_TYP_NM
+		dataType: string
+		lineageTag: 5e433b68-8f9d-450b-9e8a-a6608e82e2da
+		summarizeBy: none
+		sourceColumn: TENANT_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: e7486104-9301-45ef-b5d1-ed67c9c501b5
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_ID
+		dataType: string
+		lineageTag: fdb138c8-7968-4a2b-8607-0d3e3438998b
+		summarizeBy: none
+		sourceColumn: ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_NM
+		dataType: string
+		lineageTag: 47d2c0a3-23d6-4032-b28b-8e9b2f1227e6
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_TYP_NM
+		dataType: string
+		lineageTag: 64af2585-21d8-4c0a-b084-a7387e8491dd
+		summarizeBy: none
+		sourceColumn: ACCOUNT_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_OWNER_USER_ID
+		dataType: string
+		lineageTag: 1eb01f45-298e-4b64-858e-ff0a1ec9300c
+		summarizeBy: none
+		sourceColumn: ACCOUNT_OWNER_USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_OWNER_NM
+		dataType: string
+		lineageTag: 11e23293-a0d2-493f-8c56-102fc30011c6
+		summarizeBy: none
+		sourceColumn: ACCOUNT_OWNER_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_CHRN_RSK
+		dataType: string
+		lineageTag: a788a83f-7f79-4a42-9d88-7b1b460e379d
+		summarizeBy: none
+		sourceColumn: ACCOUNT_CHRN_RSK
+
+		annotation SummarizationSetBy = Automatic
+
+	column ARR_USD
+		dataType: decimal
+		lineageTag: 3d63542a-91bf-4d3e-801d-93ed8cdc1514
+		summarizeBy: sum
+		sourceColumn: ARR_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMIN_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: dca28ed2-7078-4c8e-aa87-5a475f3b17cc
+		summarizeBy: sum
+		sourceColumn: ADMIN_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUSINESS_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 9fa842c4-796f-4dd1-b0cd-dda6bc11ab0a
+		summarizeBy: sum
+		sourceColumn: BUSINESS_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ANY_COMBINATION_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 453fcbff-aa68-4d91-9890-46d120aedc4e
+		summarizeBy: sum
+		sourceColumn: ANY_COMBINATION_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VIEW_ONLY_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: 7ff3158c-1a71-4eef-b4f6-b318b4ed4309
+		summarizeBy: sum
+		sourceColumn: VIEW_ONLY_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_LICENSE_SOLD
+		dataType: decimal
+		lineageTag: af1875a5-a49e-4369-bbe0-86ac9d9369e7
+		summarizeBy: sum
+		sourceColumn: TOTAL_LICENSE_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: c81fb602-2d6d-4c16-aa26-b9e85dc5996a
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_CNTR_CD
+		dataType: string
+		lineageTag: b7b07d75-3594-4ee8-bbb8-a6f7b669bcec
+		summarizeBy: none
+		sourceColumn: DATA_CNTR_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENABLE_VENA_365_CONNECT_BY_DEFAULT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 816c80d0-3b7d-4e98-8385-8e34dd9f4119
+		summarizeBy: none
+		sourceColumn: ENABLE_VENA_365_CONNECT_BY_DEFAULT
+
+		annotation SummarizationSetBy = Automatic
+
+	column BECAME_CUSTOMER_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: de9b1dd4-2a2c-4509-ac19-fb0339e5d8f7
+		summarizeBy: none
+		sourceColumn: BECAME_CUSTOMER_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Additional Tenant Info' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "with prod_tenant_info as #(lf)   (#(lf)   SELECT#(lf) *#(lf)    FROM PROD_HARMONIZED.PRODUCT.VW_ENBLD_PRODUCTION_TENANTS#(lf)),#(lf)#(lf)V365_flag as #(lf)(#(lf)select#(lf)settings. tenant_id,#(lf)data_center,#(lf)enable_vena_365_connect_by_default,#(lf)ETL_LOAD_DATE#(lf)FROM PROD_RAW.MT_SERVER.MTSERVER_TENANT_SETTINGS_STAGING settings#(lf)inner join#(lf)(#(lf)    select#(lf)        tenant_id,#(lf)        max(etl_load_date) as maxdate#(lf)    from PROD_RAW.MT_SERVER.MTSERVER_TENANT_SETTINGS_STAGING#(lf)    group by tenant_id#(lf))maxdate#(lf)#(lf)on settings.tenant_id = maxdate.tenant_id and settings.etl_load_date = maxdate.maxdate#(lf)order by tenant_id#(lf))#(lf)#(lf)select#(lf)prod_tenant_info.*,#(lf)V365_flag.enable_vena_365_connect_by_default#(lf)from prod_tenant_info#(lf)left join v365_flag on v365_flag.tenant_id = prod_tenant_info.tenant_id", null, [EnableFolding=true]),
+				    #"Removed Duplicates" = Table.Distinct(Source, {"DC_TENANT_ID"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Duplicates", {"ACCOUNT_ID"}, #"Account Summary", {"ACCOUNT_ID"}, "Account Summary", JoinKind.LeftOuter),
+				    #"Expanded Account Summary" = Table.ExpandTableColumn(#"Merged Queries", "Account Summary", {"BECAME_CUSTOMER_DT"}, {"Account Summary.BECAME_CUSTOMER_DT"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Account Summary",{{"Account Summary.BECAME_CUSTOMER_DT", "BECAME_CUSTOMER_DT"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

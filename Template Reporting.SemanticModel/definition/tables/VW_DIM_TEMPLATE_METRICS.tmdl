@@ -1,0 +1,102 @@
+table VW_DIM_TEMPLATE_METRICS
+	lineageTag: d7d74c0e-5fe3-4434-b44f-7b592c25bd90
+
+	column DATA_CENTER
+		dataType: string
+		lineageTag: e8eaa6f1-3773-4066-919b-3defd72ee647
+		summarizeBy: none
+		sourceColumn: DATA_CENTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: ea9042a1-0510-4e05-94e5-85d422872a4d
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_NM
+		dataType: string
+		lineageTag: 693444e3-2497-4713-a6d9-7226c9675ea6
+		summarizeBy: none
+		sourceColumn: TENANT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_TYP_NM
+		dataType: string
+		lineageTag: 8d0dc697-29e8-4552-befc-fe864a13a9c5
+		summarizeBy: none
+		sourceColumn: TENANT_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORGANIZATION_TYP_NM
+		dataType: string
+		lineageTag: 3e954802-0236-441b-bf6e-645eac03e262
+		summarizeBy: none
+		sourceColumn: ORGANIZATION_TYP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENANT_ENBLD_STATUS_NM
+		dataType: string
+		lineageTag: 0caead78-2d44-43a6-8963-73e6b93d59b5
+		summarizeBy: none
+		sourceColumn: TENANT_ENBLD_STATUS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_ID
+		dataType: string
+		lineageTag: 66b9650d-9405-46ed-82b7-03db2c484e39
+		summarizeBy: none
+		sourceColumn: FILE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETL_LOAD_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 8c20ea1e-212e-43f4-96a7-1268447195d9
+		summarizeBy: none
+		sourceColumn: ETL_LOAD_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
+		dataType: decimal
+		lineageTag: 1335ff75-a875-4a49-9f4d-01e3e519151a
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUMBER_OF_WRITEBACK_QUERIES
+		dataType: decimal
+		lineageTag: 70a7d73d-dc74-4fca-aa00-16c89db8ae48
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_WRITEBACK_QUERIES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition VW_DIM_TEMPLATE_METRICS = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH",[Implementation="2.0"]){[Name="PROD_HARMONIZED"]}[Data], "WITH PROD_TENANT_INFO AS#(lf)(#(lf)select#(lf)tenant_id,#(lf)tenant_nm,#(lf)tenant_typ_nm,#(lf)tenant_enbld_status_nm,#(lf)organization_typ_nm,#(lf)account_id,#(lf)data_cntr_cd#(lf)from PROD_HARMONIZED.PRODUCT.tenant_prof#(lf)where CRNT_RCRD_IND = 'Y'#(lf)--and tenant_typ_nm in ('PRODUCTION')#(lf)--and organization_typ_nm = 'CUSTOMER'#(lf)and tenant_enbld_status_nm = 'ENABLED'#(lf)), #(lf)#(lf)latest_etl as (#(lf)    select#(lf)    data_center,#(lf)    tenant_id,#(lf)    file_id,#(lf)    etl_load_date,#(lf)    number_of_operational_choose_mappings,#(lf)    number_of_writeback_queries#(lf)    from PROD_RAW.MT_SERVER.MTSERVER_TEMPLATE_METRICS_STAGING#(lf)    where number_of_operational_choose_mappings > 0#(lf)       or number_of_writeback_queries > 0#(lf)    qualify row_number() over (#(lf)        partition by data_center, tenant_id, file_id#(lf)        order by etl_load_date desc, content_id desc#(lf)        ) = 1#(lf)    #(lf))#(lf)#(lf)select#(lf)    data_center,#(lf)    latest_etl.tenant_id,#(lf)    tenant_nm,#(lf)    tenant_typ_nm,#(lf)    organization_typ_nm,#(lf)    tenant_enbld_status_nm,#(lf)    file_id,#(lf)    latest_etl.etl_load_date,#(lf)    number_of_operational_choose_mappings,#(lf)    number_of_writeback_queries#(lf)from latest_etl#(lf)left join prod_tenant_info on #(lf)prod_tenant_info.data_cntr_cd = right(latest_etl.data_center,3)#(lf)and prod_tenant_info.tenant_id = latest_etl.tenant_id #(lf)order by etl_load_date DESC", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

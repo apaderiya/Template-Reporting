@@ -1,0 +1,122 @@
+table 'User Detail'
+	lineageTag: bd91a2b3-e120-4bef-911d-80a7af116d0c
+
+	column TENANT_ID
+		dataType: string
+		lineageTag: 7529710f-2a0e-4e48-a945-99568e6504da
+		summarizeBy: none
+		sourceColumn: TENANT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: ae6060b9-cdfb-49ce-9047-4c23fad24d33
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column INTERNAL_USER
+		dataType: string
+		lineageTag: 26c7a6b0-d5dd-448f-905f-b9f9d1ec87f7
+		summarizeBy: none
+		sourceColumn: INTERNAL_USER
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMIN_ACCESS_IND
+		dataType: string
+		lineageTag: 2a8028b0-9b9a-440d-88dc-8ab3278ecf3b
+		summarizeBy: none
+		sourceColumn: ADMIN_ACCESS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column NTFCTN_EMAIL
+		dataType: string
+		lineageTag: 1c4cc815-c0ca-4945-819b-539c26c384cf
+		summarizeBy: none
+		sourceColumn: NTFCTN_EMAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_IMPERSONATION_LOGIN_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a7a9f062-fec1-47c2-b93e-503ba3ac710b
+		summarizeBy: none
+		sourceColumn: LAST_IMPERSONATION_LOGIN_DT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CONSULTANT_LOGIN
+		dataType: string
+		lineageTag: 1306fafd-7765-49b6-a089-77ec18926de6
+		summarizeBy: none
+		sourceColumn: CONSULTANT_LOGIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column CNTRBTR_ACCESS_IND
+		dataType: string
+		lineageTag: bdc7e0b1-0319-4b9c-8348-a8379d3fa5f8
+		summarizeBy: none
+		sourceColumn: CNTRBTR_ACCESS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column MDLR_ACCESS_IND
+		dataType: string
+		lineageTag: 9e70ca31-55f3-43a4-83d3-7b944ffa0f92
+		summarizeBy: none
+		sourceColumn: MDLR_ACCESS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column MNGR_ACCESS_IND
+		dataType: string
+		lineageTag: 412319bb-6431-4874-9a57-45946553cc72
+		summarizeBy: none
+		sourceColumn: MNGR_ACCESS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column RPRTR_ACCESS_IND
+		dataType: string
+		lineageTag: f88a7b9e-7f17-4765-9fd9-8d8fab325148
+		summarizeBy: none
+		sourceColumn: RPRTR_ACCESS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column VIEWER_ACCESS_IND
+		dataType: string
+		lineageTag: 04ca26c1-a499-455f-b28b-5105dd9b13fb
+		summarizeBy: none
+		sourceColumn: VIEWER_ACCESS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERMISSIONS_CATEGORY
+		dataType: string
+		lineageTag: 956cbc11-98ed-405f-89c9-777b6d9e4596
+		summarizeBy: none
+		sourceColumn: PERMISSIONS_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'User Detail' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","PRODUCT_POWER_USER_READ_WH"){[Name="PROD_HARMONIZED"]}[Data], "SELECT distinct#(lf)substr(tenant_dc,charindex('.', tenant_dc)+1,len(tenant_dc)) as tenant_id,#(lf)user_id,#(lf)case #(lf)when ntfctn_email is not null then 'Vena Employee User' else 'Customer' end as internal_user,#(lf)admin_access_ind,#(lf)ntfctn_email,#(lf)last_impersonation_login_dt,#(lf)case #(lf)    when (last_impersonation_login_dt is not null and admin_access_ind = 'Y' and ntfctn_email is null) then 'Y'#(lf)    end as consultant_login,#(lf)#(lf)case  #(lf)    when (admin_access_ind = 'Y') then 'Admin'#(lf)    when (admin_access_ind = 'N' and cntrbtr_access_ind = 'Y' and mdlr_access_ind = 'N' and mngr_access_ind = 'N') then 'Contributor'#(lf)    when (admin_access_ind = 'N' and (mngr_access_ind = 'Y' or mdlr_access_ind = 'Y')) then 'Modeler/Manager'#(lf)    else 'Other'#(lf)    end as permissions_category,#(lf)    #(lf)    #(lf)cntrbtr_access_ind,#(lf)mdlr_access_ind,#(lf)mngr_access_ind,#(lf)rprtr_access_ind,#(lf)viewer_access_ind#(lf)FROM PROD_HARMONIZED.PRODUCT.VW_USER_PROF#(lf)where crnt_rcrd_ind = 'Y'#(lf)and actvtn_status_nm = 'ACTIVE'#(lf)order by user_id", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
