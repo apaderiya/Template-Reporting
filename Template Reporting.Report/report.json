@@ -53,32 +53,6 @@
         "name": "advanceCard65e8d945d1454e7883e93cb6e0932413",
         "type": 0
       }
-    },
-    {
-      "resourcePackage": {
-        "disabled": false,
-        "items": [
-          {
-            "path": "advanceCardE03760C5AB684758B56AA29F9E6C257B.pbiviz.json",
-            "type": 5
-          }
-        ],
-        "name": "advanceCardE03760C5AB684758B56AA29F9E6C257B",
-        "type": 0
-      }
-    },
-    {
-      "resourcePackage": {
-        "disabled": false,
-        "items": [
-          {
-            "path": "histogram42E8DF98F1244DB799B2A8A65DBCB226.pbiviz.json",
-            "type": 5
-          }
-        ],
-        "name": "histogram42E8DF98F1244DB799B2A8A65DBCB226",
-        "type": 0
-      }
     }
   ],
   "sections": [

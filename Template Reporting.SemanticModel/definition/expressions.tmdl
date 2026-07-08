@@ -945,23 +945,6 @@ expression 'File Saves' =
 
 	annotation PBI_ResultType = Exception
 
-expression 'Churn Risk Accounts' =
-		let
-		    Source = Excel.Workbook(Web.Contents("https://venasolutions-my.sharepoint.com/personal/jachen_venacorp_com/Documents/P&T%20PBI%20Reporting/XLS%20data%20sources/SF%20Accounts%20-%20customer%20health.xlsx"), null, true),
-		    #"result - 2024-01-19T151658.616_Sheet" = Source{[Item="result - 2024-01-19T151658.616",Kind="Sheet"]}[Data],
-		    #"Promoted Headers" = Table.PromoteHeaders(#"result - 2024-01-19T151658.616_Sheet", [PromoteAllScalars=true]),
-		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SF_ACCOUNT_ID", type text}, {"CUSTOMER_NAME", type text}, {"CUSTOMER_TYPE", type text}, {"DATE_BECAME_CUSTOMER", type date}, {"CHURN_RISK", type text}, {"RENEWAL_DATE_C", type date}, {"IMPLEMENTATION_STATUS", type text}, {"ARR_USD", type number}, {"ZOOM_PRIMARY_INDUSTRY", type text}, {"GO_LIVE_DT", type date}, {"FISCAL_MONTHS_TENURE", type number}}),
-		    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"CUSTOMER_NAME"}, #"Additional Tenant Info", {"ACCOUNT_NM"}, "Additional Tenant Info", JoinKind.LeftOuter),
-		    #"Expanded Additional Tenant Info" = Table.ExpandTableColumn(#"Merged Queries", "Additional Tenant Info", {"TENANT_TYP_NM", "TENANT_ID"}, {"Additional Tenant Info.TENANT_TYP_NM", "Additional Tenant Info.TENANT_ID"}),
-		    #"Renamed Columns" = Table.RenameColumns(#"Expanded Additional Tenant Info",{{"Additional Tenant Info.TENANT_ID", "TENANT_ID"}, {"Additional Tenant Info.TENANT_TYP_NM", "TENANT_TYP_NM"}})
-		in
-		    #"Renamed Columns"
-	lineageTag: aa1e9e68-692d-4030-a301-411d8cce2970
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Exception
-
 expression 'Account Summary' =
 		let
 		    Source = Value.NativeQuery(Snowflake.Databases("vena-prod.snowflakecomputing.com","product_power_user_read_wh"){[Name="PROD_HARMONIZED"]}[Data], "select *#(lf)from PROD_HARMONIZED.SALES.VW_ACCOUNT_PROF#(lf)where crnt_rcrd_ind = 'Y'", null, [EnableFolding=true]),
