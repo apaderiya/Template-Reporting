@@ -35,7 +35,7 @@ table 'Template Sizes - Desktop Add-in'
 		annotation SummarizationSetBy = Automatic
 
 	column SIZE_MB
-		dataType: decimal
+		dataType: double
 		lineageTag: 9519198d-9f7b-4a34-a741-b4f61a8d0808
 		summarizeBy: sum
 		sourceColumn: SIZE_MB

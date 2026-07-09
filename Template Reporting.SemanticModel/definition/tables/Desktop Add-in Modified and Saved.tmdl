@@ -45,7 +45,7 @@ table 'Desktop Add-in Modified and Saved'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column CONTRIBUTOR_MODIFY_SAVE
-		dataType: decimal
+		dataType: double
 		lineageTag: 8c8193c7-ec3d-4117-bd0c-b68f72338bd8
 		summarizeBy: sum
 		sourceColumn: CONTRIBUTOR_MODIFY_SAVE
@@ -55,7 +55,7 @@ table 'Desktop Add-in Modified and Saved'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column MANAGER_DATA_SAVE
-		dataType: decimal
+		dataType: double
 		lineageTag: 0247004d-3978-4eac-8f69-e0b3a5e4f746
 		summarizeBy: sum
 		sourceColumn: MANAGER_DATA_SAVE

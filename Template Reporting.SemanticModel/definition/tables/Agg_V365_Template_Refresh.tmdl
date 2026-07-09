@@ -86,7 +86,7 @@ table Agg_V365_Template_Refresh
 		annotation UnderlyingDateTimeDataType = Date
 
 	column REFRESH_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: 3dd48255-43ea-43f8-8972-97d5aec4b350
 		summarizeBy: sum
 		sourceColumn: REFRESH_COUNT
@@ -96,7 +96,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column REFRESHES_BELOW_8S
-		dataType: decimal
+		dataType: double
 		lineageTag: 85771972-3b1d-4c15-ab5a-07782b826f4f
 		summarizeBy: sum
 		sourceColumn: REFRESHES_BELOW_8S
@@ -106,7 +106,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column AVG_DURATION_SEC
-		dataType: decimal
+		dataType: double
 		lineageTag: f42c4d4c-cb92-43a4-82f9-58b9e7814bdd
 		summarizeBy: sum
 		sourceColumn: AVG_DURATION_SEC
@@ -116,7 +116,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P25_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: e7af7393-cfee-486d-82c3-6981b6fe1502
 		summarizeBy: sum
 		sourceColumn: P25_DURATION
@@ -126,7 +126,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P50_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 54258950-d98c-43c4-9681-3870b9d276e8
 		summarizeBy: sum
 		sourceColumn: P50_DURATION
@@ -136,7 +136,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P70_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: fc16155f-adf4-4e26-92cf-ce1e96ac40a8
 		summarizeBy: sum
 		sourceColumn: P70_DURATION
@@ -146,7 +146,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P80_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: e6e27566-84e8-4cea-84d8-c30b685ec011
 		summarizeBy: sum
 		sourceColumn: P80_DURATION
@@ -156,7 +156,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P90_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 41b6e4d8-f139-445e-9afa-fc5f0e5fa313
 		summarizeBy: sum
 		sourceColumn: P90_DURATION
@@ -166,7 +166,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P95_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 9664dfaf-3d6b-404e-ba12-a9d77966d830
 		summarizeBy: sum
 		sourceColumn: P95_DURATION
@@ -176,7 +176,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P99_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 447fc7a7-b56a-4dfe-a3e7-f13c77677a7d
 		summarizeBy: sum
 		sourceColumn: P99_DURATION
@@ -186,7 +186,7 @@ table Agg_V365_Template_Refresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: bb98cc8e-ddd1-4391-883b-b8378b4fe3fe
 		summarizeBy: sum
 		sourceColumn: DISTINCT_USERS

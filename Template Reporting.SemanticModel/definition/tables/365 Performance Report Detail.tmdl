@@ -78,7 +78,7 @@ table '365 Performance Report Detail'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column NUM_EVENTS
-		dataType: decimal
+		dataType: double
 		lineageTag: 495be5a3-b0dc-42f5-b262-f4d34d0d94c7
 		summarizeBy: sum
 		sourceColumn: NUM_EVENTS

@@ -41,6 +41,17 @@ table 'Desktop Add-in Versions'
 
 		annotation SummarizationSetBy = Automatic
 
+	column REQUEST_END_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 38f1f628-e533-4f8f-b50d-137697f6a37b
+		summarizeBy: none
+		sourceColumn: REQUEST_END_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
 	partition 'Desktop Add-in Versions' = m
 		mode: import
 		source =

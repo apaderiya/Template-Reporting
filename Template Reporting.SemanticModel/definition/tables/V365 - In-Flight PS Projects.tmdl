@@ -13,7 +13,7 @@ table 'V365 - In-Flight PS Projects'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column ALL_PROJECTS_INFLIGHT
-		dataType: decimal
+		dataType: double
 		lineageTag: e5c78bc5-4979-40af-904a-9f82581fa215
 		summarizeBy: sum
 		sourceColumn: ALL_PROJECTS_INFLIGHT
@@ -23,7 +23,7 @@ table 'V365 - In-Flight PS Projects'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column V365_INFLIGHT
-		dataType: decimal
+		dataType: double
 		lineageTag: 57249534-dc40-490e-9b33-09febedd21ed
 		summarizeBy: sum
 		sourceColumn: V365_INFLIGHT
@@ -33,7 +33,7 @@ table 'V365 - In-Flight PS Projects'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column PERCENT_OF_V365
-		dataType: decimal
+		dataType: double
 		lineageTag: 8aba8258-d460-4ae7-b543-90b406233ce0
 		summarizeBy: sum
 		sourceColumn: PERCENT_OF_V365

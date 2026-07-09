@@ -27,9 +27,9 @@ table 'Dimesnions Customer Accounts'
 		annotation SummarizationSetBy = Automatic
 
 	column ARR_USD
-		dataType: decimal
+		dataType: double
 		lineageTag: c0c7280e-4d0a-4920-b825-ae0f8018cafa
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ARR_USD
 
 		annotation SummarizationSetBy = Automatic
@@ -37,9 +37,9 @@ table 'Dimesnions Customer Accounts'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ADMIN_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 40989101-ab9e-45ef-8308-5244d1e4df75
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ADMIN_LICENSE_SOLD
 
 		annotation SummarizationSetBy = Automatic
@@ -47,9 +47,9 @@ table 'Dimesnions Customer Accounts'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column BUSINESS_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 57793f6e-3b9b-4e29-af99-c13a437f4e1d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: BUSINESS_LICENSE_SOLD
 
 		annotation SummarizationSetBy = Automatic
@@ -57,9 +57,9 @@ table 'Dimesnions Customer Accounts'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ANY_COMBINATION_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 3e945b63-b9a8-4c02-b422-e2ba63b9f063
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ANY_COMBINATION_LICENSE_SOLD
 
 		annotation SummarizationSetBy = Automatic
@@ -67,9 +67,9 @@ table 'Dimesnions Customer Accounts'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column VIEW_ONLY_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 7b6eae70-5500-4035-b291-291c93e6df4f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: VIEW_ONLY_LICENSE_SOLD
 
 		annotation SummarizationSetBy = Automatic
@@ -77,9 +77,9 @@ table 'Dimesnions Customer Accounts'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 9ab8e6e4-19a6-4bb9-ba9e-a1b3f3ecf7ad
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: TOTAL_LICENSE_SOLD
 
 		annotation SummarizationSetBy = Automatic
@@ -149,9 +149,9 @@ table 'Dimesnions Customer Accounts'
 		annotation SummarizationSetBy = Automatic
 
 	column ZOOM_EMPLOYEE_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: b8c9f42c-6093-42cb-9390-ccd6e8b6f82a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ZOOM_EMPLOYEE_COUNT
 
 		annotation SummarizationSetBy = Automatic
@@ -159,9 +159,9 @@ table 'Dimesnions Customer Accounts'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ZOOM_REVENUE
-		dataType: decimal
+		dataType: double
 		lineageTag: 02c3b746-e918-43b0-92b0-d29102efd3dd
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ZOOM_REVENUE
 
 		annotation SummarizationSetBy = Automatic

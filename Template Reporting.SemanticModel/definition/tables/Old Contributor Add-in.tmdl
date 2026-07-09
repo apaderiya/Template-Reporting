@@ -19,7 +19,7 @@ table 'Old Contributor Add-in'
 		annotation SummarizationSetBy = Automatic
 
 	column TOTAL_EVENTS
-		dataType: decimal
+		dataType: double
 		lineageTag: b0266913-3560-4338-8b69-a971be45f80b
 		summarizeBy: sum
 		sourceColumn: TOTAL_EVENTS
@@ -29,7 +29,7 @@ table 'Old Contributor Add-in'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_MINUTES
-		dataType: decimal
+		dataType: double
 		lineageTag: b9f9f24a-ab53-44bf-b0a1-2920139b9389
 		summarizeBy: sum
 		sourceColumn: TOTAL_MINUTES

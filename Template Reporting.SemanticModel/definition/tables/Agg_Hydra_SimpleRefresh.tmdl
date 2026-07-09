@@ -53,7 +53,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation UnderlyingDateTimeDataType = Date
 
 	column REFRESH_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: cd1d169c-f269-4dac-8dd5-47f292ed311f
 		summarizeBy: sum
 		sourceColumn: REFRESH_COUNT
@@ -63,7 +63,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column AVG_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 2bc02a68-df26-4790-bd6a-491db787b686
 		summarizeBy: sum
 		sourceColumn: AVG_TIMING
@@ -73,7 +73,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P25_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 9bea3629-9dc8-4a4e-ae70-4204987a1dfa
 		summarizeBy: none
 		sourceColumn: P25_TIMING
@@ -83,7 +83,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P50_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 4b2e74ea-bd74-4bbb-b22d-6480159e2944
 		summarizeBy: none
 		sourceColumn: P50_TIMING
@@ -93,7 +93,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P70_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: a4546f8b-a1a7-46dc-aa8f-bc5df85f57d1
 		summarizeBy: none
 		sourceColumn: P70_TIMING
@@ -103,7 +103,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P80_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: e97fc514-bdfe-43b5-9822-5ee3f3513dd8
 		summarizeBy: none
 		sourceColumn: P80_TIMING
@@ -113,7 +113,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P90_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 87f0bd45-4cd2-4fa0-8f05-73790ca8116c
 		summarizeBy: none
 		sourceColumn: P90_TIMING
@@ -123,7 +123,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P95_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 1748b3fd-70e2-44da-9e62-eb473f70101d
 		summarizeBy: none
 		sourceColumn: P95_TIMING
@@ -133,7 +133,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P99_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 7211b14a-4a03-4774-a8d6-ad164032ce6b
 		summarizeBy: none
 		sourceColumn: P99_TIMING
@@ -143,7 +143,7 @@ table Agg_Hydra_SimpleRefresh
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: bcf8c343-ec71-4c59-bd9b-7df50ffe9e64
 		summarizeBy: sum
 		sourceColumn: DISTINCT_USERS

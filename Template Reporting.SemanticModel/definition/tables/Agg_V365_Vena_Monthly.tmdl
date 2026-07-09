@@ -13,7 +13,7 @@ table Agg_V365_Vena_Monthly
 		annotation UnderlyingDateTimeDataType = Date
 
 	column TOTAL_REFRESHES
-		dataType: decimal
+		dataType: double
 		lineageTag: 41a1c719-7a4e-47ff-bb0f-5af5c301a600
 		summarizeBy: sum
 		sourceColumn: TOTAL_REFRESHES
@@ -23,7 +23,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column REFRESHES_BELOW_8S
-		dataType: decimal
+		dataType: double
 		lineageTag: 391ccbb3-5e24-46ee-ae13-60e3fdc4e759
 		summarizeBy: sum
 		sourceColumn: REFRESHES_BELOW_8S
@@ -33,7 +33,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column PCT_BELOW_8S
-		dataType: decimal
+		dataType: double
 		lineageTag: e0954ec4-08fb-4de6-8294-7d14e9f1bea5
 		summarizeBy: sum
 		sourceColumn: PCT_BELOW_8S
@@ -43,7 +43,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column AVG_DURATION_SEC
-		dataType: decimal
+		dataType: double
 		lineageTag: 71e87abd-4b23-4ae4-a95a-dd2eee500349
 		summarizeBy: sum
 		sourceColumn: AVG_DURATION_SEC
@@ -53,7 +53,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P25_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: d13b1e60-aa70-408b-b786-0fb9c2774822
 		summarizeBy: sum
 		sourceColumn: P25_DURATION
@@ -63,7 +63,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P50_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 9604426d-60fe-47ef-b038-a3e7356e9798
 		summarizeBy: sum
 		sourceColumn: P50_DURATION
@@ -73,7 +73,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P70_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 9e5f0c9f-23b0-47cd-9140-d48689177277
 		summarizeBy: sum
 		sourceColumn: P70_DURATION
@@ -83,7 +83,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P80_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 3e4735b4-f1b9-45f1-8368-1ec00aa03431
 		summarizeBy: sum
 		sourceColumn: P80_DURATION
@@ -93,7 +93,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P90_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 1d9b5614-e496-43a3-aa61-ca4f2d5911b4
 		summarizeBy: sum
 		sourceColumn: P90_DURATION
@@ -103,7 +103,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P95_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 988c0f57-074b-486b-93ac-ef42605262cf
 		summarizeBy: sum
 		sourceColumn: P95_DURATION
@@ -113,7 +113,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P99_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: d72ce362-6618-4bb8-aed6-3196f370d09f
 		summarizeBy: sum
 		sourceColumn: P99_DURATION
@@ -123,7 +123,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_TENANTS
-		dataType: decimal
+		dataType: double
 		lineageTag: cf9f4d95-9320-43fd-8809-8760e7af7268
 		summarizeBy: sum
 		sourceColumn: DISTINCT_TENANTS
@@ -133,7 +133,7 @@ table Agg_V365_Vena_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: 57f16965-e5ea-4488-a264-ab9a46e863d4
 		summarizeBy: sum
 		sourceColumn: DISTINCT_USERS

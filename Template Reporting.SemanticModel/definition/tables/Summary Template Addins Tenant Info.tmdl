@@ -68,7 +68,7 @@ table 'Summary Template Addins Tenant Info'
 		annotation SummarizationSetBy = Automatic
 
 	column ARR_USD
-		dataType: decimal
+		dataType: double
 		lineageTag: 086284c3-411e-420a-b874-dbf974def12e
 		summarizeBy: sum
 		sourceColumn: ARR_USD
@@ -78,7 +78,7 @@ table 'Summary Template Addins Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column CHURN_PROBABILITY
-		dataType: decimal
+		dataType: double
 		lineageTag: 4e2ed09a-cdb9-4292-9f7c-0bffd2720984
 		summarizeBy: sum
 		sourceColumn: CHURN_PROBABILITY
@@ -96,7 +96,7 @@ table 'Summary Template Addins Tenant Info'
 		annotation SummarizationSetBy = Automatic
 
 	column INITIALIZATIONS_LEGACY_MAC_CONNECTOR
-		dataType: decimal
+		dataType: double
 		lineageTag: 2e808427-ec1b-44d9-9814-c586a08a32f7
 		summarizeBy: sum
 		sourceColumn: INITIALIZATIONS_LEGACY_MAC_CONNECTOR

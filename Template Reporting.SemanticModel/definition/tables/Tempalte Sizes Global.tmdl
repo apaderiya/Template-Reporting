@@ -26,7 +26,7 @@ table 'Tempalte Sizes Global'
 		annotation SummarizationSetBy = Automatic
 
 	column FILE_SIZE_MB
-		dataType: decimal
+		dataType: double
 		lineageTag: 08d0c00e-32f1-4ec2-8ba7-5c309ae561f9
 		summarizeBy: sum
 		sourceColumn: FILE_SIZE_MB

@@ -51,7 +51,7 @@ table 'DIM Tenant Ops Summary'
 		annotation SummarizationSetBy = Automatic
 
 	column ARR_USD_AMT
-		dataType: decimal
+		dataType: double
 		lineageTag: f7f7af8a-a5c5-468f-9e79-9c6a372a9de1
 		summarizeBy: sum
 		sourceColumn: ARR_USD_AMT
@@ -88,7 +88,7 @@ table 'DIM Tenant Ops Summary'
 		annotation SummarizationSetBy = Automatic
 
 	column EMPLOYEE_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: 3715f721-8111-4f0c-b9f0-f11887f9179f
 		summarizeBy: sum
 		sourceColumn: EMPLOYEE_COUNT
@@ -128,7 +128,7 @@ table 'DIM Tenant Ops Summary'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column DAYS_POST_GO_LIVE
-		dataType: decimal
+		dataType: double
 		lineageTag: 38b618ef-ed40-4524-87f7-94c0901d1f9f
 		summarizeBy: sum
 		sourceColumn: DAYS_POST_GO_LIVE
@@ -138,7 +138,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column IS_EVER_EMS_CUSTOMER
-		dataType: decimal
+		dataType: double
 		lineageTag: 691d8a5f-e7ab-4d32-883b-51c50f1e9c0f
 		summarizeBy: sum
 		sourceColumn: IS_EVER_EMS_CUSTOMER
@@ -148,7 +148,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column IS_CURRENTLY_EMS
-		dataType: decimal
+		dataType: double
 		lineageTag: 40302897-4a48-4f12-a39c-6137e5ec6e61
 		summarizeBy: sum
 		sourceColumn: IS_CURRENTLY_EMS
@@ -158,7 +158,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column FILES_WITH_OP_TABLES
-		dataType: decimal
+		dataType: double
 		lineageTag: 179f6168-15ad-4ce3-82ac-b93535519132
 		summarizeBy: sum
 		sourceColumn: FILES_WITH_OP_TABLES
@@ -168,7 +168,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_OP_FILE_CHANGES
-		dataType: decimal
+		dataType: double
 		lineageTag: 098cb3fd-8f7d-400f-8f7a-4c7186149777
 		summarizeBy: sum
 		sourceColumn: TOTAL_OP_FILE_CHANGES
@@ -178,7 +178,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUM_DATA_MODELS
-		dataType: decimal
+		dataType: double
 		lineageTag: 03b02cb3-c54b-4d5d-b954-3bc2283ba6e1
 		summarizeBy: sum
 		sourceColumn: NUM_DATA_MODELS
@@ -188,7 +188,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUM_DIMENSIONS
-		dataType: decimal
+		dataType: double
 		lineageTag: 148f4e20-b509-464f-8743-143c112f155a
 		summarizeBy: sum
 		sourceColumn: NUM_DIMENSIONS
@@ -198,7 +198,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUM_MEMBERS
-		dataType: decimal
+		dataType: double
 		lineageTag: 21ce026c-6143-4c35-8bd8-ed3dcb310f9d
 		summarizeBy: sum
 		sourceColumn: NUM_MEMBERS
@@ -208,7 +208,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_REFRESHES_LTM_OP_FILES
-		dataType: decimal
+		dataType: double
 		lineageTag: d53c40f1-cc1c-406b-85c6-64a6c040775f
 		summarizeBy: sum
 		sourceColumn: TOTAL_REFRESHES_LTM_OP_FILES
@@ -218,7 +218,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_READ_ACTIONS_LTM
-		dataType: decimal
+		dataType: double
 		lineageTag: af01a2f0-6079-4e0f-bd7a-56810d869452
 		summarizeBy: sum
 		sourceColumn: TOTAL_READ_ACTIONS_LTM
@@ -228,7 +228,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_WRITE_ACTIONS_LTM
-		dataType: decimal
+		dataType: double
 		lineageTag: 930d0e68-1270-4b19-9b76-79476ca4ee52
 		summarizeBy: sum
 		sourceColumn: TOTAL_WRITE_ACTIONS_LTM
@@ -238,7 +238,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_SYNC_FULL_ACTIONS_LTM
-		dataType: decimal
+		dataType: double
 		lineageTag: 8fb1a5ef-3f1a-4b54-a340-4d788b849d69
 		summarizeBy: sum
 		sourceColumn: TOTAL_SYNC_FULL_ACTIONS_LTM
@@ -248,7 +248,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_SYNC_PARTIAL_ACTIONS_LTM
-		dataType: decimal
+		dataType: double
 		lineageTag: b173ee34-3b63-4e8c-9a87-7e1f63734fe5
 		summarizeBy: sum
 		sourceColumn: TOTAL_SYNC_PARTIAL_ACTIONS_LTM
@@ -258,7 +258,7 @@ table 'DIM Tenant Ops Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUM_VENA_TABLES
-		dataType: decimal
+		dataType: double
 		lineageTag: 6bc636ff-cd8b-411c-b100-67e3e9d141c6
 		summarizeBy: sum
 		sourceColumn: NUM_VENA_TABLES

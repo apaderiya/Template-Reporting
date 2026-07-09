@@ -88,7 +88,7 @@ table 'Datadog - AdHoc Addin'
 		annotation SummarizationSetBy = Automatic
 
 	column TOTAL_INTERSECTIONS
-		dataType: decimal
+		dataType: double
 		lineageTag: 66f205b7-9dc8-471a-9366-8b483c35dd0a
 		summarizeBy: sum
 		sourceColumn: TOTAL_INTERSECTIONS
@@ -98,7 +98,7 @@ table 'Datadog - AdHoc Addin'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column REFRESH_DURATION_SEC
-		dataType: decimal
+		dataType: double
 		lineageTag: 1238e1c1-26b8-431e-9f5c-f7e805bd7d81
 		summarizeBy: sum
 		sourceColumn: REFRESH_DURATION_SEC
