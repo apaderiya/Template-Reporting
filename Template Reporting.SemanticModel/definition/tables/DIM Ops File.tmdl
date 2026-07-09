@@ -83,7 +83,7 @@ table 'DIM Ops File'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column FIRST_CHOOSE_MAPPINGS
-		dataType: decimal
+		dataType: double
 		lineageTag: 9890a432-b3fb-47e6-9563-f58ecb95340a
 		summarizeBy: sum
 		sourceColumn: FIRST_CHOOSE_MAPPINGS
@@ -93,7 +93,7 @@ table 'DIM Ops File'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column FIRST_WRITEBACK_QUERIES
-		dataType: decimal
+		dataType: double
 		lineageTag: d3695d02-101e-4467-94d9-4d191be27fd4
 		summarizeBy: sum
 		sourceColumn: FIRST_WRITEBACK_QUERIES
@@ -103,7 +103,7 @@ table 'DIM Ops File'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column CURRENT_CHOOSE_MAPPINGS
-		dataType: decimal
+		dataType: double
 		lineageTag: f2b4de4b-82ef-4f4c-b6f6-85d1302ae5fa
 		summarizeBy: sum
 		sourceColumn: CURRENT_CHOOSE_MAPPINGS
@@ -113,7 +113,7 @@ table 'DIM Ops File'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column CURRENT_WRITEBACK_QUERIES
-		dataType: decimal
+		dataType: double
 		lineageTag: 801d0737-946f-4b04-9606-e7186563e381
 		summarizeBy: sum
 		sourceColumn: CURRENT_WRITEBACK_QUERIES
@@ -123,7 +123,7 @@ table 'DIM Ops File'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column CHOOSE_MAPPINGS_NET_CHANGE
-		dataType: decimal
+		dataType: double
 		lineageTag: 5a71370f-ca16-415a-a247-79774c6997a5
 		summarizeBy: sum
 		sourceColumn: CHOOSE_MAPPINGS_NET_CHANGE
@@ -133,7 +133,7 @@ table 'DIM Ops File'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column WRITEBACK_QUERIES_NET_CHANGE
-		dataType: decimal
+		dataType: double
 		lineageTag: 281edf9e-32d3-4098-8ac1-b81d1da6fd2e
 		summarizeBy: sum
 		sourceColumn: WRITEBACK_QUERIES_NET_CHANGE
@@ -143,7 +143,7 @@ table 'DIM Ops File'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column V365_REFRESH_COUNT_LTM
-		dataType: decimal
+		dataType: double
 		lineageTag: 726a840a-106b-4cc7-b90a-fc76623e5a1d
 		summarizeBy: sum
 		sourceColumn: V365_REFRESH_COUNT_LTM
@@ -197,7 +197,7 @@ table 'DIM Ops File'
 		annotation SummarizationSetBy = Automatic
 
 	column 'Template Sizes - 365 Addin.SIZE_MB'
-		dataType: decimal
+		dataType: double
 		lineageTag: 124e0ea1-b7c4-4134-bfba-3db699a51661
 		summarizeBy: sum
 		sourceColumn: Template Sizes - 365 Addin.SIZE_MB

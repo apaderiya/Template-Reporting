@@ -1154,6 +1154,7 @@ table _Measures
 			SUM( 'FCT Ops Table Actions'[EVENT_COUNT] )
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: 0cff5a1d-e32a-4c97-96d4-f2e127b43904
 
@@ -1169,6 +1170,7 @@ table _Measures
 			)
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: f48dea1f-64fd-4382-8487-efc95eafcb47
 
@@ -1184,6 +1186,7 @@ table _Measures
 			)
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: 1c12d905-e1aa-4be4-9816-5c07648cd660
 
@@ -1199,6 +1202,7 @@ table _Measures
 			)
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: 7a916102-662c-402b-a61c-0333a4529335
 
@@ -1210,6 +1214,7 @@ table _Measures
 			)
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: c2149f26-a8e1-485d-aef7-ae5b8ed960db
 
@@ -1221,6 +1226,7 @@ table _Measures
 			)
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: c6942b3c-79ce-471c-887e-c189b646afdc
 
@@ -1239,6 +1245,7 @@ table _Measures
 			)
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: 230bc65f-7282-4948-82df-6540e35108ee
 
@@ -1263,6 +1270,7 @@ table _Measures
 			    IF( TenantP90 > FleetP90 * 1.5, "Outlier", "Normal" )
 			
 			```
+		formatString: #,0
 		displayFolder: Ops Table
 		lineageTag: ba57d889-7488-44a0-afc1-bf4abf72f8da
 

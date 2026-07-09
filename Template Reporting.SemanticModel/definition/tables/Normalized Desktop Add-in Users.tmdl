@@ -19,7 +19,7 @@ table 'Normalized Desktop Add-in Users'
 		annotation SummarizationSetBy = Automatic
 
 	column 'Max Refresh Time'
-		dataType: decimal
+		dataType: double
 		lineageTag: a5824f00-705d-4aa5-8695-8aaa5f37ea1d
 		summarizeBy: sum
 		sourceColumn: Max Refresh Time

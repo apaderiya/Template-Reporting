@@ -56,7 +56,7 @@ table Agg_V365_Tenant_Monthly
 		annotation UnderlyingDateTimeDataType = Date
 
 	column REFRESH_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: c59ec3aa-dcef-48d2-bb81-ec528793f22d
 		summarizeBy: sum
 		sourceColumn: REFRESH_COUNT
@@ -66,7 +66,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column REFRESHES_BELOW_8S
-		dataType: decimal
+		dataType: double
 		lineageTag: 4ed80fee-cf8d-4589-8dbf-186ffe23f4c4
 		summarizeBy: sum
 		sourceColumn: REFRESHES_BELOW_8S
@@ -76,7 +76,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column AVG_DURATION_SEC
-		dataType: decimal
+		dataType: double
 		lineageTag: 68e41441-9abc-46dc-a149-7c8ce2ca23ad
 		summarizeBy: sum
 		sourceColumn: AVG_DURATION_SEC
@@ -86,7 +86,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P25_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: c93949ef-bcf7-495f-9a41-daa0a6b244c3
 		summarizeBy: sum
 		sourceColumn: P25_DURATION
@@ -96,7 +96,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P50_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 9c6d770c-4d66-4ea2-a53e-f49a3d082603
 		summarizeBy: sum
 		sourceColumn: P50_DURATION
@@ -106,7 +106,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P70_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: fde27dfd-0ddb-45bb-8e28-aa53ea28a43d
 		summarizeBy: sum
 		sourceColumn: P70_DURATION
@@ -116,7 +116,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P80_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: de8adbc1-256d-4435-8b06-492d6f9d9404
 		summarizeBy: sum
 		sourceColumn: P80_DURATION
@@ -126,7 +126,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P90_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 7ef7bbbb-21a7-4dd9-8eca-aafa7f0f185a
 		summarizeBy: sum
 		sourceColumn: P90_DURATION
@@ -136,7 +136,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P95_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: 2e687ad6-c6c7-4911-89e5-918f16b8118a
 		summarizeBy: sum
 		sourceColumn: P95_DURATION
@@ -146,7 +146,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P99_DURATION
-		dataType: decimal
+		dataType: double
 		lineageTag: cf494e74-49e4-45a7-9cbc-980fc27de2dd
 		summarizeBy: sum
 		sourceColumn: P99_DURATION
@@ -156,7 +156,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: c6b9a989-4760-4ddc-a067-3a2de73f4f15
 		summarizeBy: sum
 		sourceColumn: DISTINCT_USERS
@@ -166,7 +166,7 @@ table Agg_V365_Tenant_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_FILES
-		dataType: decimal
+		dataType: double
 		lineageTag: 4e7bd609-daa1-4e99-a018-a8239ec0ee10
 		summarizeBy: sum
 		sourceColumn: DISTINCT_FILES

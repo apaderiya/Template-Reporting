@@ -83,7 +83,7 @@ table 'Additional Tenant Info'
 		annotation SummarizationSetBy = Automatic
 
 	column ARR_USD
-		dataType: decimal
+		dataType: double
 		lineageTag: 3d63542a-91bf-4d3e-801d-93ed8cdc1514
 		summarizeBy: sum
 		sourceColumn: ARR_USD
@@ -93,7 +93,7 @@ table 'Additional Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ADMIN_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: dca28ed2-7078-4c8e-aa87-5a475f3b17cc
 		summarizeBy: sum
 		sourceColumn: ADMIN_LICENSE_SOLD
@@ -103,7 +103,7 @@ table 'Additional Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column BUSINESS_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 9fa842c4-796f-4dd1-b0cd-dda6bc11ab0a
 		summarizeBy: sum
 		sourceColumn: BUSINESS_LICENSE_SOLD
@@ -113,7 +113,7 @@ table 'Additional Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ANY_COMBINATION_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 453fcbff-aa68-4d91-9890-46d120aedc4e
 		summarizeBy: sum
 		sourceColumn: ANY_COMBINATION_LICENSE_SOLD
@@ -123,7 +123,7 @@ table 'Additional Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column VIEW_ONLY_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: 7ff3158c-1a71-4eef-b4f6-b318b4ed4309
 		summarizeBy: sum
 		sourceColumn: VIEW_ONLY_LICENSE_SOLD
@@ -133,7 +133,7 @@ table 'Additional Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_LICENSE_SOLD
-		dataType: decimal
+		dataType: double
 		lineageTag: af1875a5-a49e-4369-bbe0-86ac9d9369e7
 		summarizeBy: sum
 		sourceColumn: TOTAL_LICENSE_SOLD

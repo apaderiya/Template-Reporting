@@ -14,7 +14,7 @@ table 'AdHoc Addin - FY26 MVP'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column UNIQUE_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: 85866413-34b2-469d-ba7a-a6841fcb45e2
 		summarizeBy: sum
 		sourceColumn: UNIQUE_USERS
@@ -24,7 +24,7 @@ table 'AdHoc Addin - FY26 MVP'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ROLLING_AVERAGE_MAU
-		dataType: decimal
+		dataType: double
 		lineageTag: 570b9f0e-9f60-4239-8c05-a6172752cf5d
 		summarizeBy: sum
 		sourceColumn: ROLLING_AVERAGE_MAU

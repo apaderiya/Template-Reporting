@@ -68,7 +68,7 @@ table 'Datadog - V365 Addin'
 		annotation SummarizationSetBy = Automatic
 
 	column NUMBER_OF_EMPTY_SLICES
-		dataType: decimal
+		dataType: double
 		lineageTag: 6b3b1a91-3c5a-4dd0-868e-58cac8e30fa8
 		summarizeBy: sum
 		sourceColumn: NUMBER_OF_EMPTY_SLICES
@@ -78,7 +78,7 @@ table 'Datadog - V365 Addin'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUMBER_OF_SLICES
-		dataType: decimal
+		dataType: double
 		lineageTag: 4d129223-6852-493a-abdf-80148a476890
 		summarizeBy: sum
 		sourceColumn: NUMBER_OF_SLICES
@@ -119,7 +119,7 @@ table 'Datadog - V365 Addin'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column TOTAL_DURATION_SEC
-		dataType: decimal
+		dataType: double
 		lineageTag: 8e5b81c3-1248-4b21-aa9e-672368b03c15
 		summarizeBy: sum
 		sourceColumn: TOTAL_DURATION_SEC
@@ -232,6 +232,34 @@ table 'Datadog - V365 Addin'
 		lineageTag: 9aeba855-e0a5-46d3-bbb2-0283b0197519
 		summarizeBy: none
 		sourceColumn: PCS_PACKAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_DURATION_FOR_REFRESHING_SLICES_SEC
+		dataType: double
+		lineageTag: 63da0e49-0e67-4143-8ef7-c0213002dce7
+		summarizeBy: sum
+		sourceColumn: TOTAL_DURATION_FOR_REFRESHING_SLICES_SEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DURATION_PER_SLICE_SEC
+		dataType: double
+		lineageTag: 6450fee1-a8bb-43bb-b4a5-90f6c4bfe123
+		summarizeBy: sum
+		sourceColumn: DURATION_PER_SLICE_SEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tenant_file_id
+		dataType: string
+		lineageTag: 753c1c39-8e02-4b72-bdf3-eb03532e882f
+		summarizeBy: none
+		sourceColumn: tenant_file_id
 
 		annotation SummarizationSetBy = Automatic
 

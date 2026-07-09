@@ -18,7 +18,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 9ea24562-9f3f-46d0-86ee-e078c9e0b64b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
@@ -27,7 +27,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 600696f5-5090-43ee-81c1-d111ad4b06ed
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CurrYearOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -45,7 +45,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 9015cf8b-1231-4cac-8c51-a0f30a9bfa84
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Quarter Number
 
 		annotation SummarizationSetBy = Automatic
@@ -92,7 +92,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: daf7b334-faf1-45df-aa53-fc27a7d3c9b7
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: QuarternYear
 
 		annotation SummarizationSetBy = Automatic
@@ -101,7 +101,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 659050f0-fc5f-479d-b0ec-34ec59a40098
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CurrQuarterOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -119,7 +119,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 329faec9-6bae-4f36-bc0b-a8a7912ee407
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Month
 
 		annotation SummarizationSetBy = Automatic
@@ -161,7 +161,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 602f42bc-3c05-4a8c-9570-999b49e0cb98
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MonthnYear
 
 		annotation SummarizationSetBy = Automatic
@@ -170,7 +170,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 1626c377-94be-48aa-b62a-c0729dc88184
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CurrMonthOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -212,7 +212,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 86ba10c2-f4f6-4d11-942b-0b00dffa0986
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Day of Month
 
 		annotation SummarizationSetBy = Automatic
@@ -221,7 +221,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 8b4f0371-f5dc-486b-a3fd-8cc7c3665f11
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Week Number
 
 		annotation SummarizationSetBy = Automatic
@@ -260,7 +260,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 3e7920cf-299a-41ef-bf0e-b77fea9a7789
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: WeeknYear
 
 		annotation SummarizationSetBy = Automatic
@@ -269,7 +269,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: a6a0be7b-8ccc-400f-a8a8-0a9d33671608
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CurrWeekOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -287,7 +287,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: d31b3e2a-fc55-4dea-8a18-ab10711f4af7
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Day of Week Number
 
 		annotation SummarizationSetBy = Automatic
@@ -312,13 +312,13 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 76c44753-c2d3-4a30-b5d5-45f6d3e4370f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DateInt
 
 		annotation SummarizationSetBy = Automatic
 
 	column CurrDayOffset
-		dataType: decimal
+		dataType: double
 		lineageTag: fcfa6e6e-8a6c-426a-af36-ddc4e5409936
 		summarizeBy: sum
 		sourceColumn: CurrDayOffset
@@ -371,7 +371,7 @@ table 'Date Table'
 		annotation SummarizationSetBy = Automatic
 
 	column 'ISO Year'
-		dataType: decimal
+		dataType: double
 		lineageTag: af9cd848-7ec6-457f-97d1-c7efc96d6238
 		summarizeBy: sum
 		sourceColumn: ISO Year
@@ -384,7 +384,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 7a17c271-b8ca-4af3-ac93-2d0955f5be21
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ISO CurrYearOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -409,7 +409,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 542467db-d519-4309-b835-44966bfaf55b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ISO QuarternYear
 
 		annotation SummarizationSetBy = Automatic
@@ -418,7 +418,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 22227a64-54fe-45d8-a63b-c6ec60467587
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ISO CurrQuarterOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -435,7 +435,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: f760de50-5035-4e2c-808b-e9da0a1e8373
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Fiscal CurrYearOffset
 
 		annotation SummarizationSetBy = Automatic
@@ -452,7 +452,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 824ffb15-e3bd-4a42-abd3-cdf3edace651
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: FQuarternYear
 
 		annotation SummarizationSetBy = Automatic
@@ -469,7 +469,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: 575a5b5e-01e2-4c1e-8d16-25d93b167ed1
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: FPeriodnYear
 
 		annotation SummarizationSetBy = Automatic
@@ -486,7 +486,7 @@ table 'Date Table'
 		dataType: int64
 		formatString: 0
 		lineageTag: a147cfee-39f6-4866-bb1d-e747c3c1d012
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: FWeeknYear
 
 		annotation SummarizationSetBy = Automatic

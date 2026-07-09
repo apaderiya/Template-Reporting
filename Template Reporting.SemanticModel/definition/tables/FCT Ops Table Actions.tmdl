@@ -53,7 +53,7 @@ table 'FCT Ops Table Actions'
 		annotation SummarizationSetBy = Automatic
 
 	column EVENT_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: c359132d-b309-43cc-81b8-02264293517f
 		summarizeBy: sum
 		sourceColumn: EVENT_COUNT
@@ -63,7 +63,7 @@ table 'FCT Ops Table Actions'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TOTAL_DURATION_MS
-		dataType: decimal
+		dataType: double
 		lineageTag: e2737fc8-3d3a-45a6-bd87-25f7c4767713
 		summarizeBy: sum
 		sourceColumn: TOTAL_DURATION_MS
@@ -73,7 +73,7 @@ table 'FCT Ops Table Actions'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column AVG_DURATION_MS
-		dataType: decimal
+		dataType: double
 		lineageTag: 19f97e8c-c32c-4967-b463-2cc7c41f9a63
 		summarizeBy: sum
 		sourceColumn: AVG_DURATION_MS

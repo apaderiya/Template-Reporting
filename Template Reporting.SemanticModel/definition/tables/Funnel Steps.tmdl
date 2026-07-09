@@ -4,7 +4,7 @@ table 'Funnel Steps'
 	column 'Step Order'
 		formatString: 0
 		lineageTag: 4b20082c-0ceb-4a2c-ad8f-211d2191588c
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Step Order]
 

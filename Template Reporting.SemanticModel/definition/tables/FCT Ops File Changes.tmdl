@@ -48,7 +48,7 @@ table 'FCT Ops File Changes'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
-		dataType: decimal
+		dataType: double
 		lineageTag: 46969b03-3930-43df-8429-7c5cf4d16424
 		summarizeBy: sum
 		sourceColumn: NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
@@ -58,7 +58,7 @@ table 'FCT Ops File Changes'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUMBER_OF_WRITEBACK_QUERIES
-		dataType: decimal
+		dataType: double
 		lineageTag: 0c8f353d-221c-4281-96e0-ae6cb90a62b9
 		summarizeBy: sum
 		sourceColumn: NUMBER_OF_WRITEBACK_QUERIES
@@ -76,7 +76,7 @@ table 'FCT Ops File Changes'
 		annotation SummarizationSetBy = Automatic
 
 	column V365_INITIAL_REFRESH_COUNT_IN_PERIOD
-		dataType: decimal
+		dataType: double
 		lineageTag: 4f10547b-30bc-4583-9423-08cb3ac79844
 		summarizeBy: sum
 		sourceColumn: V365_INITIAL_REFRESH_COUNT_IN_PERIOD

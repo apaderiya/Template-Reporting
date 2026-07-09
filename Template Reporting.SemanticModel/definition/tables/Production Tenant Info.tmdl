@@ -179,7 +179,7 @@ table 'Production Tenant Info'
 		annotation SummarizationSetBy = Automatic
 
 	column TKN_EXPRTN_INTRVL_MINS
-		dataType: decimal
+		dataType: double
 		lineageTag: 91a5aade-b3fe-49d3-b273-c6ba506a9697
 		summarizeBy: sum
 		sourceColumn: TKN_EXPRTN_INTRVL_MINS
@@ -189,7 +189,7 @@ table 'Production Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TMPLT_EXPRTN_INTRVL_MINS
-		dataType: decimal
+		dataType: double
 		lineageTag: 202acae8-f6b1-45d2-b4b0-7349f668f624
 		summarizeBy: sum
 		sourceColumn: TMPLT_EXPRTN_INTRVL_MINS
@@ -255,7 +255,7 @@ table 'Production Tenant Info'
 		annotation SummarizationSetBy = Automatic
 
 	column ADDTNL_VENA_TBLS_CNT
-		dataType: decimal
+		dataType: double
 		lineageTag: db44ee3f-28f6-4881-9f39-3b99bd812b45
 		summarizeBy: sum
 		sourceColumn: ADDTNL_VENA_TBLS_CNT
@@ -324,7 +324,7 @@ table 'Production Tenant Info'
 		annotation SummarizationSetBy = Automatic
 
 	column VENA_COPILOT_NUM_OF_PAID_LIC
-		dataType: decimal
+		dataType: double
 		lineageTag: 57f79691-4e78-4197-b156-023e2b9fb96e
 		summarizeBy: sum
 		sourceColumn: VENA_COPILOT_NUM_OF_PAID_LIC
@@ -334,7 +334,7 @@ table 'Production Tenant Info'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TKN_EXPRTN_INTRVL_FOR_TEAMS_MINS
-		dataType: decimal
+		dataType: double
 		lineageTag: 1bb7b6df-581f-4504-888b-7b465762d54c
 		summarizeBy: sum
 		sourceColumn: TKN_EXPRTN_INTRVL_FOR_TEAMS_MINS

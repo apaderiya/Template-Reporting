@@ -76,7 +76,7 @@ table 'Hydra UI - Simple Refreshes'
 		annotation UnderlyingDateTimeDataType = Date
 
 	column PERCENTILE_FIGURE
-		dataType: decimal
+		dataType: double
 		lineageTag: 5b384739-faa2-483f-a71f-d9c14ca6571c
 		summarizeBy: sum
 		sourceColumn: PERCENTILE_FIGURE
@@ -86,7 +86,7 @@ table 'Hydra UI - Simple Refreshes'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column TIMING_VAL
-		dataType: decimal
+		dataType: double
 		lineageTag: 15e5d202-1812-4927-912c-1535e9c5930e
 		summarizeBy: sum
 		sourceColumn: TIMING_VAL
@@ -142,7 +142,7 @@ table 'Hydra UI - Simple Refreshes'
 		dataType: int64
 		formatString: 0
 		lineageTag: 67c90e92-20d7-45e2-9995-2e5cc4171873
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: # of Named Ranges
 
 		annotation SummarizationSetBy = Automatic

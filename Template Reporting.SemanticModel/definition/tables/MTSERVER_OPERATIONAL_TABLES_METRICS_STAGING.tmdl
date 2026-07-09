@@ -26,7 +26,7 @@ table MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING
 		annotation SummarizationSetBy = Automatic
 
 	column COLUMN_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: 2e628bc2-bf46-44af-a5da-2b2599ae96bc
 		summarizeBy: sum
 		sourceColumn: COLUMN_COUNT
@@ -36,7 +36,7 @@ table MTSERVER_OPERATIONAL_TABLES_METRICS_STAGING
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ROW_COUNT
-		dataType: decimal
+		dataType: double
 		lineageTag: 5b796178-7228-4405-bc65-764b63a5f554
 		summarizeBy: sum
 		sourceColumn: ROW_COUNT

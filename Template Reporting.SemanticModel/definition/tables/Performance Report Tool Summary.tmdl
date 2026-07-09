@@ -34,7 +34,7 @@ table 'Performance Report Tool Summary'
 		annotation SummarizationSetBy = Automatic
 
 	column UNIQUE_DESKTOP_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: a03d533f-d6cf-4a4b-a48a-ba52a599021b
 		summarizeBy: sum
 		sourceColumn: UNIQUE_DESKTOP_USERS
@@ -44,7 +44,7 @@ table 'Performance Report Tool Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column UNIQUE_365_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: 77497bbb-ee8d-45c2-ba22-1046e2523a72
 		summarizeBy: sum
 		sourceColumn: UNIQUE_365_USERS
@@ -54,7 +54,7 @@ table 'Performance Report Tool Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column SESSIONS_DESKTOP_PERF_TOOL
-		dataType: decimal
+		dataType: double
 		lineageTag: 5c68b323-8183-418b-916e-6bde4616d23c
 		summarizeBy: sum
 		sourceColumn: SESSIONS_DESKTOP_PERF_TOOL
@@ -64,7 +64,7 @@ table 'Performance Report Tool Summary'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column CLICKS_TO_OPEN_365_PERF_TOOL
-		dataType: decimal
+		dataType: double
 		lineageTag: bf029b40-8415-4247-b9f5-0dd144222d8e
 		summarizeBy: sum
 		sourceColumn: CLICKS_TO_OPEN_365_PERF_TOOL

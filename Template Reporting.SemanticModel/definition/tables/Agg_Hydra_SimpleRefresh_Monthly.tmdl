@@ -15,7 +15,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 	column TOTAL_REFRESHES
 		dataType: int64
 		lineageTag: d0302d34-752d-481c-a833-ed010d51da44
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: TOTAL_REFRESHES
 
 		changedProperty = DataType
@@ -25,7 +25,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column REFRESHES_BELOW_8S
-		dataType: decimal
+		dataType: double
 		lineageTag: 5d81b6a4-2b68-4686-b173-531e423c4191
 		summarizeBy: sum
 		sourceColumn: REFRESHES_BELOW_8S
@@ -35,7 +35,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column PCT_BELOW_8S
-		dataType: decimal
+		dataType: double
 		lineageTag: 1f37b89d-6437-445e-9dfd-a2b3b3f82c5f
 		summarizeBy: sum
 		sourceColumn: PCT_BELOW_8S
@@ -45,7 +45,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column AVG_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 9128b7e3-0641-4521-84d5-118c8e721c69
 		summarizeBy: sum
 		sourceColumn: AVG_TIMING
@@ -55,7 +55,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P25_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: f6578850-7435-473e-9551-32104c4f32d0
 		summarizeBy: none
 		sourceColumn: P25_TIMING
@@ -65,7 +65,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P50_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 6b6b1b1b-d1d5-4817-8f4b-5e61829e2c6e
 		summarizeBy: none
 		sourceColumn: P50_TIMING
@@ -75,7 +75,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P70_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 00017f60-4766-4ed7-8277-052e5c89eddf
 		summarizeBy: none
 		sourceColumn: P70_TIMING
@@ -85,7 +85,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P80_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: b854fd06-12e6-4ed4-8f13-941a8a553c44
 		summarizeBy: none
 		sourceColumn: P80_TIMING
@@ -95,7 +95,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P90_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 7b420798-6660-4cd1-8aa9-eeb41b7870e0
 		summarizeBy: none
 		sourceColumn: P90_TIMING
@@ -105,7 +105,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P95_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: 56a6cbd1-0185-4e6d-b407-069d20976f8c
 		summarizeBy: none
 		sourceColumn: P95_TIMING
@@ -115,7 +115,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column P99_TIMING
-		dataType: decimal
+		dataType: double
 		lineageTag: f966bb23-8f82-482d-a43f-1bc26873ce76
 		summarizeBy: none
 		sourceColumn: P99_TIMING
@@ -125,7 +125,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_TENANTS
-		dataType: decimal
+		dataType: double
 		lineageTag: 086346d9-79d6-4dbd-9cb7-9622db33a786
 		summarizeBy: sum
 		sourceColumn: DISTINCT_TENANTS
@@ -135,7 +135,7 @@ table Agg_Hydra_SimpleRefresh_Monthly
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DISTINCT_USERS
-		dataType: decimal
+		dataType: double
 		lineageTag: fe020352-2d04-4450-b588-5fdc348b3274
 		summarizeBy: sum
 		sourceColumn: DISTINCT_USERS

@@ -69,7 +69,7 @@ table VW_DIM_TEMPLATE_METRICS
 		annotation UnderlyingDateTimeDataType = Date
 
 	column NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
-		dataType: decimal
+		dataType: double
 		lineageTag: 1335ff75-a875-4a49-9f4d-01e3e519151a
 		summarizeBy: sum
 		sourceColumn: NUMBER_OF_OPERATIONAL_CHOOSE_MAPPINGS
@@ -79,7 +79,7 @@ table VW_DIM_TEMPLATE_METRICS
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column NUMBER_OF_WRITEBACK_QUERIES
-		dataType: decimal
+		dataType: double
 		lineageTag: 70a7d73d-dc74-4fca-aa00-16c89db8ae48
 		summarizeBy: sum
 		sourceColumn: NUMBER_OF_WRITEBACK_QUERIES
